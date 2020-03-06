@@ -9,24 +9,15 @@ namespace MDG_Core
 {
     public class Log
     {
-        public static string[] GetStackTrace()
-        {
-            var stackTrace = new StackTrace();
-            var methodBase = stackTrace.GetFrame(1).GetMethod();
-            var Class = methodBase.ReflectedType;
-            var Namespace = Class.Namespace;
-            return new string[] { Namespace, Class.Name, methodBase.Name };
-        }
-
         /// <summary>
         /// Send a message to the debug console. Will not log anything in release.
         /// </summary>
         /// <param name="Message">Message to display.</param>
         /// <param name="StackTrace">Return of GetStackTrace()</param>
-        public static void ToDebug(string Message, string[] StackTrace)
+        public static void ToDebug(string Message)
         {
 #if DEBUG
-            Debug.WriteLine(Functions.FormatString(Message, "DEBUG", Functions.ConvertStackTrace(StackTrace)));
+            Debug.WriteLine(Functions.FormatString(Message, "DEBUG"));
 #else
             return;
 #endif
@@ -38,17 +29,17 @@ namespace MDG_Core
         /// <param name="Message">Message to display.</param>
         /// <param name="Level">Level of severity (overrides 'DEBUG')</param>
         /// <param name="StackTrace">Return of GetStackTrace()</param>
-        public static void ToDebug(string Message, string Level, string[] StackTrace)
+        public static void ToDebug(string Message, string Level)
         {
 #if DEBUG
             //If an empty string is passed through the level param, execute regular ToDebug function.
             if (string.IsNullOrEmpty(Level))
             {
-                ToDebug(Message, StackTrace);
+                ToDebug(Message);
                 return;
             }
             //Add formatted string to debug.
-            Debug.WriteLine(Functions.FormatString(Message, Level, Functions.ConvertStackTrace(StackTrace)));
+            Debug.WriteLine(Functions.FormatString(Message, Level));
 #else
             return;
 #endif
@@ -59,10 +50,10 @@ namespace MDG_Core
         /// </summary>
         /// <param name="Message">Message to display.</param>
         /// <param name="StackTrace">Return of GetStackTrace()</param>
-        public static void AddInfo(string Message, string[] StackTrace)
+        public static void AddInfo(string Message)
         {
 #if DEBUG
-            ToDebug(Message, "Info", StackTrace);
+            ToDebug(Message, "Info");
 #else
             //TODO
 #endif
@@ -73,10 +64,10 @@ namespace MDG_Core
         /// </summary>
         /// <param name="Message">Message to display.</param>
         /// <param name="StackTrace">Return of GetStackTrace()</param>
-        public static void AddWarning(string Message, string[] StackTrace)
+        public static void AddWarning(string Message)
         {
 #if DEBUG
-            ToDebug(Message, "Warning", StackTrace);
+            ToDebug(Message, "Warning");
 #else
             //TODO
 #endif
@@ -88,10 +79,10 @@ namespace MDG_Core
         /// </summary>
         /// <param name="Message">Message to display.</param>
         /// <param name="StackTrace">Return of GetStackTrace()</param>
-        public static void AddError(string Message, string[] StackTrace)
+        public static void AddError(string Message)
         {
 #if DEBUG
-            ToDebug(Message, "Error", StackTrace);
+            ToDebug(Message, "Error");
 #else
             //TODO
 #endif
@@ -114,10 +105,10 @@ namespace MDG_Core
         /// <param name="Message">Message to format.</param>
         /// <param name="Level">level of severity.</param>
         /// <returns></returns>
-        public static string FormatString(string Message, string Level, string StackTrace)
+        public static string FormatString(string Message, string Level)
         {
             
-            return string.Format("[{3}]{0}[{1}]: {2}", GetDateTime(true).ToUpper(), Level.ToUpper(), Message, StackTrace);
+            return string.Format("{0}[{1}]: {2}", GetDateTime(true).ToUpper(), Level.ToUpper(), Message);
         }
 
         /// <summary>

@@ -26,7 +26,7 @@ namespace STB
 
         private void LoadApp(object sender, EventArgs e)
         {
-            Log.AddInfo("Program successfully laoded", Log.GetStackTrace());
+            Log.AddInfo("Program successfully laoded");
         }
 
         private void ConvertToLatLong(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace STB
             page.Controls.Add(convert);
             TabControl.TabPages.Add(page);
             TabControl.SelectedIndex = TabControl.TabPages.IndexOf(page);
-            Log.AddInfo("Converter loaded in main form.", Log.GetStackTrace());
+            Log.AddInfo("Converter loaded in main form.");
         }
 
         private string TabName(string Name)

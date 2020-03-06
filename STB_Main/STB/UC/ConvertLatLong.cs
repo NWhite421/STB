@@ -33,13 +33,13 @@ namespace STB.UC
             InitializeComponent();
         }
 
-        //Internal function for logging.
+        //Internal function for Log.ToDebug.
         internal void AddNote(string Message)
         {
             string LogMessage = string.Format("[{0}]: {1}" + Environment.NewLine, DateTime.Now.ToString("h:mm:ss tt"), Message);
             txtLog.Text += LogMessage;
             LblStatus.Text = Message;
-            Log.AddInfo(Message, Log.GetStackTrace());
+            Log.AddInfo(Message);
         }
 
         //Called when form is loaded.
@@ -68,7 +68,7 @@ namespace STB.UC
             //If the list is empty, someone fucked up.
             if (fileList.Count() == 0)
             {
-                Logging.AddToLog("Nothing was dropped into the converter. (how?)");
+                Log.AddError("Nothing was dropped into the converter. (how?)");
                 return;
             }
 
@@ -147,7 +147,7 @@ namespace STB.UC
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "ConvertLatLong.exe"
                 );
-            Logging.AddToDebug("path of converter: " + converter);
+            Log.ToDebug("path of converter: " + converter);
 
             //Determine job number and point number if fields are blank.
             string JobNo = TxtJobNumber.Text;
@@ -167,18 +167,18 @@ namespace STB.UC
             foreach (string file in Files)
             {
                 AddNote("Processing file " + fileNo);
-                Log.AddInfo("Converting file: " + file, Log.GetStackTrace());
+                Log.AddInfo("Converting file: " + file);
                 //Cancel round if file is not a text file
                 if (!file.Contains(".txt"))
                 {
-                    Logging.AddErrorToLog("Could not process file. File must be a .txt file.");
+                    Log.AddError("Could not process file. File must be a .txt file.");
                     AddNote("Could not process file. File must be a .txt file.");
                     break;
                 }
 
                 //Establish program arguments
                 string args = "\"" + file + "\" \"" + JobNo + "\" \"" + PointNo + "\"";
-                Log.ToDebug(args, Log.GetStackTrace());
+                Log.ToDebug(args);
                 AddNote("Starting converter");
 
                 //Execute converter
@@ -192,7 +192,7 @@ namespace STB.UC
                     process.Start();
                     process.WaitForExit();
                     string result = process.StandardOutput.ReadToEnd();
-                    Log.AddInfo("Converter returned with " + result, Log.GetStackTrace());
+                    Log.AddInfo("Converter returned with " + result);
                     AddNote("Converter returned with " + result);
                 };
                 fileNo++;
