@@ -60,18 +60,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UC\Common.cs" />
     <Compile Include="UC\ConvertLatLong.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UC\ConvertLatLong.Designer.cs">
       <DependentUpon>ConvertLatLong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC\NewJobFolder.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC\NewJobFolder.Designer.cs">
-      <DependentUpon>NewJobFolder.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -87,9 +80,6 @@
     </Compile>
     <EmbeddedResource Include="UC\ConvertLatLong.resx">
       <DependentUpon>ConvertLatLong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC\NewJobFolder.resx">
-      <DependentUpon>NewJobFolder.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -109,10 +99,17 @@
       <Project>{ed9e0ba9-f63b-457e-9ef1-10b78859de54}</Project>
       <Name>ConvertLatLong</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CreateJobFolder\CreateJobFolder.csproj">
+      <Project>{14c593a8-8661-43a5-90b7-f990e87d9e7a}</Project>
+      <Name>CreateJobFolder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MDG_Core\MDG_Core.csproj">
       <Project>{d9506819-2961-408c-9774-b87f8c38d2c0}</Project>
       <Name>MDG_Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SampleTemplate.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

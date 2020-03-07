@@ -22,4 +22,29 @@ namespace MDG_Core
         public string Name;
         public string UCControl;
     }
+
+    public class FileTemplate
+    {
+        public static string Name;
+        public static string Source;
+        public static bool ReadOnly;
+        public static bool Hidden;
+    }
+
+    public class FolderTemplate
+    {
+        public static string Name;
+        public static bool Hidden;
+        public static List<object> Contents;
+    }
+
+    public class JobTemplate
+    {
+        public static class MetaData
+        {
+            public static string Name;
+            public static DateTime CreationDate;
+        }
+        public static FolderTemplate MasterDirectory;
+    }
 }

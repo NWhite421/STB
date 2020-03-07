@@ -122,16 +122,20 @@ namespace STB
             {
                 case "ConvertLatLong":
                     {
-                        UControl = new UC.ConvertLatLong();
-                        UControl.BackColor = GVars.ActivePallete.Background;
-                        UControl.Dock = DockStyle.Fill;
+                        UControl = new UC.ConvertLatLong
+                        {
+                            BackColor = GVars.ActivePallete.Background,
+                            Dock = DockStyle.Fill
+                        };
                         break;
                     }
                 case "NewJobFolder":
                     {
-                        UControl = new UC.NewJobFolder();
-                        UControl.BackColor = GVars.ActivePallete.Background;
-                        UControl.Dock = DockStyle.Fill;
+                        UControl = new CreateJobFolder.CreateJobFolder
+                        {
+                            BackColor = GVars.ActivePallete.Background,
+                            Dock = DockStyle.Fill
+                        };
                         break;
                     }
                 default:
