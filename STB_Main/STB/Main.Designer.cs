@@ -28,131 +28,135 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.TlSrpProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.TlSrpLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.convertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.googleToLatLongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TabControl = new System.Windows.Forms.TabControl();
-            this.TabHome = new System.Windows.Forms.TabPage();
-            this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.TabControl.SuspendLayout();
+            this.CmdClose = new System.Windows.Forms.Button();
+            this.CmdMinimize = new System.Windows.Forms.Button();
+            this.CmdMaximize = new System.Windows.Forms.Button();
+            this.Lbltitle = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CmdOpenJob = new System.Windows.Forms.Button();
+            this.LBModules = new System.Windows.Forms.ListBox();
+            this.PanelMain = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // CmdClose
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.convertToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1016, 29);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.CmdClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdClose.FlatAppearance.BorderSize = 0;
+            this.CmdClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CmdClose.Location = new System.Drawing.Point(616, 0);
+            this.CmdClose.Name = "CmdClose";
+            this.CmdClose.Size = new System.Drawing.Size(35, 25);
+            this.CmdClose.TabIndex = 0;
+            this.CmdClose.Text = "X";
+            this.CmdClose.UseVisualStyleBackColor = true;
+            this.CmdClose.Click += new System.EventHandler(this.ExitProgram);
             // 
-            // fileToolStripMenuItem
+            // CmdMinimize
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 25);
-            this.fileToolStripMenuItem.Text = "File";
+            this.CmdMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdMinimize.FlatAppearance.BorderSize = 0;
+            this.CmdMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdMinimize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CmdMinimize.Location = new System.Drawing.Point(534, 0);
+            this.CmdMinimize.Name = "CmdMinimize";
+            this.CmdMinimize.Size = new System.Drawing.Size(35, 25);
+            this.CmdMinimize.TabIndex = 1;
+            this.CmdMinimize.Text = "_";
+            this.CmdMinimize.UseVisualStyleBackColor = true;
+            this.CmdMinimize.Click += new System.EventHandler(this.MinimizeProgram);
             // 
-            // statusStrip1
+            // CmdMaximize
             // 
-            this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TlSrpProgressBar,
-            this.TlSrpLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 602);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1016, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
+            this.CmdMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdMaximize.FlatAppearance.BorderSize = 0;
+            this.CmdMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdMaximize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CmdMaximize.Location = new System.Drawing.Point(575, 0);
+            this.CmdMaximize.Name = "CmdMaximize";
+            this.CmdMaximize.Size = new System.Drawing.Size(35, 25);
+            this.CmdMaximize.TabIndex = 2;
+            this.CmdMaximize.Text = "M";
+            this.CmdMaximize.UseVisualStyleBackColor = true;
+            this.CmdMaximize.Click += new System.EventHandler(this.MaximizeProgram);
             // 
-            // TlSrpProgressBar
+            // Lbltitle
             // 
-            this.TlSrpProgressBar.Name = "TlSrpProgressBar";
-            this.TlSrpProgressBar.Size = new System.Drawing.Size(100, 16);
-            this.TlSrpProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.Lbltitle.Location = new System.Drawing.Point(0, 0);
+            this.Lbltitle.Name = "Lbltitle";
+            this.Lbltitle.Size = new System.Drawing.Size(52, 21);
+            this.Lbltitle.TabIndex = 3;
+            this.Lbltitle.Text = "label1";
+            this.Lbltitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MoveTitle);
             // 
-            // TlSrpLabel
+            // textBox1
             // 
-            this.TlSrpLabel.Name = "TlSrpLabel";
-            this.TlSrpLabel.Size = new System.Drawing.Size(131, 17);
-            this.TlSrpLabel.Text = "toolStripStatusLabel1";
+            this.textBox1.Location = new System.Drawing.Point(97, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(134, 29);
+            this.textBox1.TabIndex = 4;
             // 
-            // exitToolStripMenuItem
+            // label1
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.E)));
-            this.exitToolStripMenuItem.ShowShortcutKeys = false;
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitProgram);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 21);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Open Job:";
             // 
-            // convertToolStripMenuItem
+            // CmdOpenJob
             // 
-            this.convertToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.googleToLatLongToolStripMenuItem});
-            this.convertToolStripMenuItem.Name = "convertToolStripMenuItem";
-            this.convertToolStripMenuItem.Size = new System.Drawing.Size(77, 25);
-            this.convertToolStripMenuItem.Text = "Convert";
+            this.CmdOpenJob.Location = new System.Drawing.Point(237, 45);
+            this.CmdOpenJob.Name = "CmdOpenJob";
+            this.CmdOpenJob.Size = new System.Drawing.Size(75, 29);
+            this.CmdOpenJob.TabIndex = 6;
+            this.CmdOpenJob.Text = "Open";
+            this.CmdOpenJob.UseVisualStyleBackColor = true;
             // 
-            // googleToLatLongToolStripMenuItem
+            // LBModules
             // 
-            this.googleToLatLongToolStripMenuItem.Name = "googleToLatLongToolStripMenuItem";
-            this.googleToLatLongToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.googleToLatLongToolStripMenuItem.Text = "Google to Lat Long";
-            this.googleToLatLongToolStripMenuItem.Click += new System.EventHandler(this.ConvertToLatLong);
+            this.LBModules.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.LBModules.FormattingEnabled = true;
+            this.LBModules.ItemHeight = 21;
+            this.LBModules.Location = new System.Drawing.Point(12, 80);
+            this.LBModules.Name = "LBModules";
+            this.LBModules.Size = new System.Drawing.Size(231, 403);
+            this.LBModules.TabIndex = 7;
+            this.LBModules.DoubleClick += new System.EventHandler(this.ChangeModule);
             // 
-            // TabControl
+            // PanelMain
             // 
-            this.TabControl.AllowDrop = true;
-            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TabControl.Controls.Add(this.TabHome);
-            this.TabControl.Location = new System.Drawing.Point(0, 32);
-            this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1016, 567);
-            this.TabControl.TabIndex = 2;
-            // 
-            // TabHome
-            // 
-            this.TabHome.Location = new System.Drawing.Point(4, 30);
-            this.TabHome.Name = "TabHome";
-            this.TabHome.Size = new System.Drawing.Size(1008, 533);
-            this.TabHome.TabIndex = 0;
-            this.TabHome.Text = "Home";
-            this.TabHome.UseVisualStyleBackColor = true;
+            this.PanelMain.Location = new System.Drawing.Point(249, 80);
+            this.PanelMain.Name = "PanelMain";
+            this.PanelMain.Size = new System.Drawing.Size(389, 408);
+            this.PanelMain.TabIndex = 8;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 624);
-            this.Controls.Add(this.TabControl);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.ClientSize = new System.Drawing.Size(650, 500);
+            this.Controls.Add(this.PanelMain);
+            this.Controls.Add(this.LBModules);
+            this.Controls.Add(this.CmdOpenJob);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Lbltitle);
+            this.Controls.Add(this.CmdMaximize);
+            this.Controls.Add(this.CmdMinimize);
+            this.Controls.Add(this.CmdClose);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenuStrip = this.menuStrip1;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "Survey Toolbox";
             this.Load += new System.EventHandler(this.LoadApp);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.TabControl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,16 +164,15 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripProgressBar TlSrpProgressBar;
-        private System.Windows.Forms.ToolStripStatusLabel TlSrpLabel;
-        private System.Windows.Forms.ToolStripMenuItem convertToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem googleToLatLongToolStripMenuItem;
-        private System.Windows.Forms.TabControl TabControl;
-        private System.Windows.Forms.TabPage TabHome;
+        private System.Windows.Forms.Button CmdClose;
+        private System.Windows.Forms.Button CmdMinimize;
+        private System.Windows.Forms.Button CmdMaximize;
+        private System.Windows.Forms.Label Lbltitle;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button CmdOpenJob;
+        private System.Windows.Forms.ListBox LBModules;
+        private System.Windows.Forms.Panel PanelMain;
     }
 }
 

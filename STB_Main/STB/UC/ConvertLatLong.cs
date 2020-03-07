@@ -49,6 +49,7 @@ namespace STB.UC
             GoodJobNumber = true;
             lblPNInvalid.Visible = false;
             GoodPointNumber = true;
+            Common.AlignandColor(this);
             AddNote("Ready");
         }
 

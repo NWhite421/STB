@@ -60,11 +60,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC\Common.cs" />
     <Compile Include="UC\ConvertLatLong.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UC\ConvertLatLong.Designer.cs">
       <DependentUpon>ConvertLatLong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\NewJobFolder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\NewJobFolder.Designer.cs">
+      <DependentUpon>NewJobFolder.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -80,6 +87,9 @@
     </Compile>
     <EmbeddedResource Include="UC\ConvertLatLong.resx">
       <DependentUpon>ConvertLatLong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\NewJobFolder.resx">
+      <DependentUpon>NewJobFolder.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
