@@ -55,7 +55,7 @@ namespace CreateJobFolder
                     Hidden = false,
                     Contents = new List<object> { }
                 };
-                foreach (XElement element in basedir.Descendants("Subdir").Elements())
+                foreach (XElement element in basedir.Elements("Subdir").Elements("Entry"))
                 {
                     XElement type = element.Element("Type");
                     switch (type.Value)
@@ -90,7 +90,7 @@ namespace CreateJobFolder
                 Contents = new List<object> { }
             };
 
-            foreach (XElement element in Source.Descendants("Subdir").Descendants())
+            foreach (XElement element in Source.Elements("Subdir").Elements("Entry"))
             {
                 XElement type = element.Element("Type");
                 switch (type.Value)
@@ -177,12 +177,12 @@ namespace CreateJobFolder
             {
                 switch (content.GetType().Name.ToLower())
                 {
-                    case "Folder":
+                    case "foldertemplate":
                         {
                             contents.Nodes.Add(GetFolderNode((FolderTemplate)content));
                             break;
                         }
-                    case "File":
+                    case "filetemplate":
                         {
                             contents.Nodes.Add(GetFileNode((FileTemplate)content));
                             break;
@@ -201,6 +201,16 @@ namespace CreateJobFolder
             node.Nodes.Add("Hidden: " + template.Hidden);
             node.Nodes.Add("Read Only: " + template.ReadOnly);
             return node;
+        }
+
+        private void CreateFolder(object sender, EventArgs e)
+        {
+            string jobNumber = Converter.ToJobNumber(TxtJobNumber.Text);
+            if (string.IsNullOrEmpty(jobNumber))
+            {
+                Log.AddInfo("job number provided is not a job number.");
+                return;
+            }
         }
     }
 }

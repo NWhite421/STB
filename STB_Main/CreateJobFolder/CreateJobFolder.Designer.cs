@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.TxtJobNumber = new System.Windows.Forms.MaskedTextBox();
             this.CmdNew = new System.Windows.Forms.Button();
             this.CmdEdit = new System.Windows.Forms.Button();
             this.CmdDelete = new System.Windows.Forms.Button();
@@ -47,14 +47,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Enter Job Number:";
             // 
-            // maskedTextBox1
+            // TxtJobNumber
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(148, 3);
-            this.maskedTextBox1.Mask = "00-00-000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.PromptChar = '#';
-            this.maskedTextBox1.Size = new System.Drawing.Size(149, 29);
-            this.maskedTextBox1.TabIndex = 2;
+            this.TxtJobNumber.Location = new System.Drawing.Point(148, 3);
+            this.TxtJobNumber.Mask = "00-00-000";
+            this.TxtJobNumber.Name = "TxtJobNumber";
+            this.TxtJobNumber.PromptChar = '#';
+            this.TxtJobNumber.Size = new System.Drawing.Size(149, 29);
+            this.TxtJobNumber.TabIndex = 2;
             // 
             // CmdNew
             // 
@@ -109,6 +109,7 @@
             this.CmdCreate.TabIndex = 7;
             this.CmdCreate.Text = "CREATE";
             this.CmdCreate.UseVisualStyleBackColor = true;
+            this.CmdCreate.Click += new System.EventHandler(this.CreateFolder);
             // 
             // treeView1
             // 
@@ -130,7 +131,7 @@
             this.Controls.Add(this.CmdDelete);
             this.Controls.Add(this.CmdEdit);
             this.Controls.Add(this.CmdNew);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.TxtJobNumber);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -144,7 +145,7 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox TxtJobNumber;
         private System.Windows.Forms.Button CmdNew;
         private System.Windows.Forms.Button CmdEdit;
         private System.Windows.Forms.Button CmdDelete;

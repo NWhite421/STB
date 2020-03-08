@@ -21,6 +21,20 @@
             <Hidden>false</Hidden>
             <Readonly>false</Readonly>
           </Entry>
+          <Entry>
+            <Name>Asset Tables</Name>
+            <Type>0</Type>
+            <Hidden>false</Hidden>
+            <Subdir>
+              <Entry>
+                <Name>%%Job_Number%% Asset Table.xlsx</Name>
+                <Type>1</Type>
+                <Source>Z:\Template\Asset Tables\Orange County Asset Table.xlsx</Source>
+                <Hidden>false</Hidden>
+                <Readonly>false</Readonly>
+              </Entry>
+            </Subdir>
+          </Entry>
         </Subdir>
       </Entry>
       <Entry>
