@@ -25,26 +25,28 @@ namespace MDG_Core
 
     public class FileTemplate
     {
-        public static string Name;
-        public static string Source;
-        public static bool ReadOnly;
-        public static bool Hidden;
+        public string Name;
+        public string Source;
+        public bool ReadOnly;
+        public bool Hidden;
     }
 
     public class FolderTemplate
     {
-        public static string Name;
-        public static bool Hidden;
-        public static List<object> Contents;
+        public string Name;
+        public bool Hidden;
+        public List<object> Contents;
+    }
+
+    public class MetaData
+    {
+        public string Name;
+        public DateTime CreationDate;
     }
 
     public class JobTemplate
     {
-        public static class MetaData
-        {
-            public static string Name;
-            public static DateTime CreationDate;
-        }
-        public static FolderTemplate MasterDirectory;
+        public FolderTemplate MasterDirectory;
+        public MetaData MetaData;
     }
 }
