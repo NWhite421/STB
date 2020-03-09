@@ -32,7 +32,7 @@
             this.CmdMinimize = new System.Windows.Forms.Button();
             this.CmdMaximize = new System.Windows.Forms.Button();
             this.Lbltitle = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtJobNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CmdOpenJob = new System.Windows.Forms.Button();
             this.LBModules = new System.Windows.Forms.ListBox();
@@ -90,12 +90,13 @@
             this.Lbltitle.Text = "label1";
             this.Lbltitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MoveTitle);
             // 
-            // textBox1
+            // TxtJobNumber
             // 
-            this.textBox1.Location = new System.Drawing.Point(97, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(134, 29);
-            this.textBox1.TabIndex = 4;
+            this.TxtJobNumber.Location = new System.Drawing.Point(97, 45);
+            this.TxtJobNumber.Name = "TxtJobNumber";
+            this.TxtJobNumber.Size = new System.Drawing.Size(134, 29);
+            this.TxtJobNumber.TabIndex = 4;
+            this.TxtJobNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckKeyPress);
             // 
             // label1
             // 
@@ -114,6 +115,7 @@
             this.CmdOpenJob.TabIndex = 6;
             this.CmdOpenJob.Text = "Open";
             this.CmdOpenJob.UseVisualStyleBackColor = true;
+            this.CmdOpenJob.Click += new System.EventHandler(this.OpenJob);
             // 
             // LBModules
             // 
@@ -146,7 +148,7 @@
             this.Controls.Add(this.LBModules);
             this.Controls.Add(this.CmdOpenJob);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtJobNumber);
             this.Controls.Add(this.Lbltitle);
             this.Controls.Add(this.CmdMaximize);
             this.Controls.Add(this.CmdMinimize);
@@ -168,7 +170,7 @@
         private System.Windows.Forms.Button CmdMinimize;
         private System.Windows.Forms.Button CmdMaximize;
         private System.Windows.Forms.Label Lbltitle;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtJobNumber;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CmdOpenJob;
         private System.Windows.Forms.ListBox LBModules;

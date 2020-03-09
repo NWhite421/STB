@@ -80,6 +80,29 @@ namespace STB
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
         Rectangle BottomLeft { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
+
+        private void OpenJob(object sender, EventArgs e)
+        {
+            OpenFolder.OpenFolderLocation(TxtJobNumber.Text);
+        }
+
+        private void CheckKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                OpenJob(this, new EventArgs());
+                TxtJobNumber.Text = string.Empty;
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                TxtJobNumber.Text = string.Empty;
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
         Rectangle BottomRight { get { return new Rectangle(this.ClientSize.Width - _, this.ClientSize.Height - _, _, _); } }
 
 
@@ -110,6 +133,8 @@ namespace STB
                 LBModules.Items.Add(module.Name);
             }
             Log.AddInfo("Program successfully laoded");
+            this.AcceptButton = new Button();
+            this.CancelButton = new Button();
         }
 
         private void ChangeModule(object s, EventArgs e)

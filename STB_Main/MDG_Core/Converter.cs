@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace MDG_Core
 {
@@ -52,6 +53,26 @@ namespace MDG_Core
                 return output;
             }
             return output;
+        }
+
+        public static string JobNumberToPath(string Input)
+        {
+            string outp = "";
+
+#if DEBUG
+            outp = @"C:\Users\Nathan White\Documents\Test";
+#else
+            outp = @"Z:\"
+#endif
+            string[] components = ToJobNumber(Input).Split('-');
+            outp = Path.Combine(
+                outp,
+                components[0],
+                components[1] + "-" + components[0],
+                components[1] + "-" + components[2]
+                );
+
+            return outp;
         }
     }
 }
