@@ -7,5 +7,5 @@
 //		[Code]		=	The text code to enter into the field.
 //		[Directory]	=	The directory path to open.
 //EDIT BELOW THIS LINE
-Field; C:\Users\Nathan White\Documents\Test\0-Field Crews
-Template; C:\Users\Nathan White\Documents\Test\Template
+Field; Z:\0-Field Crews
+Template; Z:\Template

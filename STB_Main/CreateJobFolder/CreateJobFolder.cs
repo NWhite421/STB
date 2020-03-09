@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using MDG_Core;
 using System.Xml;
 using System.Xml.Linq;
+using System.IO;
+using System.Reflection;
 
 namespace CreateJobFolder
 {
@@ -37,7 +39,10 @@ namespace CreateJobFolder
             List<JobTemplate> templates = new List<JobTemplate> { };
             List<string> templateFiles = new List<string> { };
 #if DEBUG
-            templateFiles.Add(@"C:\Users\Nathan White\Documents\Source Code\STB\STB_Main\STB\SampleTemplate.xml");
+            string path = Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                "SampleTemplate.xml");
+            templateFiles.Add(path);
 #else
             //TODO: Add dynamic list grab
 #endif

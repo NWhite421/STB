@@ -59,10 +59,10 @@ namespace MDG_Core
         {
             string outp = "";
 
-#if DEBUG
+#if LAPTOP
+            outp = @"Z:\";
+#elif DEBUG
             outp = @"C:\Users\Nathan White\Documents\Test";
-#else
-            outp = @"Z:\"
 #endif
             string[] components = ToJobNumber(Input).Split('-');
             outp = Path.Combine(
