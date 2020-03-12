@@ -110,6 +110,14 @@ namespace MDG_Core
                                 trv.ForeColor = GVars.ActivePallete.Text;
                                 break;
                             }
+                        case "datagridview":
+                            {
+                                var dgv = (DataGridView)control;
+                                dgv.BackgroundColor = GVars.ActivePallete.Background;
+                                dgv.GridColor = GVars.ActivePallete.Foreground;
+                                dgv.MultiSelect = false;
+                                break;
+                            }
                     }
                 }
                 else

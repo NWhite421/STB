@@ -32,14 +32,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CmdOpenJob = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DateEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Writer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtNote = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.LblCurrentJob = new System.Windows.Forms.Label();
-            this.DateEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Writer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -76,6 +76,7 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DateEntry,
@@ -87,6 +88,31 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(680, 150);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // DateEntry
+            // 
+            this.DateEntry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.DateEntry.Frozen = true;
+            this.DateEntry.HeaderText = "Date";
+            this.DateEntry.Name = "DateEntry";
+            this.DateEntry.ReadOnly = true;
+            this.DateEntry.Width = 5;
+            // 
+            // Writer
+            // 
+            this.Writer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Writer.Frozen = true;
+            this.Writer.HeaderText = "By";
+            this.Writer.Name = "Writer";
+            this.Writer.ReadOnly = true;
+            this.Writer.Width = 5;
+            // 
+            // Note
+            // 
+            this.Note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Note.HeaderText = "Note";
+            this.Note.Name = "Note";
+            this.Note.ReadOnly = true;
             // 
             // TxtNote
             // 
@@ -137,31 +163,6 @@
             this.LblCurrentJob.Size = new System.Drawing.Size(71, 21);
             this.LblCurrentJob.TabIndex = 8;
             this.LblCurrentJob.Text = "xx-xx-xxx";
-            // 
-            // DateEntry
-            // 
-            this.DateEntry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.DateEntry.Frozen = true;
-            this.DateEntry.HeaderText = "Date";
-            this.DateEntry.Name = "DateEntry";
-            this.DateEntry.ReadOnly = true;
-            this.DateEntry.Width = 5;
-            // 
-            // Writer
-            // 
-            this.Writer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Writer.Frozen = true;
-            this.Writer.HeaderText = "By";
-            this.Writer.Name = "Writer";
-            this.Writer.ReadOnly = true;
-            this.Writer.Width = 5;
-            // 
-            // Note
-            // 
-            this.Note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Note.HeaderText = "Note";
-            this.Note.Name = "Note";
-            this.Note.ReadOnly = true;
             // 
             // button1
             // 
