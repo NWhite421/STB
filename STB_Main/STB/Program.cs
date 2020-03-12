@@ -20,6 +20,7 @@ namespace STB
             GVars.InitializeVariables();
             GVars.Modules.Add(new UCModule { Name = "Google to txt", UCControl = "ConvertLatLong" });
             GVars.Modules.Add(new UCModule { Name = "New Job Folder", UCControl = "NewJobFolder" });
+            GVars.Modules.Add(new UCModule { Name = "View Job", UCControl = "JobViewer" });
             Application.Run(new Main());
         }
     }

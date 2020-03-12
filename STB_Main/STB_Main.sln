@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STB", "STB\STB.csproj", "{9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDG_Core", "MDG_Core\MDG_Core.csproj", "{D9506819-2961-408C-9774-B87F8C38D2C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateJobFolder", "CreateJobFolder\CreateJobFolder.csproj", "{14C593A8-8661-43A5-90B7-F990E87D9E7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControls", "CreateJobFolder\UserControls.csproj", "{14C593A8-8661-43A5-90B7-F990E87D9E7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertLatLong", "ConvertLatLong\ConvertLatLong.csproj", "{ED9E0BA9-F63B-457E-9EF1-10B78859DE54}"
 EndProject

@@ -64,7 +64,7 @@ namespace MDG_Core
 #elif DEBUG
             outp = @"C:\Users\Nathan White\Documents\Test";
 #endif
-            string[] components = ToJobNumber(Input).Split('-');
+            string[] components = Input.Split('-');
             outp = Path.Combine(
                 outp,
                 components[0],

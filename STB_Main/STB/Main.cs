@@ -163,6 +163,15 @@ namespace STB
                         };
                         break;
                     }
+                case "JobViewer":
+                    {
+                        UControl = new CreateJobFolder.JobViewer
+                        {
+                            BackColor = GVars.ActivePallete.Background,
+                            Dock = DockStyle.Fill
+                        };
+                        break;
+                    }
                 default:
                     {
                         UControl = null;

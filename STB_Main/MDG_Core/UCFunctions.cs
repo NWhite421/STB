@@ -45,7 +45,8 @@ namespace MDG_Core
                                     BackColor = GVars.ActivePallete.Foreground,
                                     AutoSize = false,
                                     Location = new Point(txtbox.Location.X, txtbox.Location.Y + txtbox.Height + 1),
-                                    Size = new Size(txtbox.Width, 2)
+                                    Size = new Size(txtbox.Width, 2),
+                                    Anchor = txtbox.Anchor
                                 };
                                 Window.Controls.Add(underline);
 
@@ -65,7 +66,8 @@ namespace MDG_Core
                                     BackColor = GVars.ActivePallete.Foreground,
                                     AutoSize = false,
                                     Location = new Point(txtbox.Location.X, txtbox.Location.Y + txtbox.Height + 1),
-                                    Size = new Size(txtbox.Width, 2)
+                                    Size = new Size(txtbox.Width, 2),
+                                    Anchor = txtbox.Anchor
                                 };
                                 Window.Controls.Add(underline);
 
