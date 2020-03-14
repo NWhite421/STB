@@ -7,8 +7,16 @@ using System.Linq;
 
 namespace MDG_Core
 {
+    /// <summary>
+    /// Custom converter functions.
+    /// </summary>
     public class Converter
     {
+        /// <summary>
+        /// Checks Input to determine if it is a good job number (format wise).
+        /// </summary>
+        /// <param name="Input">String to check.</param>
+        /// <returns>Formatted job number in yyyy-mm-jjj format or empty if failed format.</returns>
         public static string ToJobNumber(string Input)
         {
             Log.ToDebug("Checking " + Input + " for job number compatibility.");
@@ -55,6 +63,11 @@ namespace MDG_Core
             return output;
         }
 
+        /// <summary>
+        /// Converts inputed job number into file path.
+        /// </summary>
+        /// <param name="Input">Formatted job number in yyyy-mm-jjj format.</param>
+        /// <returns>Path to job folder.</returns>
         public static string JobNumberToPath(string Input)
         {
             string outp = "";

@@ -8,8 +8,15 @@ using System.Windows.Forms;
 
 namespace MDG_Core
 {
+    /// <summary>
+    /// Functions relating to user controls.
+    /// </summary>
     public class UCFunctions
     {
+        /// <summary>
+        /// Aligns, creates, and formats controls based on active pallete.
+        /// </summary>
+        /// <param name="Window">UserControl to format.</param>
         public static void AlignandColor(UserControl Window)
         {
             List<Control> ProcessedControls = new List<Control> { };

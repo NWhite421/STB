@@ -9,15 +9,69 @@ using System.IO;
 
 namespace MDG_Core
 {
+    /// <summary>
+    /// Global variables
+    /// </summary>
     public class GVars
     {
-        public static ColorPallete ActivePallete;
-        public static List<UCModule> Modules;
-        public static List<List<string>> CustomFields;
-        public static string UsernameFull;
-        public static string UsernameInitials;
-        public static string DriveLetter;
+        /// <summary>
+        /// Active color pallete.
+        /// </summary>
+        public static ColorPallete ActivePallete { get; set; }
+        /// <summary>
+        /// List of active modules to display in the list.
+        /// </summary>
+        public static List<UCModule> Modules { get; set; }
+        /// <summary>
+        /// Custom "open job folder" fields.
+        /// </summary>
+        public static List<List<string>> CustomFields { get; set; }
+        /// <summary>
+        /// Username of user spelled out.
+        /// </summary>
+        public static string UsernameFull { get; set; }
+        /// <summary>
+        /// Username of user in initial format.
+        /// </summary>
+        public static string UsernameInitials { get; set; }
+        /// <summary>
+        /// The drive of the work directory.
+        /// </summary>
+        public static string DriveLetter { get; set; }
 
+        /// <summary>
+        /// Paths to all AppData folders and references.
+        /// </summary>
+        public class AppDataFolders
+        {
+            /// <summary>
+            /// Paths to all folders.
+            /// </summary>
+            public class Folders
+            {
+                ///<summary>
+                ///LocalAppData base folder.
+                ///</summary>
+                public static string LocalAppData { get; set; }
+                /// <summary>
+                /// Application log folder.
+                /// </summary>
+                public static string Logs { get; set; }
+            }
+            /// <summary>
+            /// App name
+            /// </summary>
+            public static string AppName { get; set; }
+            /// <summary>
+            /// Path to log file.
+            /// </summary>
+            public static string LogFile { get; set; }
+        }
+
+        /// <summary>
+        /// Initializes base variables for use in other classes and modules.
+        /// </summary>
+        /// <returns></returns>
         public static bool InitializeVariables()
         {
             ActivePallete = new ColorPallete
@@ -36,8 +90,9 @@ namespace MDG_Core
             return true;
         }
 
-
-
+        /// <summary>
+        /// Compiles field list from txt file to usable lists.
+        /// </summary>
         public static void CompileFieldList()
         {
             List<List<string>> ret = new List<List<string>> { };
@@ -61,6 +116,20 @@ namespace MDG_Core
                 else { ret.Add(line.Split(';').ToList()); }
             }
             CustomFields = ret;
+
+            AppDataFolders.AppName = "Survey Toolbox";
+            AppDataFolders.Folders.LocalAppData = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                AppDataFolders.AppName
+                );
+            AppDataFolders.Folders.Logs = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                AppDataFolders.AppName,
+                "Logs"
+                );
+            AppDataFolders.LogFile = Path.Combine(
+                AppDataFolders.Folders.Logs,
+                AppDataFolders.AppName + " " + DateTime.Now.ToString("MM-dd-yyyy") + ".log");
         }
     }
 }

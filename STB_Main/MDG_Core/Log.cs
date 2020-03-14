@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,9 @@ namespace MDG_Core
         /// <param name="StackTrace">Return of GetStackTrace()</param>
         public static void ToDebug(string Message)
         {
-#if DEBUG
+#if LAPTOP
+            Debug.WriteLine(Functions.FormatString(Message, "DEBUG"));
+#elif DEBUG
             Debug.WriteLine(Functions.FormatString(Message, "DEBUG"));
 #else
             return;
@@ -31,7 +34,16 @@ namespace MDG_Core
         /// <param name="StackTrace">Return of GetStackTrace()</param>
         public static void ToDebug(string Message, string Level)
         {
-#if DEBUG
+#if LAPTOP
+            //If an empty string is passed through the level param, execute regular ToDebug function.
+            if (string.IsNullOrEmpty(Level))
+            {
+                ToDebug(Message);
+                return;
+            }
+            //Add formatted string to debug.
+            Debug.WriteLine(Functions.FormatString(Message, Level));
+#elif DEBUG
             //If an empty string is passed through the level param, execute regular ToDebug function.
             if (string.IsNullOrEmpty(Level))
             {
@@ -52,10 +64,14 @@ namespace MDG_Core
         /// <param name="StackTrace">Return of GetStackTrace()</param>
         public static void AddInfo(string Message)
         {
-#if DEBUG
+#if LAPTOP
+            ToDebug(Message, "Info");
+#elif DEBUG
             ToDebug(Message, "Info");
 #else
-            //TODO
+            List<string> entry = new List<string> { };
+            entry.Add(Functions.FormatString(Message, "Info"));
+            File.AppendAllLines(GVars.AppDataFolders.LogFile, entry);
 #endif
         }
         
@@ -66,13 +82,17 @@ namespace MDG_Core
         /// <param name="StackTrace">Return of GetStackTrace()</param>
         public static void AddWarning(string Message)
         {
-#if DEBUG
+#if LAPTOP
+            ToDebug(Message, "Warning");
+#elif DEBUG
             ToDebug(Message, "Warning");
 #else
-            //TODO
+
+            List<string> entry = new List<string> { };
+            entry.Add(Functions.FormatString(Message, "Warning"));
+            File.AppendAllLines(GVars.AppDataFolders.LogFile, entry);
 #endif
         }
-
 
         /// <summary>
         /// Send a message to the log file and gives the entry an 'ERROR' tag.
@@ -81,10 +101,14 @@ namespace MDG_Core
         /// <param name="StackTrace">Return of GetStackTrace()</param>
         public static void AddError(string Message)
         {
-#if DEBUG
+#if LAPTOP
+            ToDebug(Message, "Error");
+#elif DEBUG
             ToDebug(Message, "Error");
 #else
-            //TODO
+            List<string> entry = new List<string> { };
+            entry.Add(Functions.FormatString(Message, "Error"));
+            File.AppendAllLines(GVars.AppDataFolders.LogFile, entry);
 #endif
         }
     }
@@ -94,11 +118,6 @@ namespace MDG_Core
     /// </summary>
     internal class Functions 
     {
-        public static string ConvertStackTrace(string[] Source)
-        {
-            return string.Concat(Source[0], ".", Source[1], ".", Source[2]);
-        }
-
         /// <summary>
         /// Format provided string with prefix.
         /// </summary>

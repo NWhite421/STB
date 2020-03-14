@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MDG_Core;
 using System.Reflection;
+using System.IO;
 
 namespace STB
 {
@@ -22,6 +23,8 @@ namespace STB
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             if (Properties.Settings.Default.FirstStart)
             {
+                Directory.CreateDirectory(GVars.AppDataFolders.Folders.LocalAppData);
+                Directory.CreateDirectory(GVars.AppDataFolders.Folders.Logs);
                 Settings settings = new Settings();
                 settings.Show();
             }
