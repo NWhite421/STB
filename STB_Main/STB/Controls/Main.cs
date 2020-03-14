@@ -20,6 +20,14 @@ namespace STB
             this.FormBorderStyle = FormBorderStyle.None;
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true);
+            if (Properties.Settings.Default.FirstStart)
+            {
+                Settings settings = new Settings();
+                settings.Show();
+            }
+            GVars.UsernameFull = Properties.Settings.Default.UserFull;
+            GVars.UsernameInitials = Properties.Settings.Default.UserInitials;
+            GVars.DriveLetter = Properties.Settings.Default.DriveLetter;
         }
 
         private void ExitProgram(object sender, EventArgs e)
@@ -80,28 +88,6 @@ namespace STB
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
         Rectangle BottomLeft { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
-
-        private void OpenJob(object sender, EventArgs e)
-        {
-            OpenFolder.OpenFolderLocation(TxtJobNumber.Text);
-        }
-
-        private void CheckKeyPress(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                OpenJob(this, new EventArgs());
-                TxtJobNumber.Text = string.Empty;
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-            }
-            else if (e.KeyCode == Keys.Escape)
-            {
-                TxtJobNumber.Text = string.Empty;
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-            }
-        }
 
         Rectangle BottomRight { get { return new Rectangle(this.ClientSize.Width - _, this.ClientSize.Height - _, _, _); } }
 
@@ -190,6 +176,34 @@ namespace STB
                 PanelMain.Controls.RemoveAt(0);
             }
             PanelMain.Controls.Add(UControl);
+        }
+
+        private void OpenJob(object sender, EventArgs e)
+        {
+            OpenFolder.OpenFolderLocation(TxtJobNumber.Text);
+        }
+
+        private void CheckKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                OpenJob(this, new EventArgs());
+                TxtJobNumber.Text = string.Empty;
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                TxtJobNumber.Text = string.Empty;
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void OpenSettingsDialog(object s, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
         }
     }
 

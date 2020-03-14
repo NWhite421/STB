@@ -14,6 +14,9 @@ namespace MDG_Core
         public static ColorPallete ActivePallete;
         public static List<UCModule> Modules;
         public static List<List<string>> CustomFields;
+        public static string UsernameFull;
+        public static string UsernameInitials;
+        public static string DriveLetter;
 
         public static bool InitializeVariables()
         {
@@ -41,6 +44,7 @@ namespace MDG_Core
 
             string directory = Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                "TemplateDocs",
                 "CustomDirectories.txt"
             );
 

@@ -12,12 +12,14 @@ using System.IO;
 using System.Reflection;
 using System.Xml.Linq;
 using System.Xml;
+using System.Diagnostics;
 
 namespace CreateJobFolder
 {
     public partial class JobViewer : UserControl
     {
         private string XMLPath { get; set; }
+        private string LogPath { get; set; }
         public JobViewer()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace CreateJobFolder
                 return;
             }
             string xmlPath = Path.Combine(Converter.JobNumberToPath(jobNumber), "jobXML.xml");
+            string logPath = Path.Combine(Converter.JobNumberToPath(jobNumber), "job.log");
             Log.ToDebug(xmlPath);
             if (!File.Exists(xmlPath))
             {
@@ -39,11 +42,15 @@ namespace CreateJobFolder
                 File.Copy(source, xmlPath);
                 File.SetAttributes(xmlPath, File.GetAttributes(xmlPath) | FileAttributes.Hidden);
                 Log.ToDebug("JobXML.xml file created at " + xmlPath);
+                File.Create(logPath);
+                File.SetAttributes(logPath, File.GetAttributes(logPath) | FileAttributes.Hidden);
+                Log.ToDebug("job.log file created at " + logPath);
             }
             else { Log.ToDebug("File was found."); }
             XMLPath = xmlPath;
+            LogPath = logPath;
             LblCurrentJob.Text = jobNumber;
-            PopulateNoteList(CompileNotes(XMLPath));
+            PopulateNoteList(CompileNotes());
         }
 
         private void AddNoteToJob(object s, EventArgs e)
@@ -54,14 +61,7 @@ namespace CreateJobFolder
             }
 
             string dateEntry = DateTime.Now.ToString();
-            string name;
-#if DEBUG
-            name = "test";
-#elif LAPTOP
-            name = "test";
-#else
-            //TODO: Add name grab function
-#endif
+            string name = GVars.UsernameInitials;
             XDocument doc = XDocument.Load(XMLPath);
             XElement notes = doc.Root.Element("Notes");
             XElement entry = new XElement("Entry",
@@ -71,10 +71,17 @@ namespace CreateJobFolder
                 );
             notes.Add(entry);
 
+            List<string> logEntry = new List<string> { };
+            logEntry.Add("[" + dateEntry + "]: Added note to job with the following information:");
+            logEntry.Add("    Date: " + dateEntry);
+            logEntry.Add("    Author: " + name);
+            logEntry.Add("    Note: " + TxtNote.Text);
+            File.AppendAllLines(LogPath, logEntry);
+
             File.Delete(XMLPath);
             doc.Save(Path.Combine(XMLPath));
             File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
-            PopulateNoteList(CompileNotes(XMLPath));
+            PopulateNoteList(CompileNotes());
             TxtNote.Text = string.Empty;
         }
 
@@ -83,7 +90,7 @@ namespace CreateJobFolder
             TxtNote.Text = string.Empty;
         }
 
-        private List<List<string>> CompileNotes(string path)
+        private List<List<string>> CompileNotes()
         {
             XDocument doc = XDocument.Load(XMLPath);
             XElement notes = doc.Root.Element("Notes");
@@ -103,14 +110,78 @@ namespace CreateJobFolder
 
         private void PopulateNoteList(List<List<string>> Notes)
         {
-            if (dataGridView1.Rows.Count > 0)
+            if (dataGridNotes.Rows.Count > 0)
             {
-                dataGridView1.Rows.Clear();
+                dataGridNotes.Rows.Clear();
             }
             foreach (List<string> note in Notes)
             {
-                dataGridView1.Rows.Add(note[0], note[1], note[2]);
+                dataGridNotes.Rows.Add(note[0], note[1], note[2]);
             }
+        }
+
+        private void OpenJobFolder(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(XMLPath))
+            {
+                Log.ToDebug("Link clicked with no job selected.");
+                return;
+            }
+            string path = Path.GetDirectoryName(XMLPath);
+            Process.Start(path);
+        }
+
+        private void RemoveEntry(object sender, EventArgs e)
+        {
+            if (dataGridNotes.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            string dateSelected = dataGridNotes.Rows[dataGridNotes.SelectedRows[0].Index].Cells[0].Value.ToString();
+            Log.ToDebug("Selected row has the date of " + dateSelected);
+            XDocument doc = XDocument.Load(XMLPath);
+            XElement notes = doc.Root.Element("Notes");
+            var XmlEntry = notes.Elements("Entry").Where(x => x.Element("Date").Value == dateSelected).FirstOrDefault();
+
+            var res = MessageBox.Show("You are about to delete the entry dated " + dateSelected + ". Are you sure you wish to continue?", "Confirm deletion", MessageBoxButtons.YesNo);
+            if (res.Equals(DialogResult.No))
+            {
+                return;
+            }
+            List<string> logEntry = new List<string> { };
+            logEntry.Add("[" + DateTime.Now.ToString() + "]: " + GVars.UsernameFull + " removed note from job with the following information:");
+            logEntry.Add("    Date: " + XmlEntry.Element("Date").Value);
+            logEntry.Add("    Author: " + XmlEntry.Element("Author").Value);
+            logEntry.Add("    Note: " + XmlEntry.Element("Note").Value);
+            File.AppendAllLines(LogPath, logEntry);
+            XmlEntry.Remove();
+            File.Delete(XMLPath);
+            doc.Save(Path.Combine(XMLPath));
+            File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
+            PopulateNoteList(CompileNotes());
+        }
+
+        private void ExportNotes(object sender, EventArgs e)
+        {
+            if (dataGridNotes.Rows.Count <= 0)
+            {
+                Log.ToDebug("No notes were found.");
+                return;
+            }
+            List<string> notes = new List<string> { };
+            notes.Add("Date|Author|Note");
+            foreach (DataGridViewRow row in dataGridNotes.Rows)
+            {
+                notes.Add(row.Cells[0].Value.ToString() + "|" + row.Cells[1].Value.ToString() + "|" + row.Cells[2].Value.ToString());
+            }
+            string path = Path.Combine(
+                Path.GetDirectoryName(XMLPath),
+                "Notes export.txt");
+            Log.ToDebug("Note path: " + path);
+            File.AppendAllLines(path, notes);
+            List<string> logEntry = new List<string> { };
+            logEntry.Add("[" + DateTime.Now.ToString() + "]: " + GVars.UsernameFull + " exported notes to a txt file.");
+            File.AppendAllLines(LogPath, logEntry);
         }
     }
 }

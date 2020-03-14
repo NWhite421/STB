@@ -31,17 +31,19 @@
             this.TxtJobNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CmdOpenJob = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.DateEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Writer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridNotes = new System.Windows.Forms.DataGridView();
             this.TxtNote = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.LblCurrentJob = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.CmdRemove = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.CmdExport = new System.Windows.Forms.Button();
+            this.DateEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Writer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtJobNumber
@@ -70,49 +72,26 @@
             this.CmdOpenJob.UseVisualStyleBackColor = true;
             this.CmdOpenJob.Click += new System.EventHandler(this.OpenJob);
             // 
-            // dataGridView1
+            // dataGridNotes
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridNotes.AllowUserToAddRows = false;
+            this.dataGridNotes.AllowUserToDeleteRows = false;
+            this.dataGridNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridNotes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridNotes.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridNotes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DateEntry,
             this.Writer,
             this.Note});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 293);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(680, 150);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // DateEntry
-            // 
-            this.DateEntry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.DateEntry.Frozen = true;
-            this.DateEntry.HeaderText = "Date";
-            this.DateEntry.Name = "DateEntry";
-            this.DateEntry.ReadOnly = true;
-            this.DateEntry.Width = 5;
-            // 
-            // Writer
-            // 
-            this.Writer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Writer.Frozen = true;
-            this.Writer.HeaderText = "By";
-            this.Writer.Name = "Writer";
-            this.Writer.ReadOnly = true;
-            this.Writer.Width = 5;
-            // 
-            // Note
-            // 
-            this.Note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Note.HeaderText = "Note";
-            this.Note.Name = "Note";
-            this.Note.ReadOnly = true;
+            this.dataGridNotes.Location = new System.Drawing.Point(3, 59);
+            this.dataGridNotes.Name = "dataGridNotes";
+            this.dataGridNotes.ReadOnly = true;
+            this.dataGridNotes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridNotes.Size = new System.Drawing.Size(680, 384);
+            this.dataGridNotes.TabIndex = 3;
             // 
             // TxtNote
             // 
@@ -164,27 +143,83 @@
             this.LblCurrentJob.TabIndex = 8;
             this.LblCurrentJob.Text = "xx-xx-xxx";
             // 
-            // button1
+            // CmdRemove
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(607, 519);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 29);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CmdRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdRemove.Location = new System.Drawing.Point(607, 519);
+            this.CmdRemove.Name = "CmdRemove";
+            this.CmdRemove.Size = new System.Drawing.Size(76, 29);
+            this.CmdRemove.TabIndex = 9;
+            this.CmdRemove.Text = "Remove";
+            this.CmdRemove.UseVisualStyleBackColor = true;
+            this.CmdRemove.Click += new System.EventHandler(this.RemoveEntry);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(190, 35);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(96, 21);
+            this.linkLabel1.TabIndex = 10;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Open Folder";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OpenJobFolder);
+            // 
+            // CmdExport
+            // 
+            this.CmdExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdExport.Location = new System.Drawing.Point(525, 519);
+            this.CmdExport.Name = "CmdExport";
+            this.CmdExport.Size = new System.Drawing.Size(76, 29);
+            this.CmdExport.TabIndex = 11;
+            this.CmdExport.Text = "Export";
+            this.CmdExport.UseVisualStyleBackColor = true;
+            this.CmdExport.Click += new System.EventHandler(this.ExportNotes);
+            // 
+            // DateEntry
+            // 
+            this.DateEntry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.DateEntry.DividerWidth = 1;
+            this.DateEntry.Frozen = true;
+            this.DateEntry.HeaderText = "Date";
+            this.DateEntry.Name = "DateEntry";
+            this.DateEntry.ReadOnly = true;
+            this.DateEntry.ToolTipText = "The date of the entry.";
+            this.DateEntry.Width = 5;
+            // 
+            // Writer
+            // 
+            this.Writer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Writer.DividerWidth = 1;
+            this.Writer.Frozen = true;
+            this.Writer.HeaderText = "Author";
+            this.Writer.Name = "Writer";
+            this.Writer.ReadOnly = true;
+            this.Writer.ToolTipText = "Who wrote the comment.";
+            this.Writer.Width = 84;
+            // 
+            // Note
+            // 
+            this.Note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Note.DividerWidth = 1;
+            this.Note.HeaderText = "Note";
+            this.Note.Name = "Note";
+            this.Note.ReadOnly = true;
+            this.Note.ToolTipText = "The note.";
             // 
             // JobViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CmdExport);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.CmdRemove);
             this.Controls.Add(this.LblCurrentJob);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.TxtNote);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridNotes);
             this.Controls.Add(this.CmdOpenJob);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtJobNumber);
@@ -192,7 +227,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "JobViewer";
             this.Size = new System.Drawing.Size(686, 551);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,15 +238,17 @@
         private System.Windows.Forms.TextBox TxtJobNumber;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CmdOpenJob;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridNotes;
         private System.Windows.Forms.TextBox TxtNote;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LblCurrentJob;
+        private System.Windows.Forms.Button CmdRemove;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button CmdExport;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateEntry;
         private System.Windows.Forms.DataGridViewTextBoxColumn Writer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
-        private System.Windows.Forms.Button button1;
     }
 }

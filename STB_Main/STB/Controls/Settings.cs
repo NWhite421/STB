@@ -1,18 +1,88 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MDG_Core;
 
-namespace MDG_Core
+namespace STB
 {
-    public class UCFunctions
+    public partial class Settings : Form
     {
-        public static void AlignandColor(UserControl Window)
+        public Settings()
+        {
+            InitializeComponent();
+            AlignandColor(CmdClose, Lbltitle, this);
+        }
+
+        private void ExitProgram(object sender, EventArgs e)
+        {
+            Close();
+        }
+        
+        private void LoadApp(object s, EventArgs e)
+        {
+            TxtNameFull.Text = Properties.Settings.Default.UserFull;
+            TxtNameInitials.Text = Properties.Settings.Default.UserInitials;
+            CmbDrive.SelectedItem = Properties.Settings.Default.DriveLetter;
+        }
+
+        private void ComputeInitials(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtNameFull.Text))
+            {
+                return;
+            }
+            string[] parts = TxtNameFull.Text.Split(' ');
+            string initials = "";
+            foreach (string part in parts)
+            {
+                initials += part[0];
+            }
+            TxtNameInitials.Text = initials;
+        }
+
+        private void SaveButton(object s, EventArgs e)
+        {
+            Properties.Settings.Default.UserFull = TxtNameFull.Text;
+            Properties.Settings.Default.UserInitials = TxtNameInitials.Text;
+            Properties.Settings.Default.DriveLetter = CmbDrive.GetItemText(CmbDrive.SelectedItem);
+            Properties.Settings.Default.FirstStart = false;
+            Properties.Settings.Default.Save();
+            ExitProgram(this, new EventArgs());
+        }
+
+        public static void AlignandColor(Button CloseButton, Label Title, Form Window)
         {
             List<Control> ProcessedControls = new List<Control> { };
+
+            //Close button
+            CloseButton.FlatAppearance.BorderSize = 0;
+            CloseButton.FlatAppearance.MouseOverBackColor = Color.Red;
+            CloseButton.FlatAppearance.MouseDownBackColor = Color.Red;
+            CloseButton.ForeColor = GVars.ActivePallete.Text;
+            CloseButton.BackColor = GVars.ActivePallete.Background;
+            CloseButton.Location = new Point(Window.Size.Width - CloseButton.Size.Width, 0);
+            ProcessedControls.Add(CloseButton);
+            
+            //Title label
+            Title.TextAlign = ContentAlignment.MiddleCenter;
+            Title.Text = "Program Settings";
+#if DEBUG
+            Title.Text += " [DEBUG]";
+#endif
+            Title.BackColor = GVars.ActivePallete.Background;
+            Title.ForeColor = GVars.ActivePallete.Text;
+            Title.Location = new Point(0, 0);
+            Title.Size = new Size(Window.Width - CloseButton.Width, CloseButton.Height);
+            Title.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top;
+            ProcessedControls.Add(Title);
+
             Window.BackColor = GVars.ActivePallete.Background;
 
             //Handle all other controls.
@@ -23,42 +93,12 @@ namespace MDG_Core
                 {
                     switch (control.GetType().Name.ToLower())
                     {
-                        case "linklabel":
-                            {
-                                var lbl = (LinkLabel)control;
-                                lbl.BackColor = GVars.ActivePallete.Background;
-                                lbl.LinkColor = GVars.ActivePallete.Highlight;
-                                lbl.VisitedLinkColor = GVars.ActivePallete.Highlight;
-                                ProcessedControls.Add(lbl);
-                                break;
-                            }
                         case "label":
                             {
                                 var lbl = (Label)control;
                                 lbl.BackColor = GVars.ActivePallete.Background;
                                 lbl.ForeColor = GVars.ActivePallete.Text;
                                 ProcessedControls.Add(lbl);
-                                break;
-                            }
-                        case "maskedtextbox":
-                            {
-                                var txtbox = (MaskedTextBox)control;
-                                txtbox.BorderStyle = BorderStyle.None;
-                                txtbox.BackColor = GVars.ActivePallete.Background;
-                                txtbox.ForeColor = GVars.ActivePallete.Text;
-                                txtbox.Height += 2;
-                                ProcessedControls.Add(txtbox);
-                                Label underline = new Label
-                                {
-                                    BorderStyle = BorderStyle.None,
-                                    BackColor = GVars.ActivePallete.Foreground,
-                                    AutoSize = false,
-                                    Location = new Point(txtbox.Location.X, txtbox.Location.Y + txtbox.Height + 1),
-                                    Size = new Size(txtbox.Width, 2),
-                                    Anchor = txtbox.Anchor
-                                };
-                                Window.Controls.Add(underline);
-
                                 break;
                             }
                         case "textbox":
@@ -75,8 +115,7 @@ namespace MDG_Core
                                     BackColor = GVars.ActivePallete.Foreground,
                                     AutoSize = false,
                                     Location = new Point(txtbox.Location.X, txtbox.Location.Y + txtbox.Height + 1),
-                                    Size = new Size(txtbox.Width, 2),
-                                    Anchor = txtbox.Anchor
+                                    Size = new Size(txtbox.Width, 2)
                                 };
                                 Window.Controls.Add(underline);
 
@@ -112,19 +151,13 @@ namespace MDG_Core
                                 pnl.BackColor = GVars.ActivePallete.Background;
                                 break;
                             }
-                        case "treeview":
+                        case "combobox":
                             {
-                                var trv = (TreeView)control;
-                                trv.BackColor = GVars.ActivePallete.Background;
-                                trv.ForeColor = GVars.ActivePallete.Text;
-                                break;
-                            }
-                        case "datagridview":
-                            {
-                                var dgv = (DataGridView)control;
-                                dgv.BackgroundColor = GVars.ActivePallete.Background;
-                                dgv.GridColor = GVars.ActivePallete.Foreground;
-                                dgv.MultiSelect = false;
+                                var cmb = (ComboBox)control;
+                                cmb.FlatStyle = FlatStyle.Flat;
+                                cmb.ForeColor = GVars.ActivePallete.Text;
+                                cmb.BackColor = GVars.ActivePallete.Background;
+                                cmb.DropDownStyle = ComboBoxStyle.DropDownList;
                                 break;
                             }
                     }
