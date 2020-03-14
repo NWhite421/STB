@@ -57,6 +57,8 @@ namespace MDG_Core
                 /// Application log folder.
                 /// </summary>
                 public static string Logs { get; set; }
+
+                public static string FolderTemplates { get; set; }
             }
             /// <summary>
             /// App name
@@ -84,6 +86,25 @@ namespace MDG_Core
             };
 
             Modules = new List<UCModule> { };
+
+            AppDataFolders.AppName = "Survey Toolbox";
+            AppDataFolders.Folders.LocalAppData = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                AppDataFolders.AppName
+                );
+            AppDataFolders.Folders.Logs = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                AppDataFolders.AppName,
+                "Logs"
+                );
+            AppDataFolders.Folders.FolderTemplates = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                AppDataFolders.AppName,
+                "Folder Templates"
+                );
+            AppDataFolders.LogFile = Path.Combine(
+                AppDataFolders.Folders.Logs,
+                AppDataFolders.AppName + " " + DateTime.Now.ToString("MM-dd-yyyy") + ".log");
 
             CompileFieldList();
 
@@ -116,20 +137,6 @@ namespace MDG_Core
                 else { ret.Add(line.Split(';').ToList()); }
             }
             CustomFields = ret;
-
-            AppDataFolders.AppName = "Survey Toolbox";
-            AppDataFolders.Folders.LocalAppData = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                AppDataFolders.AppName
-                );
-            AppDataFolders.Folders.Logs = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                AppDataFolders.AppName,
-                "Logs"
-                );
-            AppDataFolders.LogFile = Path.Combine(
-                AppDataFolders.Folders.Logs,
-                AppDataFolders.AppName + " " + DateTime.Now.ToString("MM-dd-yyyy") + ".log");
         }
     }
 }

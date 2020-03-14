@@ -33,9 +33,9 @@
             this.CmdNew = new System.Windows.Forms.Button();
             this.CmdEdit = new System.Windows.Forms.Button();
             this.CmdDelete = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.LbTemplates = new System.Windows.Forms.ListBox();
             this.CmdCreate = new System.Windows.Forms.Button();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.TvTemplateDetail = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // label1
@@ -88,46 +88,46 @@
             this.CmdDelete.Text = "DELETE";
             this.CmdDelete.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // LbTemplates
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.LbTemplates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(7, 38);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(240, 424);
-            this.listBox1.TabIndex = 6;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.SetTreeView);
+            this.LbTemplates.FormattingEnabled = true;
+            this.LbTemplates.ItemHeight = 21;
+            this.LbTemplates.Location = new System.Drawing.Point(7, 38);
+            this.LbTemplates.Name = "LbTemplates";
+            this.LbTemplates.Size = new System.Drawing.Size(240, 424);
+            this.LbTemplates.TabIndex = 6;
+            this.LbTemplates.SelectedIndexChanged += new System.EventHandler(this.SetTreeView);
             // 
             // CmdCreate
             // 
             this.CmdCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdCreate.Location = new System.Drawing.Point(542, 486);
+            this.CmdCreate.Location = new System.Drawing.Point(528, 486);
             this.CmdCreate.Name = "CmdCreate";
-            this.CmdCreate.Size = new System.Drawing.Size(60, 27);
+            this.CmdCreate.Size = new System.Drawing.Size(74, 27);
             this.CmdCreate.TabIndex = 7;
             this.CmdCreate.Text = "CREATE";
             this.CmdCreate.UseVisualStyleBackColor = true;
             this.CmdCreate.Click += new System.EventHandler(this.CreateFolder);
             // 
-            // treeView1
+            // TvTemplateDetail
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TvTemplateDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.Location = new System.Drawing.Point(253, 38);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(349, 442);
-            this.treeView1.TabIndex = 8;
+            this.TvTemplateDetail.Location = new System.Drawing.Point(253, 38);
+            this.TvTemplateDetail.Name = "TvTemplateDetail";
+            this.TvTemplateDetail.Size = new System.Drawing.Size(349, 442);
+            this.TvTemplateDetail.TabIndex = 8;
             // 
             // CreateJobFolder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.TvTemplateDetail);
             this.Controls.Add(this.CmdCreate);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.LbTemplates);
             this.Controls.Add(this.CmdDelete);
             this.Controls.Add(this.CmdEdit);
             this.Controls.Add(this.CmdNew);
@@ -149,8 +149,8 @@
         private System.Windows.Forms.Button CmdNew;
         private System.Windows.Forms.Button CmdEdit;
         private System.Windows.Forms.Button CmdDelete;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox LbTemplates;
         private System.Windows.Forms.Button CmdCreate;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView TvTemplateDetail;
     }
 }
