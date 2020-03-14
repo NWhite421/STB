@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="CustomClasses.cs" />
     <Compile Include="Converter.cs" />
-    <Compile Include="FileHandlers.cs" />
     <Compile Include="GVars.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
