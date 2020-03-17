@@ -25,7 +25,7 @@ namespace STB
                 {
                     return;
                 }
-                Process.Start("explorer.ext", field[1]);
+                Process.Start("explorer.exe", field[1].Trim());
             }
             else
             {

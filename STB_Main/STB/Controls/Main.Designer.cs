@@ -78,7 +78,7 @@
             this.CmdMaximize.Name = "CmdMaximize";
             this.CmdMaximize.Size = new System.Drawing.Size(35, 25);
             this.CmdMaximize.TabIndex = 2;
-            this.CmdMaximize.Text = "M";
+            this.CmdMaximize.Text = "🗖";
             this.CmdMaximize.UseVisualStyleBackColor = true;
             this.CmdMaximize.Click += new System.EventHandler(this.MaximizeProgram);
             // 

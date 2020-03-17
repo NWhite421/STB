@@ -310,8 +310,44 @@ namespace CreateJobFolder
             XElement emailNodes = doc.Root.Element("Emails");
             XElement email = emailNodes.Elements().Where(x => x.Element("Name").Value.ToLower() == name.ToLower()).FirstOrDefault();
             string path = email.Element("Path").Value;
-            Log.AddInfo("Opened e-mail " + name + " from " + Converter.ToJobNumber(LblCurrentJob.Text));
+            Log.AddInfo(GVars.UsernameFull + " opened e-mail " + name + " from " + Converter.ToJobNumber(LblCurrentJob.Text));
             Process.Start(path);
+        }
+
+        private void EmailDelete(object sender, EventArgs e)
+        {
+            if (dataGridEmails.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            string name = dataGridEmails.SelectedRows[0].Cells[1].Value.ToString();
+            string confirmMessage = string.Format("Are you sure you want to delete \"{0}\" from the job?", name);
+            var ret = MessageBox.Show(confirmMessage, "Confirm deleting", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (ret.Equals(DialogResult.No))
+            {
+                Log.ToDebug("Deletion cancelled.");
+                return;
+            }
+            XDocument doc = XDocument.Load(XMLPath);
+            XElement emailNodes = doc.Root.Element("Emails");
+            XElement email = emailNodes.Elements().Where(x => x.Element("Name").Value.ToLower() == name.ToLower()).FirstOrDefault();
+            if (email == null)
+            {
+                Log.AddWarning("How the fuck did you select an email that doesn't exist?");
+                return;
+            }
+            string path = email.Element("Path").Value;
+            email.Remove();
+            string msg = GVars.UsernameFull + " deleted e-mail " + name + " from " + Converter.ToJobNumber(LblCurrentJob.Text);
+            Log.AddInfo(msg);
+            File.AppendAllLines(LogPath, new string[] { msg });
+
+            File.Delete(path);
+
+            File.Delete(XMLPath);
+            doc.Save(Path.Combine(XMLPath));
+            File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
+            PopulateEmailList();
         }
 
         #endregion

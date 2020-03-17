@@ -46,10 +46,11 @@
             this.PnlInformation = new System.Windows.Forms.Panel();
             this.PnlTasks = new System.Windows.Forms.Panel();
             this.PnlEmails = new System.Windows.Forms.Panel();
-            this.dataGridEmails = new System.Windows.Forms.DataGridView();
             this.LblUploadEmail = new System.Windows.Forms.Label();
+            this.dataGridEmails = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmdRemoveEmail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).BeginInit();
             this.PnlEmails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmails)).BeginInit();
@@ -141,7 +142,7 @@
             this.TxtNote.Location = new System.Drawing.Point(3, 562);
             this.TxtNote.Multiline = true;
             this.TxtNote.Name = "TxtNote";
-            this.TxtNote.Size = new System.Drawing.Size(935, 64);
+            this.TxtNote.Size = new System.Drawing.Size(853, 64);
             this.TxtNote.TabIndex = 4;
             // 
             // button2
@@ -187,7 +188,7 @@
             // CmdRemove
             // 
             this.CmdRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdRemove.Location = new System.Drawing.Point(862, 632);
+            this.CmdRemove.Location = new System.Drawing.Point(862, 561);
             this.CmdRemove.Name = "CmdRemove";
             this.CmdRemove.Size = new System.Drawing.Size(76, 29);
             this.CmdRemove.TabIndex = 9;
@@ -209,7 +210,7 @@
             // CmdExport
             // 
             this.CmdExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdExport.Location = new System.Drawing.Point(780, 632);
+            this.CmdExport.Location = new System.Drawing.Point(862, 596);
             this.CmdExport.Name = "CmdExport";
             this.CmdExport.Size = new System.Drawing.Size(76, 29);
             this.CmdExport.TabIndex = 11;
@@ -233,12 +234,28 @@
             // 
             // PnlEmails
             // 
+            this.PnlEmails.Controls.Add(this.CmdRemoveEmail);
             this.PnlEmails.Controls.Add(this.LblUploadEmail);
             this.PnlEmails.Controls.Add(this.dataGridEmails);
             this.PnlEmails.Location = new System.Drawing.Point(629, 59);
             this.PnlEmails.Name = "PnlEmails";
             this.PnlEmails.Size = new System.Drawing.Size(309, 354);
             this.PnlEmails.TabIndex = 14;
+            // 
+            // LblUploadEmail
+            // 
+            this.LblUploadEmail.AllowDrop = true;
+            this.LblUploadEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblUploadEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblUploadEmail.Location = new System.Drawing.Point(3, 264);
+            this.LblUploadEmail.Name = "LblUploadEmail";
+            this.LblUploadEmail.Size = new System.Drawing.Size(221, 90);
+            this.LblUploadEmail.TabIndex = 16;
+            this.LblUploadEmail.Text = "Upload E-Mail";
+            this.LblUploadEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblUploadEmail.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragEmailDrop);
+            this.LblUploadEmail.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEmailEnter);
             // 
             // dataGridEmails
             // 
@@ -262,21 +279,6 @@
             this.dataGridEmails.TabIndex = 15;
             this.dataGridEmails.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmailOpen);
             // 
-            // LblUploadEmail
-            // 
-            this.LblUploadEmail.AllowDrop = true;
-            this.LblUploadEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LblUploadEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LblUploadEmail.Location = new System.Drawing.Point(3, 264);
-            this.LblUploadEmail.Name = "LblUploadEmail";
-            this.LblUploadEmail.Size = new System.Drawing.Size(178, 90);
-            this.LblUploadEmail.TabIndex = 16;
-            this.LblUploadEmail.Text = "Upload E-Mail";
-            this.LblUploadEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LblUploadEmail.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragEmailDrop);
-            this.LblUploadEmail.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEmailEnter);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -296,6 +298,17 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.ToolTipText = "The note.";
+            // 
+            // CmdRemoveEmail
+            // 
+            this.CmdRemoveEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdRemoveEmail.Location = new System.Drawing.Point(230, 267);
+            this.CmdRemoveEmail.Name = "CmdRemoveEmail";
+            this.CmdRemoveEmail.Size = new System.Drawing.Size(76, 29);
+            this.CmdRemoveEmail.TabIndex = 17;
+            this.CmdRemoveEmail.Text = "Remove";
+            this.CmdRemoveEmail.UseVisualStyleBackColor = true;
+            this.CmdRemoveEmail.Click += new System.EventHandler(this.EmailDelete);
             // 
             // JobViewer
             // 
@@ -353,5 +366,6 @@
         private System.Windows.Forms.DataGridView dataGridEmails;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Button CmdRemoveEmail;
     }
 }
