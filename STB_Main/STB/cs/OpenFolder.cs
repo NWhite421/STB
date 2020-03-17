@@ -15,12 +15,17 @@ namespace STB
         {
             if ( !string.IsNullOrEmpty(Converter.ToJobNumber(path)) )
             {
-                Process.Start("explorer.exe", Converter.JobNumberToPath(path));
+                Process.Start(Converter.JobNumberToPath(Converter.ToJobNumber(path)));
             }
             else if ( GVars.CustomFields.Where(x => x[0].ToLower() == path.ToLower()).Count() > 0 )
             {
                 var field = GVars.CustomFields.Where(x => x[0].ToLower() == path.ToLower()).First();
-                Process.Start("explorer.exe", field[1]);
+                Log.ToDebug(field[0] + " | " + field[1]);
+                if (!Directory.Exists(field[1]))
+                {
+                    return;
+                }
+                Process.Start("explorer.ext", field[1]);
             }
             else
             {

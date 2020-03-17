@@ -73,11 +73,11 @@ namespace MDG_Core
             string outp = "";
 
 #if LAPTOP
-            outp = GVars.DriveLetter;
+            outp = GVars.DriveLetter + "\\";
 #elif DEBUG
             outp = @"C:\Users\Nathan White\Documents\Test";
 #else
-            outp = GVars.DriveLetter;
+            outp = GVars.DriveLetter + "\\";;
 #endif
             string[] components = Input.Split('-');
             outp = Path.Combine(

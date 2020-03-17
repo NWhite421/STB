@@ -46,7 +46,7 @@
             this.CmdClose.FlatAppearance.BorderSize = 0;
             this.CmdClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdClose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CmdClose.Location = new System.Drawing.Point(943, 0);
+            this.CmdClose.Location = new System.Drawing.Point(1162, 0);
             this.CmdClose.Name = "CmdClose";
             this.CmdClose.Size = new System.Drawing.Size(35, 25);
             this.CmdClose.TabIndex = 0;
@@ -60,7 +60,7 @@
             this.CmdMinimize.FlatAppearance.BorderSize = 0;
             this.CmdMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdMinimize.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CmdMinimize.Location = new System.Drawing.Point(861, 0);
+            this.CmdMinimize.Location = new System.Drawing.Point(1080, 0);
             this.CmdMinimize.Name = "CmdMinimize";
             this.CmdMinimize.Size = new System.Drawing.Size(35, 25);
             this.CmdMinimize.TabIndex = 1;
@@ -74,7 +74,7 @@
             this.CmdMaximize.FlatAppearance.BorderSize = 0;
             this.CmdMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdMaximize.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CmdMaximize.Location = new System.Drawing.Point(902, 0);
+            this.CmdMaximize.Location = new System.Drawing.Point(1121, 0);
             this.CmdMaximize.Name = "CmdMaximize";
             this.CmdMaximize.Size = new System.Drawing.Size(35, 25);
             this.CmdMaximize.TabIndex = 2;
@@ -126,7 +126,7 @@
             this.LBModules.ItemHeight = 21;
             this.LBModules.Location = new System.Drawing.Point(12, 80);
             this.LBModules.Name = "LBModules";
-            this.LBModules.Size = new System.Drawing.Size(231, 550);
+            this.LBModules.Size = new System.Drawing.Size(231, 613);
             this.LBModules.TabIndex = 7;
             this.LBModules.DoubleClick += new System.EventHandler(this.ChangeModule);
             // 
@@ -137,7 +137,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelMain.Location = new System.Drawing.Point(249, 80);
             this.PanelMain.Name = "PanelMain";
-            this.PanelMain.Size = new System.Drawing.Size(716, 568);
+            this.PanelMain.Size = new System.Drawing.Size(935, 637);
             this.PanelMain.TabIndex = 8;
             // 
             // CmdOptions
@@ -154,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 660);
+            this.ClientSize = new System.Drawing.Size(1196, 729);
             this.Controls.Add(this.CmdOptions);
             this.Controls.Add(this.PanelMain);
             this.Controls.Add(this.LBModules);

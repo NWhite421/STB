@@ -58,6 +58,7 @@
     <Compile Include="CreateJobFolder.Designer.cs">
       <DependentUpon>CreateJobFolder.cs</DependentUpon>
     </Compile>
+    <Compile Include="cs\OutlookDataObject.cs" />
     <Compile Include="JobViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>

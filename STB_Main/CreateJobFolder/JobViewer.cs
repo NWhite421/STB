@@ -13,18 +13,29 @@ using System.Reflection;
 using System.Xml.Linq;
 using System.Xml;
 using System.Diagnostics;
+using iwantedue.Windows.Forms;
 
 namespace CreateJobFolder
 {
     public partial class JobViewer : UserControl
     {
-        private string XMLPath { get; set; }
-        private string LogPath { get; set; }
+
         public JobViewer()
         {
             InitializeComponent();
             UCFunctions.AlignandColor(this);
+            dataGridNotes.Columns[2].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridNotes.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
         }
+
+        #region INTERNAL FUNCTIONS
+
+        private string XMLPath { get; set; }
+        private string LogPath { get; set; }
+
+        #endregion
+
+        #region GENERAL
 
         private void OpenJob(object s, EventArgs e)
         {
@@ -42,7 +53,8 @@ namespace CreateJobFolder
                 File.Copy(source, xmlPath);
                 File.SetAttributes(xmlPath, File.GetAttributes(xmlPath) | FileAttributes.Hidden);
                 Log.ToDebug("JobXML.xml file created at " + xmlPath);
-                File.Create(logPath);
+                var stream = File.Create(logPath);
+                stream.Close();
                 File.SetAttributes(logPath, File.GetAttributes(logPath) | FileAttributes.Hidden);
                 Log.ToDebug("job.log file created at " + logPath);
             }
@@ -51,7 +63,35 @@ namespace CreateJobFolder
             LogPath = logPath;
             LblCurrentJob.Text = jobNumber;
             PopulateNoteList(CompileNotes());
+            PopulateEmailList();
         }
+
+        private void OpenJobFolder(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(XMLPath))
+            {
+                Log.ToDebug("Link clicked with no job selected.");
+                return;
+            }
+            string path = Path.GetDirectoryName(XMLPath);
+            Process.Start(path);
+        }
+
+        private void ResizeForm(object sender, EventArgs e)
+        {
+            int width = this.Width;
+            int spacing = 4;
+            int nWidth = (width - (spacing * 4)) / 3;
+            PnlInformation.Width = nWidth;
+            PnlTasks.Width = nWidth;
+            PnlTasks.Location = new Point(spacing + nWidth + spacing, PnlTasks.Location.Y);
+            PnlEmails.Width = nWidth;
+            PnlEmails.Location = new Point(spacing + nWidth + spacing + nWidth + spacing, PnlEmails.Location.Y);
+        }
+        
+        #endregion
+
+        #region NOTES
 
         private void AddNoteToJob(object s, EventArgs e)
         {
@@ -99,7 +139,7 @@ namespace CreateJobFolder
             {
                 List<string> entry = new List<string>
                 {
-                    element.Element("Date").Value,
+                    DateTime.Parse(element.Element("Date").Value).ToString("MM-dd-yy hh:mmtt").ToUpper(),
                     element.Element("Author").Value,
                     element.Element("Note").Value
                 };
@@ -118,17 +158,6 @@ namespace CreateJobFolder
             {
                 dataGridNotes.Rows.Add(note[0], note[1], note[2]);
             }
-        }
-
-        private void OpenJobFolder(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(XMLPath))
-            {
-                Log.ToDebug("Link clicked with no job selected.");
-                return;
-            }
-            string path = Path.GetDirectoryName(XMLPath);
-            Process.Start(path);
         }
 
         private void RemoveEntry(object sender, EventArgs e)
@@ -183,5 +212,114 @@ namespace CreateJobFolder
             logEntry.Add("[" + DateTime.Now.ToString() + "]: " + GVars.UsernameFull + " exported notes to a txt file.");
             File.AppendAllLines(LogPath, logEntry);
         }
+
+        #endregion
+
+        #region EMAIL
+
+        private void PopulateEmailList()
+        {
+            if (dataGridEmails.Rows.Count > 0)
+            {
+                dataGridNotes.Rows.Clear();
+            }
+
+            XDocument doc = XDocument.Load(XMLPath);
+            XElement notes = doc.Root.Element("Emails");
+            List<List<string>> entries = new List<List<string>> { };
+            foreach (XElement element in notes.Elements("Entry"))
+            {
+                string date = DateTime.Parse(element.Element("Date").Value).ToString("MM-dd-yy hh:mmtt").ToUpper();
+                string name = element.Element("Name").Value;
+                dataGridEmails.Rows.Add(date, name);
+            }
+        }
+
+        private void DragEmailEnter(object sender, DragEventArgs e)
+        {
+            //ensure FileGroupDescriptor is present before allowing drop
+            if (e.Data.GetDataPresent("FileGroupDescriptor"))
+            {
+                e.Effect = DragDropEffects.All;
+            }
+        }
+
+        private void DragEmailDrop(object sender, DragEventArgs e)
+        {
+            if (string.IsNullOrEmpty(XMLPath))
+            {
+                return;
+            }
+            string eMailFolder = Path.Combine(Path.GetDirectoryName(XMLPath), "E-Mails");
+            if (!Directory.Exists(eMailFolder))
+            {
+                Directory.CreateDirectory(eMailFolder);
+            }
+            //wrap standard IDataObject in OutlookDataObject
+            OutlookDataObject dataObject = new OutlookDataObject(e.Data);
+
+            //get the names and data streams of the files dropped
+            string[] filenames = (string[])dataObject.GetData("FileGroupDescriptorW");
+            MemoryStream[] filestreams = (MemoryStream[])dataObject.GetData("FileContents");
+
+            this.label1.Text += "Files:\n";
+            for (int fileIndex = 0; fileIndex < filenames.Length; fileIndex++)
+            {
+                //use the fileindex to get the name and data stream
+                string filename = filenames[fileIndex];
+                MemoryStream filestream = filestreams[fileIndex];
+
+                string fileWithoutExt = Path.GetFileNameWithoutExtension(filename);
+                string savePath = Path.Combine(eMailFolder, filename);
+                //save the file stream using its name to the application path
+                FileStream outputStream = File.Create(savePath);
+                filestream.WriteTo(outputStream);
+                outputStream.Close();
+
+                string dateEntry = DateTime.Now.ToString();
+                string name = GVars.UsernameInitials;
+                XDocument doc = XDocument.Load(XMLPath);
+                XElement notes = doc.Root.Element("Emails");
+                XElement entry = new XElement("Entry",
+                    new XElement("Date", dateEntry),
+                    new XElement("Author", name),
+                    new XElement("Name", fileWithoutExt),
+                    new XElement("Path", savePath)
+                    );
+                notes.Add(entry);
+
+                List<string> logEntry = new List<string> { };
+                logEntry.Add(String.Format("[{0}]: {1} added e-mail to job.", dateEntry, GVars.UsernameFull));
+                File.AppendAllLines(LogPath, logEntry);
+
+                File.Delete(XMLPath);
+                doc.Save(Path.Combine(XMLPath));
+                File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
+                PopulateEmailList();
+            }
+        }
+
+        private void EmailOpen(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridEmails.SelectedRows.Count < 1)
+            {
+                return;
+            }
+            string name = dataGridEmails.CurrentRow.Cells[1].Value.ToString();
+            XDocument doc = XDocument.Load(XMLPath);
+            XElement emailNodes = doc.Root.Element("Emails");
+            XElement email = emailNodes.Elements().Where(x => x.Element("Name").Value.ToLower() == name.ToLower()).FirstOrDefault();
+            string path = email.Element("Path").Value;
+            Log.AddInfo("Opened e-mail " + name + " from " + Converter.ToJobNumber(LblCurrentJob.Text));
+            Process.Start(path);
+        }
+
+        #endregion
+
+        #region TASKS
+
+
+
+        #endregion
     }
 }
