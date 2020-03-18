@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<JobInformation>
+<JobInformation version="4">
   <Information>
     <JobNumber></JobNumber>
     <Address></Address>
@@ -22,4 +22,7 @@
   <Notes>
 
   </Notes>
+  <FieldData>
+    
+  </FieldData>
 </JobInformation>

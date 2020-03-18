@@ -35,9 +35,11 @@
             this.TxtJobNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CmdOpenJob = new System.Windows.Forms.Button();
-            this.LBModules = new System.Windows.Forms.ListBox();
             this.PanelMain = new System.Windows.Forms.Panel();
             this.CmdOptions = new System.Windows.Forms.Button();
+            this.CmdViewJob = new System.Windows.Forms.Button();
+            this.CmdNewJob = new System.Windows.Forms.Button();
+            this.CmdConvert = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CmdClose
@@ -118,31 +120,20 @@
             this.CmdOpenJob.UseVisualStyleBackColor = true;
             this.CmdOpenJob.Click += new System.EventHandler(this.OpenJob);
             // 
-            // LBModules
-            // 
-            this.LBModules.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.LBModules.FormattingEnabled = true;
-            this.LBModules.ItemHeight = 21;
-            this.LBModules.Location = new System.Drawing.Point(12, 80);
-            this.LBModules.Name = "LBModules";
-            this.LBModules.Size = new System.Drawing.Size(231, 613);
-            this.LBModules.TabIndex = 7;
-            this.LBModules.DoubleClick += new System.EventHandler(this.ChangeModule);
-            // 
             // PanelMain
             // 
             this.PanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelMain.Location = new System.Drawing.Point(249, 80);
+            this.PanelMain.Location = new System.Drawing.Point(139, 80);
             this.PanelMain.Name = "PanelMain";
-            this.PanelMain.Size = new System.Drawing.Size(935, 637);
+            this.PanelMain.Size = new System.Drawing.Size(1045, 637);
             this.PanelMain.TabIndex = 8;
             // 
             // CmdOptions
             // 
-            this.CmdOptions.Location = new System.Drawing.Point(873, 45);
+            this.CmdOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdOptions.Location = new System.Drawing.Point(1092, 45);
             this.CmdOptions.Name = "CmdOptions";
             this.CmdOptions.Size = new System.Drawing.Size(92, 29);
             this.CmdOptions.TabIndex = 9;
@@ -150,14 +141,47 @@
             this.CmdOptions.UseVisualStyleBackColor = true;
             this.CmdOptions.Click += new System.EventHandler(this.OpenSettingsDialog);
             // 
+            // CmdViewJob
+            // 
+            this.CmdViewJob.Location = new System.Drawing.Point(12, 80);
+            this.CmdViewJob.Name = "CmdViewJob";
+            this.CmdViewJob.Size = new System.Drawing.Size(121, 41);
+            this.CmdViewJob.TabIndex = 10;
+            this.CmdViewJob.Text = "View Job [F1]";
+            this.CmdViewJob.UseVisualStyleBackColor = true;
+            this.CmdViewJob.Click += new System.EventHandler(this.ViewJob);
+            // 
+            // CmdNewJob
+            // 
+            this.CmdNewJob.Location = new System.Drawing.Point(12, 127);
+            this.CmdNewJob.Name = "CmdNewJob";
+            this.CmdNewJob.Size = new System.Drawing.Size(121, 41);
+            this.CmdNewJob.TabIndex = 11;
+            this.CmdNewJob.Text = "New Job [F2]";
+            this.CmdNewJob.UseVisualStyleBackColor = true;
+            this.CmdNewJob.Click += new System.EventHandler(this.NewJob);
+            // 
+            // CmdConvert
+            // 
+            this.CmdConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CmdConvert.Location = new System.Drawing.Point(12, 659);
+            this.CmdConvert.Name = "CmdConvert";
+            this.CmdConvert.Size = new System.Drawing.Size(121, 58);
+            this.CmdConvert.TabIndex = 12;
+            this.CmdConvert.Text = "Convert Lat Long [F3]";
+            this.CmdConvert.UseVisualStyleBackColor = true;
+            this.CmdConvert.Click += new System.EventHandler(this.ConvertLatLong);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 729);
+            this.Controls.Add(this.CmdConvert);
+            this.Controls.Add(this.CmdNewJob);
+            this.Controls.Add(this.CmdViewJob);
             this.Controls.Add(this.CmdOptions);
             this.Controls.Add(this.PanelMain);
-            this.Controls.Add(this.LBModules);
             this.Controls.Add(this.CmdOpenJob);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtJobNumber);
@@ -171,6 +195,7 @@
             this.Name = "Main";
             this.Text = "Survey Toolbox";
             this.Load += new System.EventHandler(this.LoadApp);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,9 +210,11 @@
         private System.Windows.Forms.TextBox TxtJobNumber;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CmdOpenJob;
-        private System.Windows.Forms.ListBox LBModules;
         private System.Windows.Forms.Panel PanelMain;
         private System.Windows.Forms.Button CmdOptions;
+        private System.Windows.Forms.Button CmdViewJob;
+        private System.Windows.Forms.Button CmdNewJob;
+        private System.Windows.Forms.Button CmdConvert;
     }
 }
 

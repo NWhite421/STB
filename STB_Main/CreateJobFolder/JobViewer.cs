@@ -14,6 +14,9 @@ using System.Xml.Linq;
 using System.Xml;
 using System.Diagnostics;
 using iwantedue.Windows.Forms;
+using Microsoft.Office.Interop;
+using Microsoft.Office.Interop.Outlook;
+using System.Runtime.InteropServices;
 
 namespace CreateJobFolder
 {
@@ -28,15 +31,74 @@ namespace CreateJobFolder
             dataGridNotes.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
         }
 
-        #region INTERNAL FUNCTIONS
+        #region INTERNAL VARIABLES
 
+        /// <summary>
+        /// XML data file.
+        /// </summary>
         private string XMLPath { get; set; }
+
+        /// <summary>
+        /// Job Log file
+        /// </summary>
         private string LogPath { get; set; }
+
+        /// <summary>
+        /// The base directory of the current job. Returns null if no job is selected.
+        /// </summary>
+        private string JobPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(XMLPath))
+                {
+                    return null;
+                }
+                else
+                {
+                    return Path.GetDirectoryName(XMLPath);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Writes the <paramref name="Message"/> to the current job log.
+        /// </summary>
+        /// <param name="Message">Message to write.</param>
+        internal void AddNoteToLog(string Message)
+        {
+            if (string.IsNullOrEmpty(Message) || string.IsNullOrEmpty(LogPath))
+            {
+                return;
+            }
+            string header = "[" + DateTime.Now.ToString("MM-dd-yy hh:mm tt") + "] ";
+            string[] lines = new string[] { header + Message };
+            File.AppendAllLines(LogPath, lines);
+        }
+
+        /// <summary>
+        /// Updates the XML file with the updated information.
+        /// </summary>
+        /// <param name="Document">XDocument item to save.</param>
+        internal void UpdateXML(XDocument Document)
+        {
+            File.Delete(XMLPath);
+            Document.Save(Path.Combine(XMLPath));
+            File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
+        }
+
+        /// <summary>
+        /// Microsoft Office application.
+        /// </summary>
+        private readonly Microsoft.Office.Interop.Outlook.Application _application = new Microsoft.Office.Interop.Outlook.Application();
 
         #endregion
 
         #region GENERAL
 
+        /// <summary>
+        /// Open a job and update all variables and lists.
+        /// </summary>
         private void OpenJob(object s, EventArgs e)
         {
             string jobNumber = Converter.ToJobNumber(TxtJobNumber.Text);
@@ -61,11 +123,15 @@ namespace CreateJobFolder
             else { Log.ToDebug("File was found."); }
             XMLPath = xmlPath;
             LogPath = logPath;
-            LblCurrentJob.Text = jobNumber;
-            PopulateNoteList(CompileNotes());
-            PopulateEmailList();
+            AddNoteToLog("Job created on " + DateTime.Now.ToString("MM-dd-yy"));
+            LblCurrentJob.Text = jobNumber.Remove(0,2);
+            cbType.SelectedIndex = 1;
+            PopulateLists();
         }
 
+        /// <summary>
+        /// Opens file explorer to the current job file.
+        /// </summary>
         private void OpenJobFolder(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (string.IsNullOrEmpty(XMLPath))
@@ -77,22 +143,105 @@ namespace CreateJobFolder
             Process.Start(path);
         }
 
-        private void ResizeForm(object sender, EventArgs e)
+        /// <summary>
+        /// Opens file explorer to the current field data folder.
+        /// </summary>
+        private void LnkOpenFieldData(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(XMLPath))
+            {
+                Log.ToDebug("Link clicked with no job selected.");
+                return;
+            }
+            string path = Path.GetDirectoryName(XMLPath) + "\\Field Data";
+            Process.Start("explorer.exe", path);
+        }
+
+        /// <summary>
+        /// Recenters center three squares.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="e"></param>
+        private void ResizeForm(object s, EventArgs e)
         {
             int width = this.Width;
             int spacing = 4;
             int nWidth = (width - (spacing * 4)) / 3;
-            PnlInformation.Width = nWidth;
+            PnlFieldData.Width = nWidth;
             PnlTasks.Width = nWidth;
             PnlTasks.Location = new Point(spacing + nWidth + spacing, PnlTasks.Location.Y);
             PnlEmails.Width = nWidth;
             PnlEmails.Location = new Point(spacing + nWidth + spacing + nWidth + spacing, PnlEmails.Location.Y);
+        }
+
+        /// <summary>
+        /// Populates all the lists with their relevant information.
+        /// </summary>
+        private void PopulateLists()
+        {
+            if (string.IsNullOrEmpty(XMLPath) || string.IsNullOrEmpty(LogPath) || string.IsNullOrEmpty(JobPath))
+            {
+                Log.AddError("The lists in the View Job module tried to be populated without a job being selected.");
+                return;
+            }
+            DataGridView table;
+            XDocument doc = XDocument.Load(XMLPath);
+
+            //Notes list
+            XElement elements = doc.Root.Element("Notes");
+            table = dataGridNotes;
+            if (table.Rows.Count > 0)
+            {
+                table.Rows.Clear();
+            }
+
+            foreach (XElement e in elements.Elements("Entry"))
+            {
+                string date = e.Element("Date").Value;
+                string author = e.Element("Author").Value;
+                string note = e.Element("Note").Value;
+                table.Rows.Add(date, author, note);
+            }
+
+            //Email list
+            elements = doc.Root.Element("Emails");
+            table = dataGridEmails;
+            if (table.Rows.Count > 0)
+            {
+                table.Rows.Clear();
+            }
+
+            foreach (XElement e in elements.Elements("Entry"))
+            {
+                string date = DateTime.Parse(e.Element("Date").Value).ToString("MM-dd-yy hh:mm tt");
+                string name = e.Element("Name").Value;
+                table.Rows.Add(date, name);
+            }
+
+            //Files list
+            elements = doc.Root.Element("FieldData");
+            table = dataGridFieldData;
+            if (table.Rows.Count > 0)
+            {
+                table.Rows.Clear();
+            }
+
+            foreach (XElement e in elements.Elements("Entry"))
+            {
+                string date = DateTime.Parse(e.Element("Date").Value).ToString("MM-dd-yy hh:mm tt");
+                string name = e.Element("Name").Value;
+                table.Rows.Add(date, name);
+            }
         }
         
         #endregion
 
         #region NOTES
 
+        /// <summary>
+        /// Adds a note to the job by the user.
+        /// </summary>
+        /// <remarks>Updated 03-19-20</remarks>
         private void AddNoteToJob(object s, EventArgs e)
         {
             if (string.IsNullOrEmpty(XMLPath))
@@ -100,7 +249,7 @@ namespace CreateJobFolder
                 return;
             }
 
-            string dateEntry = DateTime.Now.ToString();
+            string dateEntry = DateTime.Now.ToString("MM-dd-yy hh:mm tt");
             string name = GVars.UsernameInitials;
             XDocument doc = XDocument.Load(XMLPath);
             XElement notes = doc.Root.Element("Notes");
@@ -111,90 +260,64 @@ namespace CreateJobFolder
                 );
             notes.Add(entry);
 
-            List<string> logEntry = new List<string> { };
-            logEntry.Add("[" + dateEntry + "]: Added note to job with the following information:");
-            logEntry.Add("    Date: " + dateEntry);
-            logEntry.Add("    Author: " + name);
-            logEntry.Add("    Note: " + TxtNote.Text);
-            File.AppendAllLines(LogPath, logEntry);
-
-            File.Delete(XMLPath);
-            doc.Save(Path.Combine(XMLPath));
-            File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
-            PopulateNoteList(CompileNotes());
+            string logEntry = string.Format("New note entry: {0}|{1}|{2}", dateEntry, GVars.UsernameFull, TxtNote.Text);
+            AddNoteToLog(logEntry);
+            UpdateXML(doc);
+            PopulateLists();
             TxtNote.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Clears the TxtNotes field.
+        /// </summary>
+        /// <remarks>Updated 03-19-20</remarks>
         private void ClearNoteField(object s, EventArgs e)
         {
             TxtNote.Text = string.Empty;
         }
-
-        private List<List<string>> CompileNotes()
-        {
-            XDocument doc = XDocument.Load(XMLPath);
-            XElement notes = doc.Root.Element("Notes");
-            List<List<string>> entries = new List<List<string>> { };
-            foreach (XElement element in notes.Elements("Entry"))
-            {
-                List<string> entry = new List<string>
-                {
-                    DateTime.Parse(element.Element("Date").Value).ToString("MM-dd-yy hh:mmtt").ToUpper(),
-                    element.Element("Author").Value,
-                    element.Element("Note").Value
-                };
-                entries.Add(entry);
-            }
-            return entries;
-        }
-
-        private void PopulateNoteList(List<List<string>> Notes)
-        {
-            if (dataGridNotes.Rows.Count > 0)
-            {
-                dataGridNotes.Rows.Clear();
-            }
-            foreach (List<string> note in Notes)
-            {
-                dataGridNotes.Rows.Add(note[0], note[1], note[2]);
-            }
-        }
-
+        
+        /// <summary>
+        /// Removes a log item from the job.
+        /// </summary>
+        /// <remarks>Updated 03-19-20</remarks>
         private void RemoveEntry(object sender, EventArgs e)
         {
-            if (dataGridNotes.SelectedRows.Count == 0)
+            if (dataGridNotes.SelectedRows.Count == 0 || string.IsNullOrEmpty(XMLPath) || string.IsNullOrEmpty(LogPath))
             {
+                Log.ToDebug("Attemped to delete note, failed to provide enough passive information.");
                 return;
             }
+
             string dateSelected = dataGridNotes.Rows[dataGridNotes.SelectedRows[0].Index].Cells[0].Value.ToString();
-            Log.ToDebug("Selected row has the date of " + dateSelected);
+            Log.ToDebug("Currently selected log has a date of " + dateSelected);
+
             XDocument doc = XDocument.Load(XMLPath);
             XElement notes = doc.Root.Element("Notes");
             var XmlEntry = notes.Elements("Entry").Where(x => x.Element("Date").Value == dateSelected).FirstOrDefault();
 
-            var res = MessageBox.Show("You are about to delete the entry dated " + dateSelected + ". Are you sure you wish to continue?", "Confirm deletion", MessageBoxButtons.YesNo);
+            var res = MessageBox.Show("You are about to delete the entry dated\n\n" + dateSelected + "\n\nAre you sure you wish to continue?", "Confirm deletion", MessageBoxButtons.YesNo);
             if (res.Equals(DialogResult.No))
             {
+                Log.ToDebug("Deleting log entry cancelled.");
                 return;
             }
-            List<string> logEntry = new List<string> { };
-            logEntry.Add("[" + DateTime.Now.ToString() + "]: " + GVars.UsernameFull + " removed note from job with the following information:");
-            logEntry.Add("    Date: " + XmlEntry.Element("Date").Value);
-            logEntry.Add("    Author: " + XmlEntry.Element("Author").Value);
-            logEntry.Add("    Note: " + XmlEntry.Element("Note").Value);
-            File.AppendAllLines(LogPath, logEntry);
+
+            string logEntry = string.Format("New note entry: {0}|{1}|{2}", XmlEntry.Element("Date").Value, XmlEntry.Element("Author").Value, XmlEntry.Element("Note").Value);
+            AddNoteToLog(logEntry);
             XmlEntry.Remove();
-            File.Delete(XMLPath);
-            doc.Save(Path.Combine(XMLPath));
-            File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
-            PopulateNoteList(CompileNotes());
+            UpdateXML(doc);
+            PopulateLists();
         }
 
+        /// <summary>
+        /// Exports note list to a text file with deliniation marks (|).
+        /// </summary>
+        /// <remarks>Updated 03-19-20</remarks>
         private void ExportNotes(object sender, EventArgs e)
         {
-            if (dataGridNotes.Rows.Count <= 0)
+            if (dataGridNotes.Rows.Count <= 0 || string.IsNullOrEmpty(XMLPath) || string.IsNullOrEmpty(JobPath))
             {
-                Log.ToDebug("No notes were found.");
+                Log.ToDebug("Too few passive arguments were found.");
                 return;
             }
             List<string> notes = new List<string> { };
@@ -204,104 +327,92 @@ namespace CreateJobFolder
                 notes.Add(row.Cells[0].Value.ToString() + "|" + row.Cells[1].Value.ToString() + "|" + row.Cells[2].Value.ToString());
             }
             string path = Path.Combine(
-                Path.GetDirectoryName(XMLPath),
+                JobPath,
                 "Notes export.txt");
             Log.ToDebug("Note path: " + path);
             File.AppendAllLines(path, notes);
-            List<string> logEntry = new List<string> { };
-            logEntry.Add("[" + DateTime.Now.ToString() + "]: " + GVars.UsernameFull + " exported notes to a txt file.");
-            File.AppendAllLines(LogPath, logEntry);
+            string logEntry = string.Format("Notes were exported to text file.");
+            AddNoteToLog(logEntry);
+            Log.AddInfo(logEntry + " (" + TxtJobNumber.Text + ")");
         }
 
         #endregion
 
         #region EMAIL
-
-        private void PopulateEmailList()
-        {
-            if (dataGridEmails.Rows.Count > 0)
-            {
-                dataGridNotes.Rows.Clear();
-            }
-
-            XDocument doc = XDocument.Load(XMLPath);
-            XElement notes = doc.Root.Element("Emails");
-            List<List<string>> entries = new List<List<string>> { };
-            foreach (XElement element in notes.Elements("Entry"))
-            {
-                string date = DateTime.Parse(element.Element("Date").Value).ToString("MM-dd-yy hh:mmtt").ToUpper();
-                string name = element.Element("Name").Value;
-                dataGridEmails.Rows.Add(date, name);
-            }
-        }
-
+        
+        /// <summary>
+        /// Enable drag and drop feature for e-mails.
+        /// </summary>
+        /// <remarks>Updated 03-19-20</remarks>
         private void DragEmailEnter(object sender, DragEventArgs e)
         {
-            //ensure FileGroupDescriptor is present before allowing drop
             if (e.Data.GetDataPresent("FileGroupDescriptor"))
             {
-                e.Effect = DragDropEffects.All;
+                e.Effect = DragDropEffects.Copy;
+            } else
+            {
+                e.Effect = DragDropEffects.None;
             }
         }
 
+        /// <summary>
+        /// Handle dropping of e-mail from outlook into folder.
+        /// </summary>
+        /// <remarks>Updated 03-19-20 - Contains unoriginal code</remarks>
         private void DragEmailDrop(object sender, DragEventArgs e)
         {
-            if (string.IsNullOrEmpty(XMLPath))
+            List<string> lstResults = new List<string> { };
+            if (string.IsNullOrEmpty(JobPath))
             {
                 return;
             }
-            string eMailFolder = Path.Combine(Path.GetDirectoryName(XMLPath), "E-Mails");
-            if (!Directory.Exists(eMailFolder))
+            try
             {
-                Directory.CreateDirectory(eMailFolder);
+                if (e.Data.GetDataPresent("FileGroupDescriptor"))
+                {
+                    foreach (MailItem mailItem in _application.ActiveExplorer().Selection)
+                    {
+                        string eMailFolder = Path.Combine(JobPath, "E-Mails");
+                        if (!Directory.Exists(eMailFolder))
+                        {
+                            Directory.CreateDirectory(eMailFolder);
+                        }
+
+                        string strFile = Path.Combine(eMailFolder, FixFileName(mailItem.Subject + ".msg"));
+                        lstResults.Add(strFile);
+                        mailItem.SaveAs(strFile);
+
+                        string dateEntry = DateTime.Now.ToString();
+                        string name = GVars.UsernameInitials;
+                        XDocument doc = XDocument.Load(XMLPath);
+                        XElement notes = doc.Root.Element("Emails");
+                        XElement entry = new XElement("Entry",
+                            new XElement("Date", dateEntry),
+                            new XElement("Author", name),
+                            new XElement("Name", FixFileName(mailItem.Subject)),
+                            new XElement("Path", strFile)
+                            );
+                        notes.Add(entry);
+
+                        AddNoteToLog(GVars.UsernameFull + " added e-mail to job record.");
+                        UpdateXML(doc);
+                        PopulateLists();
+                    }
+                }
             }
-            //wrap standard IDataObject in OutlookDataObject
-            OutlookDataObject dataObject = new OutlookDataObject(e.Data);
-
-            //get the names and data streams of the files dropped
-            string[] filenames = (string[])dataObject.GetData("FileGroupDescriptorW");
-            MemoryStream[] filestreams = (MemoryStream[])dataObject.GetData("FileContents");
-
-            this.label1.Text += "Files:\n";
-            for (int fileIndex = 0; fileIndex < filenames.Length; fileIndex++)
+            catch
             {
-                //use the fileindex to get the name and data stream
-                string filename = filenames[fileIndex];
-                MemoryStream filestream = filestreams[fileIndex];
-
-                string fileWithoutExt = Path.GetFileNameWithoutExtension(filename);
-                string savePath = Path.Combine(eMailFolder, filename);
-                //save the file stream using its name to the application path
-                FileStream outputStream = File.Create(savePath);
-                filestream.WriteTo(outputStream);
-                outputStream.Close();
-
-                string dateEntry = DateTime.Now.ToString();
-                string name = GVars.UsernameInitials;
-                XDocument doc = XDocument.Load(XMLPath);
-                XElement notes = doc.Root.Element("Emails");
-                XElement entry = new XElement("Entry",
-                    new XElement("Date", dateEntry),
-                    new XElement("Author", name),
-                    new XElement("Name", fileWithoutExt),
-                    new XElement("Path", savePath)
-                    );
-                notes.Add(entry);
-
-                List<string> logEntry = new List<string> { };
-                logEntry.Add(String.Format("[{0}]: {1} added e-mail to job.", dateEntry, GVars.UsernameFull));
-                File.AppendAllLines(LogPath, logEntry);
-
-                File.Delete(XMLPath);
-                doc.Save(Path.Combine(XMLPath));
-                File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
-                PopulateEmailList();
+                Log.AddError("Could not process e-mail drop.");
             }
         }
 
+        /// <summary>
+        /// Open a e-mail through the list.
+        /// </summary>
+        /// <remarks>Updated 03-19-20</remarks>
         private void EmailOpen(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridEmails.SelectedRows.Count < 1)
+            if (dataGridEmails.SelectedRows.Count < 1 || string.IsNullOrEmpty(XMLPath))
             {
                 return;
             }
@@ -310,13 +421,16 @@ namespace CreateJobFolder
             XElement emailNodes = doc.Root.Element("Emails");
             XElement email = emailNodes.Elements().Where(x => x.Element("Name").Value.ToLower() == name.ToLower()).FirstOrDefault();
             string path = email.Element("Path").Value;
-            Log.AddInfo(GVars.UsernameFull + " opened e-mail " + name + " from " + Converter.ToJobNumber(LblCurrentJob.Text));
             Process.Start(path);
         }
 
+        /// <summary>
+        /// Removes an e-mail from the job.
+        /// </summary>
+        /// <remarks>Updated 03-19-20</remarks>
         private void EmailDelete(object sender, EventArgs e)
         {
-            if (dataGridEmails.SelectedRows.Count == 0)
+            if (dataGridEmails.SelectedRows.Count == 0 || string.IsNullOrEmpty(XMLPath))
             {
                 return;
             }
@@ -338,16 +452,27 @@ namespace CreateJobFolder
             }
             string path = email.Element("Path").Value;
             email.Remove();
-            string msg = GVars.UsernameFull + " deleted e-mail " + name + " from " + Converter.ToJobNumber(LblCurrentJob.Text);
-            Log.AddInfo(msg);
-            File.AppendAllLines(LogPath, new string[] { msg });
+            string logEntry = GVars.UsernameFull + " deleted " + name + " from the job.";
+            AddNoteToLog(logEntry);
+            Log.AddInfo(logEntry);
+            UpdateXML(doc);
+            PopulateLists();
+        }
 
-            File.Delete(path);
-
-            File.Delete(XMLPath);
-            doc.Save(Path.Combine(XMLPath));
-            File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
-            PopulateEmailList();
+        /// <summary>
+        /// Fixes the name of an email to be filename complient.
+        /// </summary>
+        /// <param name="pFileName">String of e-mail</param>
+        /// <returns>Formatted name</returns>
+        /// <remarks>Updated 03-19-20 - Not original code</remarks>
+        private string FixFileName(string pFileName)
+        {
+            var invalidChars = Path.GetInvalidFileNameChars();
+            if (pFileName.IndexOfAny(invalidChars) >= 0)
+            {
+                pFileName = invalidChars.Aggregate(pFileName, (current, invalidChar) => current.Replace(invalidChar, Convert.ToChar("_")));
+            }
+            return pFileName;
         }
 
         #endregion
@@ -357,5 +482,95 @@ namespace CreateJobFolder
 
 
         #endregion
+
+        private void PopulateFieldDataList()
+        {
+            if (dataGridFieldData.Rows.Count > 0)
+            {
+                dataGridFieldData.Rows.Clear();
+            }
+
+            XDocument doc = XDocument.Load(XMLPath);
+            XElement data = doc.Root.Element("FieldData");
+            List<List<string>> entries = new List<List<string>> { };
+            foreach (XElement element in data.Elements("Entry"))
+            {
+                string date = DateTime.Parse(element.Element("Date").Value).ToString("MM-dd-yy hh:mmtt").ToUpper();
+                string name = element.Element("Name").Value;
+                dataGridFieldData.Rows.Add(date, name);
+            }
+        }
+
+        private void DragFieldEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void DragFieldDrop(object sender, DragEventArgs e)
+        {
+            if (string.IsNullOrEmpty(XMLPath))
+            {
+                return;
+            }
+            string fieldFolder = Path.Combine(Path.GetDirectoryName(XMLPath), "Field Data");
+            if (!Directory.Exists(fieldFolder))
+            {
+                Directory.CreateDirectory(fieldFolder);
+            }
+            //wrap standard IDataObject in OutlookDataObject
+            string[] listarray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            List<string> list = listarray.ToList();
+
+            for (int fileIndex = 0; fileIndex < list.Count; fileIndex++)
+            {
+                //use the fileindex to get the name and data stream
+                string filename = list[fileIndex];
+
+                string type = cbType.GetItemText(cbType.SelectedItem);
+                if (string.IsNullOrEmpty(type))
+                {
+                    return;
+                }
+                string date = File.GetLastWriteTime(filename).ToString("MM-dd-yy");
+                string extension = filename.Substring(filename.Length-3, 3);
+                string formattedName = string.Format("{0} {1} {2}.{3}", LblCurrentJob.Text, type, date, extension);
+                string savePath = Path.Combine(fieldFolder, formattedName);
+                //save the file stream using its name to the application path
+                File.Move(filename, savePath);
+
+                string dateEntry = DateTime.Now.ToString();
+                string name = GVars.UsernameInitials;
+                XDocument doc = XDocument.Load(XMLPath);
+                XElement notes = doc.Root.Element("FieldData");
+                XElement entry = new XElement("Entry",
+                    new XElement("Date", dateEntry),
+                    new XElement("Author", name),
+                    new XElement("Name", type + " (" + extension + ")"),
+                    new XElement("Path", savePath)
+                    );
+                notes.Add(entry);
+
+                List<string> logEntry = new List<string> { };
+                logEntry.Add(String.Format("[{0}]: {1} added {2} to job.", dateEntry, GVars.UsernameFull, type));
+                File.AppendAllLines(LogPath, logEntry);
+
+                File.Delete(XMLPath);
+                doc.Save(Path.Combine(XMLPath));
+                File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
+
+            }
+            PopulateFieldDataList();
+        }
+
+        private void HandleKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Log.ToDebug("Enter key pressed");
+                OpenJob(this, new EventArgs());
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
     }
 }

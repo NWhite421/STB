@@ -43,15 +43,23 @@
             this.CmdRemove = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.CmdExport = new System.Windows.Forms.Button();
-            this.PnlInformation = new System.Windows.Forms.Panel();
+            this.PnlFieldData = new System.Windows.Forms.Panel();
+            this.cbType = new System.Windows.Forms.ComboBox();
+            this.dataGridFieldData = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LblUploadFieldData = new System.Windows.Forms.Label();
             this.PnlTasks = new System.Windows.Forms.Panel();
             this.PnlEmails = new System.Windows.Forms.Panel();
+            this.CmdRemoveEmail = new System.Windows.Forms.Button();
             this.LblUploadEmail = new System.Windows.Forms.Label();
             this.dataGridEmails = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CmdRemoveEmail = new System.Windows.Forms.Button();
+            this.LblOpenField = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).BeginInit();
+            this.PnlFieldData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFieldData)).BeginInit();
             this.PnlEmails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmails)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +70,7 @@
             this.TxtJobNumber.Name = "TxtJobNumber";
             this.TxtJobNumber.Size = new System.Drawing.Size(100, 29);
             this.TxtJobNumber.TabIndex = 0;
+            this.TxtJobNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandleKeyPress);
             // 
             // label1
             // 
@@ -97,11 +106,11 @@
             this.Writer,
             this.Note});
             this.dataGridNotes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridNotes.Location = new System.Drawing.Point(3, 419);
+            this.dataGridNotes.Location = new System.Drawing.Point(3, 451);
             this.dataGridNotes.Name = "dataGridNotes";
             this.dataGridNotes.ReadOnly = true;
             this.dataGridNotes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridNotes.Size = new System.Drawing.Size(935, 137);
+            this.dataGridNotes.Size = new System.Drawing.Size(935, 162);
             this.dataGridNotes.TabIndex = 3;
             // 
             // DateEntry
@@ -139,7 +148,7 @@
             // 
             this.TxtNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtNote.Location = new System.Drawing.Point(3, 562);
+            this.TxtNote.Location = new System.Drawing.Point(3, 619);
             this.TxtNote.Multiline = true;
             this.TxtNote.Name = "TxtNote";
             this.TxtNote.Size = new System.Drawing.Size(853, 64);
@@ -148,7 +157,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(3, 632);
+            this.button2.Location = new System.Drawing.Point(3, 689);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(62, 29);
             this.button2.TabIndex = 5;
@@ -159,7 +168,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.Location = new System.Drawing.Point(71, 632);
+            this.button3.Location = new System.Drawing.Point(71, 689);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(62, 29);
             this.button3.TabIndex = 6;
@@ -188,7 +197,7 @@
             // CmdRemove
             // 
             this.CmdRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdRemove.Location = new System.Drawing.Point(862, 561);
+            this.CmdRemove.Location = new System.Drawing.Point(862, 618);
             this.CmdRemove.Name = "CmdRemove";
             this.CmdRemove.Size = new System.Drawing.Size(76, 29);
             this.CmdRemove.TabIndex = 9;
@@ -210,7 +219,7 @@
             // CmdExport
             // 
             this.CmdExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdExport.Location = new System.Drawing.Point(862, 596);
+            this.CmdExport.Location = new System.Drawing.Point(862, 653);
             this.CmdExport.Name = "CmdExport";
             this.CmdExport.Size = new System.Drawing.Size(76, 29);
             this.CmdExport.TabIndex = 11;
@@ -218,18 +227,90 @@
             this.CmdExport.UseVisualStyleBackColor = true;
             this.CmdExport.Click += new System.EventHandler(this.ExportNotes);
             // 
-            // PnlInformation
+            // PnlFieldData
             // 
-            this.PnlInformation.Location = new System.Drawing.Point(7, 59);
-            this.PnlInformation.Name = "PnlInformation";
-            this.PnlInformation.Size = new System.Drawing.Size(309, 354);
-            this.PnlInformation.TabIndex = 12;
+            this.PnlFieldData.Controls.Add(this.cbType);
+            this.PnlFieldData.Controls.Add(this.dataGridFieldData);
+            this.PnlFieldData.Controls.Add(this.LblUploadFieldData);
+            this.PnlFieldData.Location = new System.Drawing.Point(7, 59);
+            this.PnlFieldData.Name = "PnlFieldData";
+            this.PnlFieldData.Size = new System.Drawing.Size(309, 386);
+            this.PnlFieldData.TabIndex = 12;
+            // 
+            // cbType
+            // 
+            this.cbType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Items.AddRange(new object[] {
+            "Stake Points",
+            "Field Data"});
+            this.cbType.Location = new System.Drawing.Point(3, 264);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(303, 29);
+            this.cbType.TabIndex = 19;
+            // 
+            // dataGridFieldData
+            // 
+            this.dataGridFieldData.AllowUserToAddRows = false;
+            this.dataGridFieldData.AllowUserToDeleteRows = false;
+            this.dataGridFieldData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridFieldData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridFieldData.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridFieldData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridFieldData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn4});
+            this.dataGridFieldData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridFieldData.Location = new System.Drawing.Point(3, 3);
+            this.dataGridFieldData.Name = "dataGridFieldData";
+            this.dataGridFieldData.ReadOnly = true;
+            this.dataGridFieldData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridFieldData.Size = new System.Drawing.Size(303, 258);
+            this.dataGridFieldData.TabIndex = 18;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewTextBoxColumn2.DividerWidth = 1;
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.ToolTipText = "The date of the entry.";
+            this.dataGridViewTextBoxColumn2.Width = 5;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DividerWidth = 1;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.ToolTipText = "The note.";
+            // 
+            // LblUploadFieldData
+            // 
+            this.LblUploadFieldData.AllowDrop = true;
+            this.LblUploadFieldData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblUploadFieldData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblUploadFieldData.Location = new System.Drawing.Point(3, 296);
+            this.LblUploadFieldData.Name = "LblUploadFieldData";
+            this.LblUploadFieldData.Size = new System.Drawing.Size(303, 90);
+            this.LblUploadFieldData.TabIndex = 17;
+            this.LblUploadFieldData.Text = "Upload Field Data";
+            this.LblUploadFieldData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblUploadFieldData.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragFieldDrop);
+            this.LblUploadFieldData.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragFieldEnter);
             // 
             // PnlTasks
             // 
             this.PnlTasks.Location = new System.Drawing.Point(322, 59);
             this.PnlTasks.Name = "PnlTasks";
-            this.PnlTasks.Size = new System.Drawing.Size(301, 354);
+            this.PnlTasks.Size = new System.Drawing.Size(301, 386);
             this.PnlTasks.TabIndex = 13;
             // 
             // PnlEmails
@@ -239,8 +320,19 @@
             this.PnlEmails.Controls.Add(this.dataGridEmails);
             this.PnlEmails.Location = new System.Drawing.Point(629, 59);
             this.PnlEmails.Name = "PnlEmails";
-            this.PnlEmails.Size = new System.Drawing.Size(309, 354);
+            this.PnlEmails.Size = new System.Drawing.Size(309, 386);
             this.PnlEmails.TabIndex = 14;
+            // 
+            // CmdRemoveEmail
+            // 
+            this.CmdRemoveEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdRemoveEmail.Location = new System.Drawing.Point(230, 299);
+            this.CmdRemoveEmail.Name = "CmdRemoveEmail";
+            this.CmdRemoveEmail.Size = new System.Drawing.Size(76, 29);
+            this.CmdRemoveEmail.TabIndex = 17;
+            this.CmdRemoveEmail.Text = "Remove";
+            this.CmdRemoveEmail.UseVisualStyleBackColor = true;
+            this.CmdRemoveEmail.Click += new System.EventHandler(this.EmailDelete);
             // 
             // LblUploadEmail
             // 
@@ -248,7 +340,7 @@
             this.LblUploadEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblUploadEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LblUploadEmail.Location = new System.Drawing.Point(3, 264);
+            this.LblUploadEmail.Location = new System.Drawing.Point(3, 296);
             this.LblUploadEmail.Name = "LblUploadEmail";
             this.LblUploadEmail.Size = new System.Drawing.Size(221, 90);
             this.LblUploadEmail.TabIndex = 16;
@@ -275,7 +367,7 @@
             this.dataGridEmails.Name = "dataGridEmails";
             this.dataGridEmails.ReadOnly = true;
             this.dataGridEmails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridEmails.Size = new System.Drawing.Size(303, 258);
+            this.dataGridEmails.Size = new System.Drawing.Size(303, 290);
             this.dataGridEmails.TabIndex = 15;
             this.dataGridEmails.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmailOpen);
             // 
@@ -299,24 +391,25 @@
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.ToolTipText = "The note.";
             // 
-            // CmdRemoveEmail
+            // LblOpenField
             // 
-            this.CmdRemoveEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmdRemoveEmail.Location = new System.Drawing.Point(230, 267);
-            this.CmdRemoveEmail.Name = "CmdRemoveEmail";
-            this.CmdRemoveEmail.Size = new System.Drawing.Size(76, 29);
-            this.CmdRemoveEmail.TabIndex = 17;
-            this.CmdRemoveEmail.Text = "Remove";
-            this.CmdRemoveEmail.UseVisualStyleBackColor = true;
-            this.CmdRemoveEmail.Click += new System.EventHandler(this.EmailDelete);
+            this.LblOpenField.AutoSize = true;
+            this.LblOpenField.Location = new System.Drawing.Point(292, 35);
+            this.LblOpenField.Name = "LblOpenField";
+            this.LblOpenField.Size = new System.Drawing.Size(121, 21);
+            this.LblOpenField.TabIndex = 15;
+            this.LblOpenField.TabStop = true;
+            this.LblOpenField.Text = "Open Field Data";
+            this.LblOpenField.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkOpenFieldData);
             // 
             // JobViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LblOpenField);
             this.Controls.Add(this.PnlEmails);
             this.Controls.Add(this.PnlTasks);
-            this.Controls.Add(this.PnlInformation);
+            this.Controls.Add(this.PnlFieldData);
             this.Controls.Add(this.CmdExport);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.CmdRemove);
@@ -332,9 +425,11 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "JobViewer";
-            this.Size = new System.Drawing.Size(941, 664);
+            this.Size = new System.Drawing.Size(941, 721);
             this.Resize += new System.EventHandler(this.ResizeForm);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).EndInit();
+            this.PnlFieldData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFieldData)).EndInit();
             this.PnlEmails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmails)).EndInit();
             this.ResumeLayout(false);
@@ -359,7 +454,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateEntry;
         private System.Windows.Forms.DataGridViewTextBoxColumn Writer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
-        private System.Windows.Forms.Panel PnlInformation;
+        private System.Windows.Forms.Panel PnlFieldData;
         private System.Windows.Forms.Panel PnlTasks;
         private System.Windows.Forms.Panel PnlEmails;
         private System.Windows.Forms.Label LblUploadEmail;
@@ -367,5 +462,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button CmdRemoveEmail;
+        private System.Windows.Forms.ComboBox cbType;
+        private System.Windows.Forms.DataGridView dataGridFieldData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Label LblUploadFieldData;
+        private System.Windows.Forms.LinkLabel LblOpenField;
     }
 }

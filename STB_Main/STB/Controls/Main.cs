@@ -111,76 +111,77 @@ namespace STB
                 else if (Bottom.Contains(cursor)) message.Result = (IntPtr)HTBOTTOM;
             }
         }
-        
 
-        //Actual code I wrote.
-        private void LoadApp(object sender, EventArgs e)
+        private void ViewJob(object sender, EventArgs e)
         {
-            IntFunctions.AlignandColor(CmdClose, CmdMaximize, CmdMinimize, Lbltitle, this);
-            foreach (UCModule module in GVars.Modules)
+            CreateJobFolder.JobViewer viewer = new CreateJobFolder.JobViewer
             {
-                LBModules.Items.Add(module.Name);
-            }
-            Log.AddInfo("Program successfully laoded");
-            this.AcceptButton = new Button();
-            this.CancelButton = new Button();
-        }
-
-        private void ChangeModule(object s, EventArgs e)
-        {
-            string item = LBModules.GetItemText(LBModules.SelectedItem);
-            Log.ToDebug(item);
-            var module = GVars.Modules.Where(Module => Module.Name == item).First();
-            Control UControl;
-            switch (module.UCControl)
-            {
-                case "ConvertLatLong":
-                    {
-                        UControl = new UC.ConvertLatLong
-                        {
-                            BackColor = GVars.ActivePallete.Background,
-                            Dock = DockStyle.Fill
-                        };
-                        break;
-                    }
-                case "NewJobFolder":
-                    {
-                        UControl = new CreateJobFolder.CreateJobFolder
-                        {
-                            BackColor = GVars.ActivePallete.Background,
-                            Dock = DockStyle.Fill
-                        };
-                        break;
-                    }
-                case "JobViewer":
-                    {
-                        UControl = new CreateJobFolder.JobViewer
-                        {
-                            BackColor = GVars.ActivePallete.Background,
-                            Dock = DockStyle.Fill
-                        };
-                        break;
-                    }
-                default:
-                    {
-                        UControl = null;
-                        break;
-                    }
-            }
-            if (UControl.Equals(null))
-            {
-                Log.AddError("No module was found.");
-                return;
-            }
+                BackColor = GVars.ActivePallete.Background,
+                Dock = DockStyle.Fill
+            };
             if (PanelMain.Controls.Count > 0)
             {
                 string name = PanelMain.Controls[0].Name;
                 Log.AddInfo(string.Format("Removed \"{0}\" from panel.", name));
                 PanelMain.Controls.RemoveAt(0);
             }
-            PanelMain.Controls.Add(UControl);
+            PanelMain.Controls.Add(viewer);
         }
 
+        private void NewJob(object sender, EventArgs e)
+        {
+            CreateJobFolder.CreateJobFolder viewer = new CreateJobFolder.CreateJobFolder
+            {
+                BackColor = GVars.ActivePallete.Background,
+                Dock = DockStyle.Fill
+            };
+            if (PanelMain.Controls.Count > 0)
+            {
+                string name = PanelMain.Controls[0].Name;
+                Log.AddInfo(string.Format("Removed \"{0}\" from panel.", name));
+                PanelMain.Controls.RemoveAt(0);
+            }
+            PanelMain.Controls.Add(viewer);
+        }
+
+        private void ConvertLatLong(object sender, EventArgs e)
+        {
+            UC.ConvertLatLong viewer = new UC.ConvertLatLong
+            {
+                BackColor = GVars.ActivePallete.Background,
+                Dock = DockStyle.Fill
+            };
+            if (PanelMain.Controls.Count > 0)
+            {
+                string name = PanelMain.Controls[0].Name;
+                Log.AddInfo(string.Format("Removed \"{0}\" from panel.", name));
+                PanelMain.Controls.RemoveAt(0);
+            }
+            PanelMain.Controls.Add(viewer);
+        }
+
+        private void HandleKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                ViewJob(this, new EventArgs());
+            }
+            if (e.KeyCode == Keys.F2)
+            {
+                NewJob(this, new EventArgs());
+            }
+        }
+
+        //Actual code I wrote.
+        private void LoadApp(object sender, EventArgs e)
+        {
+            IntFunctions.AlignandColor(CmdClose, CmdMaximize, CmdMinimize, Lbltitle, this);
+            Log.AddInfo("Program successfully laoded");
+            this.AcceptButton = new Button();
+            this.CancelButton = new Button();
+            KeyPreview = true;
+        }
+        
         private void OpenJob(object sender, EventArgs e)
         {
             OpenFolder.OpenFolderLocation(TxtJobNumber.Text);
@@ -188,6 +189,10 @@ namespace STB
 
         private void CheckKeyPress(object sender, KeyEventArgs e)
         {
+            if (!TxtJobNumber.Focused)
+            {
+                return;
+            }
             if (e.KeyCode == Keys.Enter)
             {
                 OpenJob(this, new EventArgs());
