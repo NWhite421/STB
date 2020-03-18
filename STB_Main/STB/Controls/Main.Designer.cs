@@ -40,6 +40,7 @@
             this.CmdViewJob = new System.Windows.Forms.Button();
             this.CmdNewJob = new System.Windows.Forms.Button();
             this.CmdConvert = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CmdClose
@@ -172,11 +173,22 @@
             this.CmdConvert.UseVisualStyleBackColor = true;
             this.CmdConvert.Click += new System.EventHandler(this.ConvertLatLong);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(414, 48);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.TestFunction);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 729);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.CmdConvert);
             this.Controls.Add(this.CmdNewJob);
             this.Controls.Add(this.CmdViewJob);
@@ -215,6 +227,7 @@
         private System.Windows.Forms.Button CmdViewJob;
         private System.Windows.Forms.Button CmdNewJob;
         private System.Windows.Forms.Button CmdConvert;
+        private System.Windows.Forms.Button button1;
     }
 }
 

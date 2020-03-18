@@ -172,6 +172,16 @@ namespace STB
             }
         }
 
+        private void TestFunction(object sender, EventArgs e)
+        {
+            var dialog = new StringInput("This is a test");
+            var result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                MessageBox.Show(dialog.Input);
+            }
+        }
+
         //Actual code I wrote.
         private void LoadApp(object sender, EventArgs e)
         {

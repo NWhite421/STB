@@ -96,5 +96,10 @@
     </Compile>
     <Compile Include="UCFunctions.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="StringInput.resx">
+      <DependentUpon>StringInput.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
