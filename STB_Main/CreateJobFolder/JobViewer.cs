@@ -125,7 +125,6 @@ namespace CreateJobFolder
             LogPath = logPath;
             AddNoteToLog("Job created on " + DateTime.Now.ToString("MM-dd-yy"));
             LblCurrentJob.Text = jobNumber.Remove(0,2);
-            cbType.SelectedIndex = 1;
             PopulateLists();
         }
 
@@ -166,12 +165,63 @@ namespace CreateJobFolder
         {
             int width = this.Width;
             int spacing = 4;
-            int nWidth = (width - (spacing * 4)) / 3;
-            PnlFieldData.Width = nWidth;
-            PnlTasks.Width = nWidth;
-            PnlTasks.Location = new Point(spacing + nWidth + spacing, PnlTasks.Location.Y);
-            PnlEmails.Width = nWidth;
-            PnlEmails.Location = new Point(spacing + nWidth + spacing + nWidth + spacing, PnlEmails.Location.Y);
+            int nWidth;
+            Point point = new Point(spacing, TxtJobNumber.Location.Y + TxtJobNumber.Height + spacing);
+            if (width < 700)
+            {
+                //Single stack controls
+                nWidth = width - spacing - spacing - SystemInformation.VerticalScrollBarWidth;
+                foreach (Control control in this.Controls)
+                {
+                    if (control.GetType().Name.ToLower() == "panel")
+                    {
+                        var pnl = (Panel)control;
+                        pnl.Location = point;
+                        pnl.Size = new Size(nWidth, pnl.Size.Height);
+                        point = new Point(spacing, pnl.Location.Y + pnl.Height + spacing);
+                    }
+                }
+            }
+            else
+            {
+                //double stack controls
+                nWidth = (width - spacing - spacing - spacing - SystemInformation.VerticalScrollBarWidth) / 2;
+                int side = 0; //0 - Left , 1 - Right
+                int height = 0;
+                Panel pnlL = new Panel();
+                foreach (Control control in this.Controls)
+                {
+                    if (control.GetType().Name.ToLower() == "panel")
+                    {
+                        if (side == 0)
+                        {
+                            pnlL = (Panel)control;
+                            pnlL.Location = point;
+                            pnlL.Size = new Size(nWidth, pnlL.Height);
+                            point = new Point(spacing + pnlL.Location.X + pnlL.Width + spacing, pnlL.Location.Y);
+                            height = pnlL.Height;
+                            side = 1;
+                        }
+                        else
+                        {
+                            Panel pnlR = (Panel)control;
+                            pnlR.Location = point;
+                            if (height < pnlR.Size.Height)
+                            {
+                                pnlR.Size = new Size(nWidth, pnlR.Height);
+                                pnlL.Size = new Size(nWidth, pnlR.Height);
+                                height = pnlR.Height;
+                            }
+                            else
+                            {
+                                pnlR.Size = new Size(nWidth, pnlL.Height);
+                            }
+                            point = new Point(pnlL.Location.X, pnlL.Location.Y + height + spacing);
+                            side = 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -521,20 +571,22 @@ namespace CreateJobFolder
             string[] listarray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             List<string> list = listarray.ToList();
 
+            var dialog = new StringInput("Please enter the description of the files.");
+            if (dialog.ShowDialog().Equals(DialogResult.Cancel))
+            {
+                return;
+            }
+            string fname = dialog.Input;
+
             for (int fileIndex = 0; fileIndex < list.Count; fileIndex++)
             {
                 //use the fileindex to get the name and data stream
                 string filename = list[fileIndex];
-
-                string type = cbType.GetItemText(cbType.SelectedItem);
-                if (string.IsNullOrEmpty(type))
-                {
-                    return;
-                }
                 string date = File.GetLastWriteTime(filename).ToString("MM-dd-yy");
                 string extension = filename.Substring(filename.Length-3, 3);
-                string formattedName = string.Format("{0} {1} {2}.{3}", LblCurrentJob.Text, type, date, extension);
+                string formattedName = string.Format("{0} {1} {2}.{3}", LblCurrentJob.Text, fname, date, extension);
                 string savePath = Path.Combine(fieldFolder, formattedName);
+
                 //save the file stream using its name to the application path
                 File.Move(filename, savePath);
 
@@ -545,13 +597,13 @@ namespace CreateJobFolder
                 XElement entry = new XElement("Entry",
                     new XElement("Date", dateEntry),
                     new XElement("Author", name),
-                    new XElement("Name", type + " (" + extension + ")"),
+                    new XElement("Name", fname + " (" + extension + ")"),
                     new XElement("Path", savePath)
                     );
                 notes.Add(entry);
 
                 List<string> logEntry = new List<string> { };
-                logEntry.Add(String.Format("[{0}]: {1} added {2} to job.", dateEntry, GVars.UsernameFull, type));
+                logEntry.Add(String.Format("[{0}]: {1} added {2} to job.", dateEntry, GVars.UsernameFull, fname));
                 File.AppendAllLines(LogPath, logEntry);
 
                 File.Delete(XMLPath);

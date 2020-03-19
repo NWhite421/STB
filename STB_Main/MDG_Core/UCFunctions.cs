@@ -42,7 +42,15 @@ namespace MDG_Core
                         case "label":
                             {
                                 var lbl = (Label)control;
-                                lbl.BackColor = GVars.ActivePallete.Background;
+                                if (lbl.Name.ToLower().Contains("header"))
+                                {
+                                    lbl.BackColor = GVars.ActivePallete.Highlight;
+                                    lbl.TextAlign = ContentAlignment.MiddleCenter;
+                                }
+                                else
+                                {
+                                    lbl.BackColor = GVars.ActivePallete.Background;
+                                }
                                 lbl.ForeColor = GVars.ActivePallete.Text;
                                 ProcessedControls.Add(lbl);
                                 break;
@@ -183,7 +191,17 @@ namespace MDG_Core
                         case "label":
                             {
                                 var lbl = (Label)control;
-                                lbl.BackColor = GVars.ActivePallete.Background;
+                                if (lbl.Name.ToLower().Contains("header"))
+                                {
+                                    lbl.BackColor = GVars.ActivePallete.Highlight;
+                                    lbl.TextAlign = ContentAlignment.MiddleCenter;
+                                    lbl.Location = new Point(0, 0);
+                                    lbl.Size = new Size(Window.Width, lbl.Height);
+                                }
+                                else
+                                {
+                                    lbl.BackColor = GVars.ActivePallete.Background;
+                                }
                                 lbl.ForeColor = GVars.ActivePallete.Text;
                                 ProcessedControls.Add(lbl);
                                 break;

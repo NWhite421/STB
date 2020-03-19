@@ -190,6 +190,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\acadIntegration\acadIntegration.csproj">
+      <Project>{09072b5e-7701-47a1-ba69-4179e720bdcb}</Project>
+      <Name>acadIntegration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConvertLatLong\ConvertLatLong.csproj">
+      <Project>{ed9e0ba9-f63b-457e-9ef1-10b78859de54}</Project>
+      <Name>ConvertLatLong</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CreateJobFolder\UserControls.csproj">
       <Project>{14c593a8-8661-43a5-90b7-f990e87d9e7a}</Project>
       <Name>UserControls</Name>
