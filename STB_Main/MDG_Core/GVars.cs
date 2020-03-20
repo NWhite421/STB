@@ -40,6 +40,11 @@ namespace MDG_Core
         public static string DriveLetter { get; set; }
 
         /// <summary>
+        /// A list of citys with their associated county and state plane zone.
+        /// </summary>
+        public static Dictionary<string, string[]> CityReference { get; set; }
+
+        /// <summary>
         /// Paths to all AppData folders and references.
         /// </summary>
         public class AppDataFolders
@@ -137,6 +142,29 @@ namespace MDG_Core
                 else { ret.Add(line.Split(';').ToList()); }
             }
             CustomFields = ret;
+
+            directory = Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                "TemplateDocs",
+                "City reference.txt"
+            );
+
+            Dictionary<string, string[]> dick = new Dictionary<string, string[]>();
+            foreach (string line in File.ReadAllLines(directory))
+            {
+                string[] parts = line.Split(',');
+                string city = parts[0].ToLower();
+                string[] info = new string[] { parts[1], parts[3] };
+                try
+                {
+                    dick.Add(city, info);
+                }
+                catch
+                {
+
+                }
+            }
+            CityReference = dick;
         }
     }
 }

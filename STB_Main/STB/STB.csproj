@@ -208,6 +208,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TemplateDocs\City reference.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TemplateDocs\CustomDirectories.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

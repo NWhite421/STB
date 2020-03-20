@@ -43,11 +43,13 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.CmdExport = new System.Windows.Forms.Button();
             this.PnlFieldData = new System.Windows.Forms.Panel();
+            this.label4_header = new System.Windows.Forms.Label();
             this.dataGridFieldData = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LblUploadFieldData = new System.Windows.Forms.Label();
             this.PnlEmails = new System.Windows.Forms.Panel();
+            this.headerEmails = new System.Windows.Forms.Label();
             this.CmdRemoveEmail = new System.Windows.Forms.Button();
             this.LblUploadEmail = new System.Windows.Forms.Label();
             this.dataGridEmails = new System.Windows.Forms.DataGridView();
@@ -55,12 +57,18 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LblOpenField = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.headerProjectInfo = new System.Windows.Forms.Label();
             this.pnlNotes = new System.Windows.Forms.Panel();
             this.label3_header = new System.Windows.Forms.Label();
-            this.label4_header = new System.Windows.Forms.Label();
-            this.headerProjectInfo = new System.Windows.Forms.Label();
-            this.headerEmails = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LblParcel = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.LblAddress = new System.Windows.Forms.Label();
+            this.LLblEditJobInfo = new System.Windows.Forms.LinkLabel();
+            this.LblStatePlane = new System.Windows.Forms.Label();
+            this.LblCommonName = new System.Windows.Forms.Label();
+            this.lbOtherNumbers = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).BeginInit();
             this.PnlFieldData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFieldData)).BeginInit();
@@ -234,6 +242,17 @@
             this.PnlFieldData.Size = new System.Drawing.Size(309, 238);
             this.PnlFieldData.TabIndex = 12;
             // 
+            // label4_header
+            // 
+            this.label4_header.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4_header.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4_header.Location = new System.Drawing.Point(3, 0);
+            this.label4_header.Name = "label4_header";
+            this.label4_header.Size = new System.Drawing.Size(303, 25);
+            this.label4_header.TabIndex = 19;
+            this.label4_header.Text = "Field Data";
+            // 
             // dataGridFieldData
             // 
             this.dataGridFieldData.AllowUserToAddRows = false;
@@ -296,10 +315,21 @@
             this.PnlEmails.Controls.Add(this.CmdRemoveEmail);
             this.PnlEmails.Controls.Add(this.LblUploadEmail);
             this.PnlEmails.Controls.Add(this.dataGridEmails);
-            this.PnlEmails.Location = new System.Drawing.Point(629, 59);
+            this.PnlEmails.Location = new System.Drawing.Point(763, 59);
             this.PnlEmails.Name = "PnlEmails";
             this.PnlEmails.Size = new System.Drawing.Size(309, 311);
             this.PnlEmails.TabIndex = 14;
+            // 
+            // headerEmails
+            // 
+            this.headerEmails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.headerEmails.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headerEmails.Location = new System.Drawing.Point(3, 0);
+            this.headerEmails.Name = "headerEmails";
+            this.headerEmails.Size = new System.Drawing.Size(303, 25);
+            this.headerEmails.TabIndex = 18;
+            this.headerEmails.Text = "Related E-Mails";
             // 
             // CmdRemoveEmail
             // 
@@ -382,6 +412,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lbOtherNumbers);
+            this.panel1.Controls.Add(this.LblCommonName);
+            this.panel1.Controls.Add(this.LblStatePlane);
+            this.panel1.Controls.Add(this.LLblEditJobInfo);
+            this.panel1.Controls.Add(this.LblAddress);
+            this.panel1.Controls.Add(this.lbl1);
+            this.panel1.Controls.Add(this.LblParcel);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.headerProjectInfo);
             this.panel1.Controls.Add(this.LblOpenField);
@@ -389,8 +427,28 @@
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Location = new System.Drawing.Point(322, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(304, 238);
+            this.panel1.Size = new System.Drawing.Size(400, 326);
             this.panel1.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 21);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Current Job:";
+            // 
+            // headerProjectInfo
+            // 
+            this.headerProjectInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.headerProjectInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headerProjectInfo.Location = new System.Drawing.Point(1, 0);
+            this.headerProjectInfo.Name = "headerProjectInfo";
+            this.headerProjectInfo.Size = new System.Drawing.Size(399, 25);
+            this.headerProjectInfo.TabIndex = 13;
+            this.headerProjectInfo.Text = "Project Information";
             // 
             // pnlNotes
             // 
@@ -417,47 +475,83 @@
             this.label3_header.TabIndex = 12;
             this.label3_header.Text = "Job Notes";
             // 
-            // label4_header
+            // LblParcel
             // 
-            this.label4_header.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.LblParcel.AutoSize = true;
+            this.LblParcel.Location = new System.Drawing.Point(3, 100);
+            this.LblParcel.Name = "LblParcel";
+            this.LblParcel.Size = new System.Drawing.Size(14, 21);
+            this.LblParcel.TabIndex = 16;
+            this.LblParcel.Text = " ";
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(3, 121);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(69, 21);
+            this.lbl1.TabIndex = 17;
+            this.lbl1.Text = "Address:";
+            // 
+            // LblAddress
+            // 
+            this.LblAddress.AutoSize = true;
+            this.LblAddress.Location = new System.Drawing.Point(24, 142);
+            this.LblAddress.Name = "LblAddress";
+            this.LblAddress.Size = new System.Drawing.Size(14, 21);
+            this.LblAddress.TabIndex = 18;
+            this.LblAddress.Text = " ";
+            // 
+            // LLblEditJobInfo
+            // 
+            this.LLblEditJobInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LLblEditJobInfo.AutoSize = true;
+            this.LLblEditJobInfo.Location = new System.Drawing.Point(223, 28);
+            this.LLblEditJobInfo.Name = "LLblEditJobInfo";
+            this.LLblEditJobInfo.Size = new System.Drawing.Size(174, 21);
+            this.LLblEditJobInfo.TabIndex = 19;
+            this.LLblEditJobInfo.TabStop = true;
+            this.LLblEditJobInfo.Text = "Edit Project Information";
+            this.LLblEditJobInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CmdEditJobInfo);
+            // 
+            // LblStatePlane
+            // 
+            this.LblStatePlane.AutoSize = true;
+            this.LblStatePlane.Location = new System.Drawing.Point(3, 184);
+            this.LblStatePlane.Name = "LblStatePlane";
+            this.LblStatePlane.Size = new System.Drawing.Size(14, 21);
+            this.LblStatePlane.TabIndex = 20;
+            this.LblStatePlane.Text = " ";
+            // 
+            // LblCommonName
+            // 
+            this.LblCommonName.AutoSize = true;
+            this.LblCommonName.Location = new System.Drawing.Point(3, 70);
+            this.LblCommonName.Name = "LblCommonName";
+            this.LblCommonName.Size = new System.Drawing.Size(14, 21);
+            this.LblCommonName.TabIndex = 21;
+            this.LblCommonName.Text = " ";
+            // 
+            // lbOtherNumbers
+            // 
+            this.lbOtherNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4_header.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4_header.Location = new System.Drawing.Point(3, 0);
-            this.label4_header.Name = "label4_header";
-            this.label4_header.Size = new System.Drawing.Size(303, 25);
-            this.label4_header.TabIndex = 19;
-            this.label4_header.Text = "Field Data";
+            this.lbOtherNumbers.FormattingEnabled = true;
+            this.lbOtherNumbers.ItemHeight = 21;
+            this.lbOtherNumbers.Location = new System.Drawing.Point(3, 229);
+            this.lbOtherNumbers.Name = "lbOtherNumbers";
+            this.lbOtherNumbers.Size = new System.Drawing.Size(394, 88);
+            this.lbOtherNumbers.TabIndex = 22;
             // 
-            // headerProjectInfo
+            // label2
             // 
-            this.headerProjectInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.headerProjectInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headerProjectInfo.Location = new System.Drawing.Point(1, 0);
-            this.headerProjectInfo.Name = "headerProjectInfo";
-            this.headerProjectInfo.Size = new System.Drawing.Size(303, 25);
-            this.headerProjectInfo.TabIndex = 13;
-            this.headerProjectInfo.Text = "Project Information";
-            // 
-            // headerEmails
-            // 
-            this.headerEmails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.headerEmails.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headerEmails.Location = new System.Drawing.Point(3, 0);
-            this.headerEmails.Name = "headerEmails";
-            this.headerEmails.Size = new System.Drawing.Size(303, 25);
-            this.headerEmails.TabIndex = 18;
-            this.headerEmails.Text = "Related E-Mails";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 21);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Current Job:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 205);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(162, 21);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Related Job Numbers:";
             // 
             // JobViewer
             // 
@@ -475,7 +569,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "JobViewer";
-            this.Size = new System.Drawing.Size(1034, 706);
+            this.Size = new System.Drawing.Size(1165, 706);
             this.Resize += new System.EventHandler(this.ResizeForm);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).EndInit();
             this.PnlFieldData.ResumeLayout(false);
@@ -526,5 +620,13 @@
         private System.Windows.Forms.Label headerProjectInfo;
         private System.Windows.Forms.Label label3_header;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel LLblEditJobInfo;
+        private System.Windows.Forms.Label LblAddress;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label LblParcel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox lbOtherNumbers;
+        private System.Windows.Forms.Label LblCommonName;
+        private System.Windows.Forms.Label LblStatePlane;
     }
 }

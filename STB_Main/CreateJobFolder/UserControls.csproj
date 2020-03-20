@@ -89,6 +89,12 @@
       <DependentUpon>CreateJobFolder.cs</DependentUpon>
     </Compile>
     <Compile Include="cs\OutlookDataObject.cs" />
+    <Compile Include="EditJobInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditJobInfo.Designer.cs">
+      <DependentUpon>EditJobInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="JobViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +112,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CreateJobFolder.resx">
       <DependentUpon>CreateJobFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditJobInfo.resx">
+      <DependentUpon>EditJobInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JobViewer.resx">
       <DependentUpon>JobViewer.cs</DependentUpon>

@@ -82,9 +82,42 @@ namespace CreateJobFolder
         /// <param name="Document">XDocument item to save.</param>
         internal void UpdateXML(XDocument Document)
         {
+
+            if (string.IsNullOrEmpty(Document.Root.Element("Information").Element("JobNumber").Value))
+            {
+                Document.Root.Element("Information").Element("JobNumber").Value = LblCurrentJob.Text;
+            }
             File.Delete(XMLPath);
             Document.Save(Path.Combine(XMLPath));
             File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
+        }
+
+        /// <summary>
+        /// Attempt to get value of the <paramref name="element"/>'s sub-element <paramref name="search"/>
+        /// </summary>
+        /// <param name="element">Element with sub elements you want to grab the value of.</param>
+        /// <param name="search">The sub-element name.</param>
+        /// <returns>Value of <paramref name="search"/>></returns>
+        private string TryElement(XElement element, string search)
+        {
+            string ret = "";
+            try
+            {
+                string value = element.Element(search).Value;
+                if (string.IsNullOrEmpty(value))
+                {
+                    return ret;
+                }
+                else
+                {
+                    return value;
+                }
+            }
+            catch
+            {
+
+                return ret;
+            }
         }
 
         /// <summary>
@@ -102,6 +135,7 @@ namespace CreateJobFolder
         private void OpenJob(object s, EventArgs e)
         {
             string jobNumber = Converter.ToJobNumber(TxtJobNumber.Text);
+            LblCurrentJob.Text = jobNumber.Remove(0, 2);
             if (string.IsNullOrEmpty(jobNumber))
             {
                 return;
@@ -119,12 +153,33 @@ namespace CreateJobFolder
                 stream.Close();
                 File.SetAttributes(logPath, File.GetAttributes(logPath) | FileAttributes.Hidden);
                 Log.ToDebug("job.log file created at " + logPath);
+                XMLPath = xmlPath;
+                LogPath = logPath;
+                AddNoteToLog("Job created on " + DateTime.Now.ToString("MM-dd-yy"));
+                XDocument doc = XDocument.Load(xmlPath);
+                doc.Root.Element("Information").Element("JobNumber").Value = jobNumber.Remove(0, 2);
+                UpdateXML(doc);
+
+                var dialog = new EditJobInfo(xmlPath);
+                var ret = dialog.ShowDialog();
+                if (ret.Equals(DialogResult.OK))
+                {
+                    UpdateXML(dialog.XMLDocument);
+                    TxtJobNumber.Text = LblCurrentJob.Text;
+                    OpenJob(this, new EventArgs());
+                }
             }
-            else { Log.ToDebug("File was found."); }
-            XMLPath = xmlPath;
-            LogPath = logPath;
-            AddNoteToLog("Job created on " + DateTime.Now.ToString("MM-dd-yy"));
-            LblCurrentJob.Text = jobNumber.Remove(0,2);
+            else { 
+                Log.ToDebug("File was found.");
+                XMLPath = xmlPath;
+                LogPath = logPath;
+                XDocument doc = XDocument.Load(xmlPath);
+                var element = doc.Root.Element("Information");
+                LblCommonName.Text = "A.K.A. " + TryElement(element, "CommonName");
+                LblParcel.Text = "Parcel: " + TryElement(element, "Parcel");
+                LblAddress.Text = TryElement(element, "Address") + Environment.NewLine + TryElement(element, "City") + ", " + TryElement(element, "County") + ", FL";
+                LblStatePlane.Text = "Zone: " + TryElement(element, "SPZ");
+            }
             PopulateLists();
         }
 
@@ -167,7 +222,7 @@ namespace CreateJobFolder
             int spacing = 4;
             int nWidth;
             Point point = new Point(spacing, TxtJobNumber.Location.Y + TxtJobNumber.Height + spacing);
-            if (width < 700)
+            if (width <1000)
             {
                 //Single stack controls
                 nWidth = width - spacing - spacing - SystemInformation.VerticalScrollBarWidth;
@@ -622,6 +677,22 @@ namespace CreateJobFolder
                 OpenJob(this, new EventArgs());
                 e.SuppressKeyPress = true;
                 e.Handled = true;
+            }
+        }
+
+        private void CmdEditJobInfo(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(XMLPath))
+            {
+                return;
+            }
+            var dialog = new EditJobInfo(XMLPath);
+            var ret = dialog.ShowDialog();
+            if (ret.Equals(DialogResult.OK))
+            {
+                UpdateXML(dialog.XMLDocument);
+                TxtJobNumber.Text = LblCurrentJob.Text;
+                OpenJob(this, new EventArgs());
             }
         }
     }
