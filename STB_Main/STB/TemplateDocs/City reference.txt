@@ -1,0 +1,1118 @@
+City,County,CountyID,SPCID
+Alachua,Alachua,1,903
+Archer,Alachua,1,903
+Cross Creek,Alachua,1,903
+Earleton,Alachua,1,903
+Gainesville,Alachua,1,903
+Hawthorne,Alachua,1,903
+High Springs,Alachua,1,903
+Island Grove,Alachua,1,903
+Jonesville,Alachua,1,903
+La Crosse,Alachua,1,903
+Lochloosa,Alachua,1,903
+Micanopy,Alachua,1,903
+Newberry,Alachua,1,903
+Waldo,Alachua,1,903
+Windsor,Alachua,1,903
+Glen St Mary,Baker,2,903
+Macclenny,Baker,2,903
+Olustee,Baker,2,903
+Sanderson,Baker,2,903
+Allenton,Bay,3,903
+Callaway,Bay,3,903
+Cedar Grove,Bay,3,903
+Fountain,Bay,3,903
+Laguna Beach,Bay,3,903
+Lower Grand Lagoon,Bay,3,903
+Lynn Haven,Bay,3,903
+Mexico Beach,Bay,3,903
+Panama City,Bay,3,903
+Panama City Beach,Bay,3,903
+Parker,Bay,3,903
+Pretty Bayou,Bay,3,903
+Southport,Bay,3,903
+Springfield,Bay,3,903
+Tyndall Air Force Base,Bay,3,903
+Upper Grand Lagoon,Bay,3,903
+Youngstown,Bay,3,903
+Brooker,Bradford,4,903
+Clayno,Bradford,4,903
+Graham,Bradford,4,903
+Hampton,Bradford,4,903
+Lawtey,Bradford,4,903
+Starke,Bradford,4,903
+Allenhurst,Brevard,5,901
+Cape Canaveral,Brevard,5,901
+Cocoa,Brevard,5,901
+Cocoa Beach,Brevard,5,901
+Cocoa West,Brevard,5,901
+Courtenay,Brevard,5,901
+Floridana Beach,Brevard,5,901
+Grant-Valkaria,Brevard,5,901
+Indialantic,Brevard,5,901
+Indian Harbour Beach,Brevard,5,901
+June Park,Brevard,5,901
+Malabar,Brevard,5,901
+Melbourne,Brevard,5,901
+Melbourne Beach,Brevard,5,901
+Melbourne Village,Brevard,5,901
+Merrit Island,Brevard,5,901
+Micco,Brevard,5,901
+Mims,Brevard,5,901
+Palm Bay,Brevard,5,901
+Palm Shores,Brevard,5,901
+Patrick Air Force Base,Brevard,5,901
+Port St John,Brevard,5,901
+Rockledge,Brevard,5,901
+Satellite Beach,Brevard,5,901
+Scottsmoor,Brevard,5,901
+Sharpes,Brevard,5,901
+South Patrick Shores,Brevard,5,901
+Titusville,Brevard,5,901
+Viera,Brevard,5,901
+West Melbourne,Brevard,5,901
+Boulevard Gardens,Broward,6,901
+Broadview Park,Broward,6,901
+Chula Vista,Broward,6,901
+Coconut Creek,Broward,6,901
+Cooper City,Broward,6,901
+Coral Springs,Broward,6,901
+Dania Beach,Broward,6,901
+Davie,Broward,6,901
+Deerfield Beach,Broward,6,901
+Fern Crest Village,Broward,6,901
+Fort Lauderdale,Broward,6,901
+Franklin Park,Broward,6,901
+Hallandale Beach,Broward,6,901
+Hillsboro Beach,Broward,6,901
+Hillsboro Pines,Broward,6,901
+Hollywood,Broward,6,901
+Lake Forest,Broward,6,901
+Lauderdale Lakes,Broward,6,901
+Lauderdale-by-the-Sea,Broward,6,901
+Lauderhill,Broward,6,901
+Lazy Lake,Broward,6,901
+Lighthouse Point,Broward,6,901
+Margate,Broward,6,901
+Miccosukee Reservation,Broward,6,901
+Miramar,Broward,6,901
+North Lauderdale,Broward,6,901
+Oakland Park,Broward,6,901
+Parkland,Broward,6,901
+Pembroke Park,Broward,6,901
+Pembroke Pines,Broward,6,901
+Plantation,Broward,6,901
+Pompano Beach,Broward,6,901
+Roosevelt Gardens,Broward,6,901
+Sea Ranch Lakes,Broward,6,901
+Southwest Ranches,Broward,6,901
+Sunrise,Broward,6,901
+Tamarac,Broward,6,901
+Washington Park,Broward,6,901
+West Park,Broward,6,901
+Weston,Broward,6,901
+Wilton Manors,Broward,6,901
+Altha,Calhoun,7,903
+Blountstown,Calhoun,7,903
+Clarksville,Calhoun,7,903
+Dickerson City,Calhoun,7,903
+Fisher Corner,Calhoun,7,903
+Frink,Calhoun,7,903
+Kinard,Calhoun,7,903
+Charlotte Harbor,Charlotte,8,902
+Charlotte Park,Charlotte,8,902
+Cleveland,Charlotte,8,902
+Grove City,Charlotte,8,902
+Harbour Heights,Charlotte,8,902
+Manasota Key,Charlotte,8,902
+Murdock,Charlotte,8,902
+Placida,Charlotte,8,902
+Port Charlotte,Charlotte,8,902
+Punta Gorda,Charlotte,8,902
+Solana,Charlotte,8,902
+Beverly Hills,Citrus,9,902
+Black Diamond,Citrus,9,902
+Citrus Hills,Citrus,9,902
+Citrus Springs,Citrus,9,902
+Crystal River,Citrus,9,902
+Floral City,Citrus,9,902
+Hernando,Citrus,9,902
+Holder,Citrus,9,902
+Homosassa,Citrus,9,902
+Homosassa Springs,Citrus,9,902
+Inverness,Citrus,9,902
+Inverness Highlands North,Citrus,9,902
+Inverness Highlands South,Citrus,9,902
+Lecanto,Citrus,9,902
+Pine Ridge,Citrus,9,902
+Sugarmill woods,Citrus,9,902
+Asbury Lake,Clay,10,901
+Bellair-Meadowbrook,Clay,10,901
+Doctors Inlet,Clay,10,901
+Fleming Island,Clay,10,901
+Green Cove Springs,Clay,10,901
+Keystone Heights,Clay,10,901
+Lake Geneva,Clay,10,901
+Lakeside,Clay,10,901
+Middleburg,Clay,10,901
+Oakleaf Plantation,Clay,10,901
+Orange Park,Clay,10,901
+Penney Farms,Clay,10,901
+Ave Maria,Collier,11,901
+Chokoloskee,Collier,11,901
+Copeland,Collier,11,901
+Everglades,Collier,11,901
+Golden Gate,Collier,11,901
+Goodland,Collier,11,901
+Immokalee,Collier,11,901
+Immokalee Reservation,Collier,11,901
+Island Walk,Collier,11,901
+Jerome,Collier,11,901
+Lely,Collier,11,901
+Lely Resort,Collier,11,901
+Marco Island,Collier,11,901
+Naples,Collier,11,901
+Naples Manor,Collier,11,901
+Naples Park,Collier,11,901
+Ochopee,Collier,11,901
+Orangetree,Collier,11,901
+Pelican Bay,Collier,11,901
+Pine Ridge,Collier,11,901
+Plantation Island,Collier,11,901
+Verona Walk,Collier,11,901
+Vineyards,Collier,11,901
+Five Points,Columbia,12,903
+Fort White,Columbia,12,903
+Lake City,Columbia,12,903
+Lulu,Columbia,12,903
+Watertown,Columbia,12,903
+Arcadia,Desoto,13,902
+Fort Ogden,Desoto,13,902
+Lake Suzy,Desoto,13,902
+Nocatee,Desoto,13,902
+Southeast Arcadia,Desoto,13,902
+Cross City,Dixie,14,903
+Horseshoe Beach,Dixie,14,903
+Jena,Dixie,14,903
+Old Town,Dixie,14,903
+Suwannee,Dixie,14,903
+Atlantic Beach,Duval,15,901
+Baldwin,Duval,15,901
+Clarksville,Duval,15,901
+Jacksonville,Duval,15,901
+Jacksonville Beach,Duval,15,901
+Neptune Beach,Duval,15,901
+Bellview,Escambia,16,903
+Brent,Escambia,16,903
+Cantonment,Escambia,16,903
+Century,Escambia,16,903
+Ensley,Escambia,16,903
+Ferry Pass,Escambia,16,903
+Gonzalez,Escambia,16,903
+Goulding,Escambia,16,903
+McDavid,Escambia,16,903
+Molino,Escambia,16,903
+Myrtle Grove,Escambia,16,903
+Pensacola,Escambia,16,903
+Pensacola Beach,Escambia,16,903
+Perdido Key,Escambia,16,903
+Poarch Creek Reservation,Escambia,16,903
+Walnut Hill,Escambia,16,903
+Warrington,Escambia,16,903
+West Pensacola,Escambia,16,903
+Beverly Beach,Flagler,17,901
+Bunnell,Flagler,17,901
+Dupont,Flagler,17,901
+Favoretta,Flagler,17,901
+Flagler Beach,Flagler,17,901
+Marineland,Flagler,17,901
+Palm Coast,Flagler,17,901
+Alligator Point,Franklin,18,903
+Apalachicola,Franklin,18,903
+Carrabelle,Franklin,18,903
+Dog Island,Franklin,18,903
+Eastpoint,Franklin,18,903
+Fort Gadsden,Franklin,18,903
+Lanark Village,Franklin,18,903
+St George Island,Franklin,18,903
+St Teresa,Franklin,18,903
+Chattahoochee,Gadsden,19,903
+Greensboro,Gadsden,19,903
+Gretna,Gadsden,19,903
+Havana,Gadsden,19,903
+Midway,Gadsden,19,903
+Mount Pleasant,Gadsden,19,903
+Quincy,Gadsden,19,903
+Bell,Gilchrist,20,903
+Fanning Springs,Gilchrist,20,903
+Spring Ridge,Gilchrist,20,903
+Trenton,Gilchrist,20,903
+Buckhead Ridge,Glades,21,901
+Moore Haven,Glades,21,901
+Palmdale,Glades,21,901
+Cape San Blas,Gulf,22,903
+Port St Joe,Gulf,22,903
+Wewahitchka,Gulf,22,903
+Jasper,Hamilton,23,903
+Jennings,Hamilton,23,903
+White Springs,Hamilton,23,903
+Bowling Green,Hardee,24,902
+Fort Green,Hardee,24,902
+Fort Green Springs,Hardee,24,902
+Gardner,Hardee,24,902
+Lemon Grove,Hardee,24,902
+Limestone,Hardee,24,902
+Ona,Hardee,24,902
+Wauchula,Hardee,24,902
+Zolfo Springs,Hardee,24,902
+Clewiston,Hendry,25,901
+Felda,Hendry,25,901
+Fort Denaud,Hendry,25,901
+Harlem,Hendry,25,901
+LaBelle,Hendry,25,901
+Montura,Hendry,25,901
+Pioneer,Hendry,25,901
+Port La Belle,Hendry,25,901
+Bayport,Hernando,26,902
+Brookridge,Hernando,26,902
+Brooksville,Hernando,26,902
+Garden Grove,Hernando,26,902
+Hernando Beach,Hernando,26,902
+High Point,Hernando,26,902
+Hill 'n Dale,Hernando,26,902
+Istachatta,Hernando,26,902
+Lake Lindsey,Hernando,26,902
+Masaryktown,Hernando,26,902
+Nobleton,Hernando,26,902
+North Brooksville,Hernando,26,902
+North Weeki Wachee,Hernando,26,902
+Pine Island,Hernando,26,902
+Ridge Manor,Hernando,26,902
+South Brooksville,Hernando,26,902
+Spring Hill,Hernando,26,902
+Spring Lake,Hernando,26,902
+Timber Pines,Hernando,26,902
+Weeki Wachee,Hernando,26,902
+Weeki Wachee Gardens,Hernando,26,902
+Wiscon,Hernando,26,902
+Avon Park,Highlands,27,901
+Brighton Seminole Indian Reservation,Highlands,27,901
+Lake Placid,Highlands,27,901
+Lorida,Highlands,27,901
+Placid Lakes,Highlands,27,901
+Sebring,Highlands,27,901
+Venus,Highlands,27,901
+Apollo Beach,Hillsborough,28,902
+Balm,Hillsborough,28,902
+Bloomingdale,Hillsborough,28,902
+Brandon,Hillsborough,28,902
+Carrollwood,Hillsborough,28,902
+Cheval,Hillsborough,28,902
+Citrus Park,Hillsborough,28,902
+Clair-Mel City,Hillsborough,28,902
+Dover,Hillsborough,28,902
+Durant,Hillsborough,28,902
+East Lake-Orient Park,Hillsborough,28,902
+Egypt Lake-Leto,Hillsborough,28,902
+Fish Hawk,Hillsborough,28,902
+Gibsonton,Hillsborough,28,902
+Gun Club Estates,Hillsborough,28,902
+Keystone,Hillsborough,28,902
+Lake Magdalene,Hillsborough,28,902
+Lakeshore,Hillsborough,28,902
+Lithia,Hillsborough,28,902
+Lutz,Hillsborough,28,902
+Mango,Hillsborough,28,902
+Northdale,Hillsborough,28,902
+Palm River-Clair Mel,Hillsborough,28,902
+Pebble Creek,Hillsborough,28,902
+Plant City,Hillsborough,28,902
+Riverview,Hillsborough,28,902
+Ruskin,Hillsborough,28,902
+Seffner,Hillsborough,28,902
+Sun City Center,Hillsborough,28,902
+Sydney,Hillsborough,28,902
+Tampa,Hillsborough,28,902
+Temple Terrace,Hillsborough,28,902
+Thonotosassa,Hillsborough,28,902
+Town 'n' Country,Hillsborough,28,902
+University,Hillsborough,28,902
+Valrico,Hillsborough,28,902
+Westchase,Hillsborough,28,902
+Ybor City,Hillsborough,28,902
+Bonifay,Holmes,29,903
+Esto,Holmes,29,903
+Noma,Holmes,29,903
+Ponce de Leon,Holmes,29,903
+Westville,Holmes,29,903
+Fellsmere,Indian River,30,901
+Florida Ridge,Indian River,30,901
+Gifford,Indian River,30,901
+Indian River Shores,Indian River,30,901
+Orchid,Indian River,30,901
+Roseland,Indian River,30,901
+Sebastian,Indian River,30,901
+South Beach,Indian River,30,901
+Vero Beach,Indian River,30,901
+Vero Beach South,Indian River,30,901
+Wabasso,Indian River,30,901
+Wabasso Beach,Indian River,30,901
+Windsor,Indian River,30,901
+Winter Beach,Indian River,30,901
+Alford,Jackson,31,903
+Bascom,Jackson,31,903
+Campbellton,Jackson,31,903
+Cottondale,Jackson,31,903
+Cypress,Jackson,31,903
+Graceville,Jackson,31,903
+Grand Ridge,Jackson,31,903
+Greenwood,Jackson,31,903
+Jacob City,Jackson,31,903
+Malone,Jackson,31,903
+Marianna,Jackson,31,903
+Sneads,Jackson,31,903
+Two Egg,Jackson,31,903
+Aucilla,Jefferson,32,903
+Fanlew,Jefferson,32,903
+Lamont,Jefferson,32,903
+Lloyd,Jefferson,32,903
+Monticello,Jefferson,32,903
+Wacissa,Jefferson,32,903
+Waukeenah,Jefferson,32,903
+Day,Lafayette,33,903
+Mayo,Lafayette,33,903
+Altoona,Lake,34,901
+Astatula,Lake,34,901
+Clermont,Lake,34,901
+Eustis,Lake,34,901
+Ferndale,Lake,34,901
+Fort Mason,Lake,34,901
+Fruitland Park,Lake,34,901
+Grand Island,Lake,34,901
+Groveland,Lake,34,901
+Howey-in-the-Hills,Lake,34,901
+Lady Lake,Lake,34,901
+Lake Kathryn,Lake,34,901
+Lake Mack-Forest Hills,Lake,34,901
+Leesburg,Lake,34,901
+Lisbon,Lake,34,901
+Mascotte,Lake,34,901
+Minneola,Lake,34,901
+Montverde,Lake,34,901
+Mount Dora,Lake,34,901
+Mount Plymouth,Lake,34,901
+Okahumpka,Lake,34,901
+Paisley,Lake,34,901
+Pine Lakes,Lake,34,901
+Pittman,Lake,34,901
+Silver Lake,Lake,34,901
+Sorrento,Lake,34,901
+Tavares,Lake,34,901
+Umatilla,Lake,34,901
+Yalaha,Lake,34,901
+Alva,Lee,35,902
+Boca Grande,Lee,35,902
+Bokeelia,Lee,35,902
+Bonita Springs,Lee,35,902
+Buckingham,Lee,35,902
+Burnt Store Marina,Lee,35,902
+Cape Coral,Lee,35,902
+Captiva,Lee,35,902
+Charleston Park,Lee,35,902
+Cypress Lake,Lee,35,902
+Estero,Lee,35,902
+Fort Myers,Lee,35,902
+Fort Myers Beach,Lee,35,902
+Fort Myers Shores,Lee,35,902
+Gateway,Lee,35,902
+Harlem Heights,Lee,35,902
+Iona,Lee,35,902
+Lehigh Acres,Lee,35,902
+Lochmoor Waterway Estates,Lee,35,902
+Matlacha,Lee,35,902
+Matlacha Isles-Matlacha Shores,Lee,35,902
+McGregor,Lee,35,902
+Miromar Lakes,Lee,35,902
+North Fort Myers,Lee,35,902
+Olga,Lee,35,902
+Page Park,Lee,35,902
+Palmona Park,Lee,35,902
+Pine Island Center,Lee,35,902
+Pine Manor,Lee,35,902
+Pineland,Lee,35,902
+Punta Rassa,Lee,35,902
+St James City,Lee,35,902
+San Carlos Park,Lee,35,902
+Sanibel,Lee,35,902
+Suncoast Estates,Lee,35,902
+Three Oaks,Lee,35,902
+Tice,Lee,35,902
+Villas,Lee,35,902
+Whiskey Creek,Lee,35,902
+Felkel,Leon,36,903
+Miccosukee,Leon,36,903
+Ochlockonee,Leon,36,903
+Tallahassee,Leon,36,903
+Woodville,Leon,36,903
+Andrews,Levy,37,902
+Bronson,Levy,37,902
+Cedar Key,Levy,37,902
+Chiefland,Levy,37,902
+East Bronson,Levy,37,902
+East Williston,Levy,37,902
+Fanning Springs,Levy,37,902
+Fowlers Bluff,Levy,37,902
+Gulf Hammock,Levy,37,902
+Inglis,Levy,37,902
+Manatee Road,Levy,37,902
+Morriston,Levy,37,902
+Otter Creek,Levy,37,902
+Raleigh,Levy,37,902
+Rosewood,Levy,37,902
+Williston,Levy,37,902
+Williston Highlands,Levy,37,902
+Yankeetown,Levy,37,902
+Bristol,Liberty,38,903
+Hosford,Liberty,38,903
+Lake Mystic,Liberty,38,903
+Sumatra,Liberty,38,903
+Telogia,Liberty,38,903
+Greenville,Madison,39,903
+Lee,Madison,39,903
+Madison,Madison,39,903
+Pinetta,Madison,39,903
+Anna Maria,Manatee,40,902
+Bayshore Gardens,Manatee,40,902
+Bradenton,Manatee,40,902
+Bradenton Beach,Manatee,40,902
+Cortez,Manatee,40,902
+Duette,Manatee,40,902
+Ellenton,Manatee,40,902
+Fort Hamer,Manatee,40,902
+Holmes Beach,Manatee,40,902
+Lakewood Ranch,Manatee,40,902
+Longboat Key,Manatee,40,902
+Memphis,Manatee,40,902
+Myakka City,Manatee,40,902
+Oneco,Manatee,40,902
+Palma Sola,Manatee,40,902
+Palmetto,Manatee,40,902
+Parrish,Manatee,40,902
+Rubonia,Manatee,40,902
+Samoset,Manatee,40,902
+South Bradenton,Manatee,40,902
+Tallevast,Manatee,40,902
+Terra Ceia,Manatee,40,902
+West Bradenton,Manatee,40,902
+West Samoset,Manatee,40,902
+Whitfield,Manatee,40,902
+Anthony,Marion,41,902
+Belleview,Marion,41,902
+Candler,Marion,41,902
+Citra,Marion,41,902
+Dunnellon,Marion,41,902
+Fairfield,Marion,41,902
+Fellowship,Marion,41,902
+Flemington,Marion,41,902
+Fort McCoy,Marion,41,902
+Irvine,Marion,41,902
+Lowell,Marion,41,902
+McIntosh,Marion,41,902
+Ocala,Marion,41,902
+Ocklawaha,Marion,41,902
+Orange Lake,Marion,41,902
+Orange Springs,Marion,41,902
+Reddick,Marion,41,902
+Salt Springs,Marion,41,902
+Silver Springs Shores,Marion,41,902
+Sparr,Marion,41,902
+Summerfield,Marion,41,902
+Weirsdale,Marion,41,902
+Hobe Sound,Martin,42,901
+Indiantown,Martin,42,901
+Jensen Beach,Martin,42,901
+Jupiter Island,Martin,42,901
+North River Shores,Martin,42,901
+Ocean Breeze Park,Martin,42,901
+Palm City,Martin,42,901
+Port Salerno,Martin,42,901
+Rio,Martin,42,901
+Sewall's Point,Martin,42,901
+Stuart,Martin,42,901
+Zellwood,Martin,42,901
+Aventura,Miami-Dade,43,901
+Bal Harbour,Miami-Dade,43,901
+Bay Harbor Islands,Miami-Dade,43,901
+Biscayne Park,Miami-Dade,43,901
+Brownsville,Miami-Dade,43,901
+Coral Gables,Miami-Dade,43,901
+Coral Terrace,Miami-Dade,43,901
+Country Club,Miami-Dade,43,901
+Country Walk,Miami-Dade,43,901
+Cutler Bay,Miami-Dade,43,901
+Doral,Miami-Dade,43,901
+El Portal,Miami-Dade,43,901
+Fisher Island,Miami-Dade,43,901
+Florida City,Miami-Dade,43,901
+Fortymile Bend,Miami-Dade,43,901
+Fountainbleau,Miami-Dade,43,901
+Frog City,Miami-Dade,43,901
+Gladeview,Miami-Dade,43,901
+Glenvar Heights,Miami-Dade,43,901
+Golden Beach,Miami-Dade,43,901
+Golden Glades,Miami-Dade,43,901
+Goulds,Miami-Dade,43,901
+Hialeah,Miami-Dade,43,901
+Hialeah Gardens,Miami-Dade,43,901
+Homestead,Miami-Dade,43,901
+Homestead Base,Miami-Dade,43,901
+Indian Creek,Miami-Dade,43,901
+Islandia,Miami-Dade,43,901
+Ives Estates,Miami-Dade,43,901
+Kendale Lakes,Miami-Dade,43,901
+Kendall,Miami-Dade,43,901
+Kendall West,Miami-Dade,43,901
+Key Biscayne,Miami-Dade,43,901
+Leisure City,Miami-Dade,43,901
+Ludlam,Miami-Dade,43,901
+Medley,Miami-Dade,43,901
+Miami,Miami-Dade,43,901
+Miami Beach,Miami-Dade,43,901
+Miami Gardens,Miami-Dade,43,901
+Miami Lakes,Miami-Dade,43,901
+Miami Shores,Miami-Dade,43,901
+Miami Springs,Miami-Dade,43,901
+Naranja,Miami-Dade,43,901
+North Bay Village,Miami-Dade,43,901
+North Miami,Miami-Dade,43,901
+North Miami Beach,Miami-Dade,43,901
+Ojus,Miami-Dade,43,901
+Olympia Heights,Miami-Dade,43,901
+Opa-locka,Miami-Dade,43,901
+Palm Springs North,Miami-Dade,43,901
+Palmetto Bay,Miami-Dade,43,901
+Palmetto Estates,Miami-Dade,43,901
+Pinecrest,Miami-Dade,43,901
+Pinewood,Miami-Dade,43,901
+Princeton,Miami-Dade,43,901
+Redland,Miami-Dade,43,901
+Richmond Heights,Miami-Dade,43,901
+Richmond West,Miami-Dade,43,901
+South Miami,Miami-Dade,43,901
+South Miami Heights,Miami-Dade,43,901
+Sunny Isles Beach,Miami-Dade,43,901
+Sunset,Miami-Dade,43,901
+Surfside,Miami-Dade,43,901
+Sweetwater,Miami-Dade,43,901
+Tamiami,Miami-Dade,43,901
+The Crossings,Miami-Dade,43,901
+The Hammocks,Miami-Dade,43,901
+Three Lakes,Miami-Dade,43,901
+University Park,Miami-Dade,43,901
+Virginia Gardens,Miami-Dade,43,901
+West Little River,Miami-Dade,43,901
+West Miami,Miami-Dade,43,901
+West Perrine,Miami-Dade,43,901
+Westchester,Miami-Dade,43,901
+Westview,Miami-Dade,43,901
+Westwood Lakes,Miami-Dade,43,901
+Big Coppitt Key,Monroe,44,901
+Big Pine Key,Monroe,44,901
+Conch Key,Monroe,44,901
+Cudjoe Key,Monroe,44,901
+Duck Key,Monroe,44,901
+Flamingo,Monroe,44,901
+Islamorada,Monroe,44,901
+Key Colony Beach,Monroe,44,901
+Key Largo,Monroe,44,901
+Key West,Monroe,44,901
+Layton,Monroe,44,901
+Lower Sugarloaf,Monroe,44,901
+Marathon,Monroe,44,901
+No Name Key,Monroe,44,901
+North Key Largo,Monroe,44,901
+Ramrod Key,Monroe,44,901
+Stock Island,Monroe,44,901
+Sugarloaf Shores,Monroe,44,901
+Summerland Key,Monroe,44,901
+Tavernier,Monroe,44,901
+Upper Sugarloaf Key,Monroe,44,901
+American Beach,Nassau,45,901
+Callahan,Nassau,45,901
+Fernandina Beach,Nassau,45,901
+Franklintown,Nassau,45,901
+Hilliard,Nassau,45,901
+Italia,Nassau,45,901
+Nassau Village-Ratliff,Nassau,45,901
+Yulee,Nassau,45,901
+Cinco Bayou,Okaloosa,46,903
+Crestview,Okaloosa,46,903
+Destin,Okaloosa,46,903
+Eglin Air Force Base,Okaloosa,46,903
+Fort Walton Beach,Okaloosa,46,903
+Holt,Okaloosa,46,903
+Lake Lorraine,Okaloosa,46,903
+Laurel Hill,Okaloosa,46,903
+Mary Esther,Okaloosa,46,903
+Milligan,Okaloosa,46,903
+Niceville,Okaloosa,46,903
+Ocean City,Okaloosa,46,903
+Shalimar,Okaloosa,46,903
+Valparaiso,Okaloosa,46,903
+Wright,Okaloosa,46,903
+Cypress Quarters,Okeechobee,47,901
+Okeechobee,Okeechobee,47,901
+Taylor Creek,Okeechobee,47,901
+Alafaya,Orange,48,901
+Apopka,Orange,48,901
+Azalea Park,Orange,48,901
+Bay Hill,Orange,48,901
+Bay Lake,Orange,48,901
+Belle Isle,Orange,48,901
+Bithlo,Orange,48,901
+Christmas,Orange,48,901
+Clarcona,Orange,48,901
+Conway,Orange,48,901
+Doctor Phillips,Orange,48,901
+Eatonville,Orange,48,901
+Edgewood,Orange,48,901
+Fairview Shores,Orange,48,901
+Fairvilla,Orange,48,901
+Gotha,Orange,48,901
+Holden Heights,Orange,48,901
+Horizon West,Orange,48,901
+Hunters Creek,Orange,48,901
+Killarney,Orange,48,901
+Lake Buena Vista,Orange,48,901
+Lake Butler,Orange,48,901
+Lake Hart,Orange,48,901
+Lake Mary Jane,Orange,48,901
+Lockhart,Orange,48,901
+Maitland,Orange,48,901
+Meadow Woods,Orange,48,901
+Oak Ridge,Orange,48,901
+Oakland,Orange,48,901
+Ocoee,Orange,48,901
+Orlando,Orange,48,901
+Orlovista,Orange,48,901
+Paradise Heights,Orange,48,901
+Pine Castle,Orange,48,901
+Pine Hills,Orange,48,901
+Plymouth,Orange,48,901
+Rio Pinar,Orange,48,901
+Sky Lake,Orange,48,901
+South Apopka,Orange,48,901
+Southchase,Orange,48,901
+Taft,Orange,48,901
+Tangelo Park,Orange,48,901
+Tangerine,Orange,48,901
+Tildenville,Orange,48,901
+Union Park,Orange,48,901
+University,Orange,48,901
+Wedgefield,Orange,48,901
+Williamsburg,Orange,48,901
+Windermere,Orange,48,901
+Winter Garden,Orange,48,901
+Winter Park,Orange,48,901
+Buenaventura Lakes,Osceola,49,901
+Campbell,Osceola,49,901
+Celebration,Osceola,49,901
+Four Corners,Osceola,49,901
+Kenansville,Osceola,49,901
+Kissimmee,Osceola,49,901
+St Cloud,Osceola,49,901
+Yeehaw Junction,Osceola,49,901
+Acacia Villas,Palm Beach,50,901
+Atlantis,Palm Beach,50,901
+Belle Glade,Palm Beach,50,901
+Boca Pointe,Palm Beach,50,901
+Boca Raton,Palm Beach,50,901
+Boynton Beach,Palm Beach,50,901
+Briny Breezes,Palm Beach,50,901
+Bryant,Palm Beach,50,901
+Cabana Colony,Palm Beach,50,901
+Canal Point,Palm Beach,50,901
+Century village,Palm Beach,50,901
+Cloud Lake,Palm Beach,50,901
+Cypress Lakes,Palm Beach,50,901
+Delray Beach,Palm Beach,50,901
+Fremd Village-Padgett Island,Palm Beach,50,901
+Glen Ridge,Palm Beach,50,901
+Golden Lakes,Palm Beach,50,901
+Golf,Palm Beach,50,901
+Greenacres,Palm Beach,50,901
+Gulf Stream,Palm Beach,50,901
+Haverhill,Palm Beach,50,901
+Highland Beach,Palm Beach,50,901
+Hypoluxo,Palm Beach,50,901
+Juno Beach,Palm Beach,50,901
+Juno Ridge,Palm Beach,50,901
+Jupiter,Palm Beach,50,901
+Jupiter Farms,Palm Beach,50,901
+Jupiter Inlet Colony,Palm Beach,50,901
+Kenwood Estates,Palm Beach,50,901
+Kings Point,Palm Beach,50,901
+Lake Belvedere Estates,Palm Beach,50,901
+Lake Clarke Shores,Palm Beach,50,901
+Lake Harbor,Palm Beach,50,901
+Lake Park,Palm Beach,50,901
+Lake Worth,Palm Beach,50,901
+Lake Worth Corridor,Palm Beach,50,901
+Lakeside Green,Palm Beach,50,901
+Lantana,Palm Beach,50,901
+Limestone Creek,Palm Beach,50,901
+Loxahatchee Groves,Palm Beach,50,901
+Manalapan,Palm Beach,50,901
+Mangonia Park,Palm Beach,50,901
+Mission Bay,Palm Beach,50,901
+North Palm Beach,Palm Beach,50,901
+Ocean Ridge,Palm Beach,50,901
+Pahokee,Palm Beach,50,901
+Palm Beach,Palm Beach,50,901
+Palm Beach Gardens,Palm Beach,50,901
+Palm Beach Shores,Palm Beach,50,901
+Palm Springs,Palm Beach,50,901
+Pine Air,Palm Beach,50,901
+Riviera Beach,Palm Beach,50,901
+Royal Palm Beach,Palm Beach,50,901
+Royal Palm Estates,Palm Beach,50,901
+San Castle,Palm Beach,50,901
+Schall Circle,Palm Beach,50,901
+Seminole Manor,Palm Beach,50,901
+South Bay,Palm Beach,50,901
+South Palm Beach,Palm Beach,50,901
+Stacey Street,Palm Beach,50,901
+Tequesta,Palm Beach,50,901
+The Acreage,Palm Beach,50,901
+Watergate,Palm Beach,50,901
+Wellington,Palm Beach,50,901
+West Palm Beach,Palm Beach,50,901
+Westgate,Palm Beach,50,901
+Westlake,Palm Beach,50,901
+Whisper Walk,Palm Beach,50,901
+Aripeka,Pasco,51,902
+Bayonet Point,Pasco,51,902
+Beacon Square,Pasco,51,902
+Connorton,Pasco,51,902
+Crystal Springs,Pasco,51,902
+Dade City,Pasco,51,902
+Dade City North,Pasco,51,902
+East Shady Hills,Pasco,51,902
+Elfers,Pasco,51,902
+Heritage Pines,Pasco,51,902
+Holiday,Pasco,51,902
+Hudson,Pasco,51,902
+Jasmine Estates,Pasco,51,902
+Key Vista,Pasco,51,902
+Lacoochee,Pasco,51,902
+Land O' Lakes,Pasco,51,902
+Meadow Oaks,Pasco,51,902
+Moon Lake,Pasco,51,902
+New Port Richey,Pasco,51,902
+New Port Richey East,Pasco,51,902
+North Wesley Chapel,Pasco,51,902
+Odessa,Pasco,51,902
+Port Richey,Pasco,51,902
+Quail Ridge,Pasco,51,902
+River Ridge,Pasco,51,902
+St Leo,Pasco,51,902
+San Antonio,Pasco,51,902
+Shady Hills,Pasco,51,902
+South Wesley Chapel,Pasco,51,902
+Trilby,Pasco,51,902
+Trinity,Pasco,51,902
+Wesley Chapel,Pasco,51,902
+Wesley Chapel South,Pasco,51,902
+West Shady Hills,Pasco,51,902
+Zephyrhills,Pasco,51,902
+Zephyrhills North,Pasco,51,902
+Zephyrhills South,Pasco,51,902
+Zephyrhills West,Pasco,51,902
+Bardmoor,Pinellas,52,902
+Bay Pines,Pinellas,52,902
+Bear Creek,Pinellas,52,902
+Belleair,Pinellas,52,902
+Belleair Beach,Pinellas,52,902
+Belleair Bluffs,Pinellas,52,902
+Belleair Shore,Pinellas,52,902
+Clearwater,Pinellas,52,902
+Crystal Beach,Pinellas,52,902
+Dunedin,Pinellas,52,902
+East Lake,Pinellas,52,902
+Feather Sound,Pinellas,52,902
+Gandy,Pinellas,52,902
+Greenbriar,Pinellas,52,902
+Gulfport,Pinellas,52,902
+Harbor Bluffs,Pinellas,52,902
+Indian Rocks Beach,Pinellas,52,902
+Indian Shores,Pinellas,52,902
+Kenneth City,Pinellas,52,902
+Largo,Pinellas,52,902
+Lealman,Pinellas,52,902
+Madeira Beach,Pinellas,52,902
+North Redington Beach,Pinellas,52,902
+Oldsmar,Pinellas,52,902
+Ozona,Pinellas,52,902
+Palm Harbor,Pinellas,52,902
+Pasadena,Pinellas,52,902
+Pinellas Park,Pinellas,52,902
+Redington Beach,Pinellas,52,902
+Redington Shores,Pinellas,52,902
+Ridgecrest,Pinellas,52,902
+Safety Harbor,Pinellas,52,902
+St Pete Beach,Pinellas,52,902
+St Petersburg,Pinellas,52,902
+Seminole,Pinellas,52,902
+South Highpoint,Pinellas,52,902
+South Pasadena,Pinellas,52,902
+Tarpon Springs,Pinellas,52,902
+Tierra Verde,Pinellas,52,902
+Treasure Island,Pinellas,52,902
+West and East Lealman,Pinellas,52,902
+West Lealman,Pinellas,52,902
+Alturas,Polk,53,902
+Auburndale,Polk,53,902
+Babson Park,Polk,53,902
+Bartow,Polk,53,902
+Bradley Junction,Polk,53,902
+Combee,Polk,53,902
+Crooked Lake Park,Polk,53,902
+Crystal Lake,Polk,53,902
+Cypress Gardens,Polk,53,902
+Davenport,Polk,53,902
+Dundee,Polk,53,902
+Eagle Lake,Polk,53,902
+Eaton Park,Polk,53,902
+Fort Meade,Polk,53,902
+Frostproof,Polk,53,902
+Fuller Heights,Polk,53,902
+Fussels Corner,Polk,53,902
+Gibsonia,Polk,53,902
+Grenelefe,Polk,53,902
+Haines City,Polk,53,902
+Highland City,Polk,53,902
+Highland Park,Polk,53,902
+Hillcrest Heights,Polk,53,902
+Homeland,Polk,53,902
+Indian Lake Estates,Polk,53,902
+Inwood,Polk,53,902
+Jan Phyl Village,Polk,53,902
+Kathleen,Polk,53,902
+Lake Alfred,Polk,53,902
+Lake Hamilton,Polk,53,902
+Lake Wales,Polk,53,902
+Lakeland,Polk,53,902
+Lakeland Highlands,Polk,53,902
+Loughman,Polk,53,902
+Medulla,Polk,53,902
+Mulberry,Polk,53,902
+Nalcrest,Polk,53,902
+Nichols,Polk,53,902
+Poinciana,Polk,53,902
+Polk City,Polk,53,902
+River Ranch,Polk,53,902
+Wahneta,Polk,53,902
+Waverly,Polk,53,902
+Willow Oak,Polk,53,902
+Winter Haven,Polk,53,902
+Crescent City,Putnam,54,901
+East Palatka,Putnam,54,901
+Federal Point,Putnam,54,901
+Florahome,Putnam,54,901
+Georgetown,Putnam,54,901
+Grandin,Putnam,54,901
+Hollister,Putnam,54,901
+Interlachen,Putnam,54,901
+Lake Como,Putnam,54,901
+Melrose,Putnam,54,901
+Palatka,Putnam,54,901
+Pomona Park,Putnam,54,901
+Putnam Hall,Putnam,54,901
+San Mateo,Putnam,54,901
+Satsuma,Putnam,54,901
+Welaka,Putnam,54,901
+Butler Beach,St Johns,54,901
+Crescent Beach,St Johns,54,901
+Elkton,St Johns,54,901
+Fruit Cove,St Johns,54,901
+Hastings,St Johns,54,901
+Palm Valley,St Johns,54,901
+Ponte Vedra Beach,St Johns,54,901
+St Augustine,St Johns,54,901
+St Augustine Beach,St Johns,54,901
+St Augustine Shores,St Johns,54,901
+St Augustine South,St Johns,54,901
+Sawgrass,St Johns,54,901
+Switzerland,St Johns,54,901
+Villano Beach,St Johns,54,901
+World Golf Village,St Johns,54,901
+Fort Pierce,St Lucie,54,901
+Fort Pierce North,St Lucie,54,901
+Fort Pierce South,St Lucie,54,901
+Lakewood Park,St Lucie,54,901
+Port St Lucie,St Lucie,54,901
+River Park,St Lucie,54,901
+St Lucie Village,St Lucie,54,901
+White City,St Lucie,54,901
+Allentown,Santa Rosa,54,901
+Avalon,Santa Rosa,54,901
+Bagdad,Santa Rosa,54,901
+Berrydale,Santa Rosa,54,901
+Brownsdale,Santa Rosa,54,901
+Chumuckla,Santa Rosa,54,901
+Cobbtown,Santa Rosa,54,901
+Dixonville,Santa Rosa,54,901
+East Milton,Santa Rosa,54,901
+Fidelis,Santa Rosa,54,901
+Floridatown,Santa Rosa,54,901
+Garcon Point,Santa Rosa,54,901
+Gulf Breeze,Santa Rosa,54,901
+Harmony,Santa Rosa,54,901
+Harold,Santa Rosa,54,901
+Holley,Santa Rosa,54,901
+Jay,Santa Rosa,54,901
+Midway,Santa Rosa,54,901
+Milton,Santa Rosa,54,901
+Mount Carmel,Santa Rosa,54,901
+Mulat,Santa Rosa,54,901
+Munson,Santa Rosa,54,901
+Navarre,Santa Rosa,54,901
+Navarre Beach,Santa Rosa,54,901
+Oriole Beach,Santa Rosa,54,901
+Pace,Santa Rosa,54,901
+Pea Ridge,Santa Rosa,54,901
+Pine Level,Santa Rosa,54,901
+Point Baker,Santa Rosa,54,901
+Roeville,Santa Rosa,54,901
+Springhill,Santa Rosa,54,901
+Tiger Point,Santa Rosa,54,901
+Wallace,Santa Rosa,54,901
+Whitfield,Santa Rosa,54,901
+Woodlawn Beach,Santa Rosa,54,901
+Bee Ridge,Sarasota,54,901
+Desoto Lakes,Sarasota,54,901
+Englewood,Sarasota,54,901
+Fruitville,Sarasota,54,901
+Gulf Gate Estates,Sarasota,54,901
+Kensington Park,Sarasota,54,901
+Lake Sarasota,Sarasota,54,901
+Laurel,Sarasota,54,901
+Manasota,Sarasota,54,901
+Nokomis,Sarasota,54,901
+North Port,Sarasota,54,901
+North Sarasota,Sarasota,54,901
+Osprey,Sarasota,54,901
+Plantation,Sarasota,54,901
+Ridge Wood Heights,Sarasota,54,901
+Sarasota,Sarasota,54,901
+Sarasota Springs,Sarasota,54,901
+Siesta Key,Sarasota,54,901
+South Gate Ridge,Sarasota,54,901
+South Sarasota,Sarasota,54,901
+South Venice,Sarasota,54,901
+Southgate,Sarasota,54,901
+The Meadows,Sarasota,54,901
+Vamo,Sarasota,54,901
+Venice,Sarasota,54,901
+Venice Gardens,Sarasota,54,901
+Warm Mineral Springs,Sarasota,54,901
+Altamonte Springs,Seminole,59,901
+Black Hammock,Seminole,59,901
+Casselberry,Seminole,59,901
+Chuluota,Seminole,59,901
+Fern Park,Seminole,59,901
+Forest City,Seminole,59,901
+Geneva,Seminole,59,901
+Goldenrod,Seminole,59,901
+Heathrow,Seminole,59,901
+Lake Mary,Seminole,59,901
+Lake Monroe,Seminole,59,901
+Longwood,Seminole,59,901
+Midway,Seminole,59,901
+Oviedo,Seminole,59,901
+Sanford,Seminole,59,901
+Wekiwa Springs,Seminole,59,901
+Winter Springs,Seminole,59,901
+Durbin,St. Johns,59,901
+Flagler Estates,St. Johns,59,901
+Nocatee,St. Johns,59,901
+St Johns,St. Johns,59,901
+Hutchinson Island South,St. Lucie,59,901
+Indian River Estates,St. Lucie,59,901
+Bushnell,Sumter,60,902
+Center Hill,Sumter,60,902
+Coleman,Sumter,60,902
+Lake Panasoffkee,Sumter,60,902
+Oxford,Sumter,60,902
+Sumterville,Sumter,60,902
+The Villages,Sumter,60,902
+Webster,Sumter,60,902
+Wildwood,Sumter,60,902
+Branford,Suwannee,61,903
+Dowling Park,Suwannee,61,903
+Falmouth,Suwannee,61,903
+Live Oak,Suwannee,61,903
+McAlpin,Suwannee,61,903
+O’Brien,Suwannee,61,903
+Wellborn,Suwannee,61,903
+Fish Creek,Taylor,62,903
+Perry,Taylor,62,903
+Shady Grove,Taylor,62,903
+Steinhatchee,Taylor,62,903
+Lake Butler,Union,63,903
+Raiford,Union,63,903
+Worthington Springs,Union,63,903
+Cassadaga,Volusia,64,901
+Creighton,Volusia,64,901
+Daytona Beach,Volusia,64,901
+Daytona Beach Shores,Volusia,64,901
+De Leon Springs,Volusia,64,901
+DeBary,Volusia,64,901
+DeLand,Volusia,64,901
+DeLand Southwest,Volusia,64,901
+Deltona,Volusia,64,901
+Edgewater,Volusia,64,901
+Enterprise,Volusia,64,901
+Farmton,Volusia,64,901
+Flagler Beach,Volusia,64,901
+Fort Florida,Volusia,64,901
+Holly Hill,Volusia,64,901
+Lake Helen,Volusia,64,901
+New Smyrna Beach,Volusia,64,901
+North DeLand,Volusia,64,901
+Oak Hill,Volusia,64,901
+Orange City,Volusia,64,901
+Ormond Beach,Volusia,64,901
+Ormond-by-the-Sea,Volusia,64,901
+Osteen,Volusia,64,901
+Pierson,Volusia,64,901
+Ponce Inlet,Volusia,64,901
+Port Orange,Volusia,64,901
+Samsula-Spruce Creek,Volusia,64,901
+Seville,Volusia,64,901
+South Daytona,Volusia,64,901
+West DeLand,Volusia,64,901
+Crawfordville,Wakulla,65,903
+Magnolia,Wakulla,65,903
+Panacea,Wakulla,65,903
+St Marks,Wakulla,65,903
+Sopchoppy,Wakulla,65,903
+Wakulla Springs,Wakulla,65,903
+Argyle,Walton,66,903
+De Funiak Springs,Walton,66,903
+Freeport,Walton,66,903
+Grayton Beach,Walton,66,903
+Miramar Beach,Walton,66,903
+Mossy Head,Walton,66,903
+Paxton,Walton,66,903
+Point Washington,Walton,66,903
+Rosemary Beach,Walton,66,903
+Santa Rosa Beach,Walton,66,903
+Seacrest,Walton,66,903
+Watersound,Walton,66,903
+Caryville,Washington,67,903
+Chipley,Washington,67,903
+Ebro,Washington,67,903
+Sunny Hills,Washington,67,903
+Vernon,Washington,67,903
+Wausau,Washington,67,903

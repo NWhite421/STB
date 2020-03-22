@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<JobInformation version="5">
+  <Information>
+    <JobNumber></JobNumber>
+    <Address></Address>
+    <City></City>
+    <County></County>
+    <Parcel></Parcel>
+    <SPZ></SPZ>
+    <CommonName></CommonName>
+    <OtherNumbers></OtherNumbers>
+  </Information>
+  <Contacts>
+    
+  </Contacts>
+  <Emails>
+    
+  </Emails>
+  <Tasks>
+
+  </Tasks>
+  <Notes>
+
+  </Notes>
+  <FieldData>
+    
+  </FieldData>
+  <Documents>
+    
+  </Documents>
+</JobInformation>

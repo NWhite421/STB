@@ -1,0 +1,11 @@
+﻿//Custom Directory list
+//Enter the test to open the directory
+//
+//Sample: Field; Z:\0-FIELD CREWS
+//Format
+//	[Code]; [Directory]
+//		[Code]		=	The text code to enter into the field.
+//		[Directory]	=	The directory path to open.
+//EDIT BELOW THIS LINE
+Field; Z:\0-FIELD  CREWS
+Template; Z:\Template

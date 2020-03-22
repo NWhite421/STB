@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Template>
+  <Metadata version="1.0">
+    <Name>Homebuilder - General</Name>
+    <CreateDate>01/01/2020</CreateDate>
+  </Metadata>
+  <Entry>
+    <Name>%%Job_Number%%</Name>
+    <Type>0</Type>
+    <Hidden>false</Hidden>
+    <Subdir>
+      <Entry>
+        <Name>AutoCAD</Name>
+        <Type>0</Type>
+        <Hidden>false</Hidden>
+        <Subdir>
+          <Entry>
+            <Name>%%Job_Number%%.dwg</Name>
+            <Type>1</Type>
+            <Source>Z:\Template\CAD Tempaltes\Template.dwg</Source>
+            <Hidden>false</Hidden>
+            <Readonly>false</Readonly>
+          </Entry>
+          <Entry>
+            <Name>Asset Tables</Name>
+            <Type>0</Type>
+            <Hidden>false</Hidden>
+            <Subdir>
+              <Entry>
+                <Name>%%Job_Number%% Asset Table.xlsx</Name>
+                <Type>1</Type>
+                <Source>Z:\Template\Asset Tables\Orange County Asset Table.xlsx</Source>
+                <Hidden>false</Hidden>
+                <Readonly>false</Readonly>
+              </Entry>
+            </Subdir>
+          </Entry>
+        </Subdir>
+      </Entry>
+      <Entry>
+        <Name>Field Checklist.pdf</Name>
+        <Type>1</Type>
+        <Source>Z:\Template\Checklist\Field Checklist V1.0.pdf</Source>
+        <Hidden>false</Hidden>
+        <Readonly>false</Readonly>
+      </Entry>
+      <Entry>
+        <Name>CAD Checklist.pdf</Name>
+        <Type>1</Type>
+        <Source></Source>
+        <Hidden>false</Hidden>
+        <Readonly>false</Readonly>
+      </Entry>
+    </Subdir>
+  </Entry>
+</Template>
