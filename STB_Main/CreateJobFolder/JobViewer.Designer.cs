@@ -45,30 +45,39 @@
             this.PnlFieldData = new System.Windows.Forms.Panel();
             this.label4_header = new System.Windows.Forms.Label();
             this.dataGridFieldData = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LblUploadFieldData = new System.Windows.Forms.Label();
             this.PnlEmails = new System.Windows.Forms.Panel();
             this.headerEmails = new System.Windows.Forms.Label();
             this.CmdRemoveEmail = new System.Windows.Forms.Button();
             this.LblUploadEmail = new System.Windows.Forms.Label();
             this.dataGridEmails = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LblOpenField = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbOtherNumbers = new System.Windows.Forms.ListBox();
+            this.LblCommonName = new System.Windows.Forms.Label();
+            this.LblStatePlane = new System.Windows.Forms.Label();
+            this.LLblEditJobInfo = new System.Windows.Forms.LinkLabel();
+            this.LblAddress = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.LblParcel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.headerProjectInfo = new System.Windows.Forms.Label();
             this.pnlNotes = new System.Windows.Forms.Panel();
             this.label3_header = new System.Windows.Forms.Label();
-            this.LblParcel = new System.Windows.Forms.Label();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.LblAddress = new System.Windows.Forms.Label();
-            this.LLblEditJobInfo = new System.Windows.Forms.LinkLabel();
-            this.LblStatePlane = new System.Windows.Forms.Label();
-            this.LblCommonName = new System.Windows.Forms.Label();
-            this.lbOtherNumbers = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.PnlProjectDocs = new System.Windows.Forms.Panel();
+            this.headerProjectDocs = new System.Windows.Forms.Label();
+            this.dataGridDocuments = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Uploader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Uploaded = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).BeginInit();
             this.PnlFieldData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFieldData)).BeginInit();
@@ -76,6 +85,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmails)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlNotes.SuspendLayout();
+            this.PnlProjectDocs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDocuments)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtJobNumber
@@ -265,6 +276,7 @@
             this.dataGridFieldData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridFieldData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
+            this.Author,
             this.dataGridViewTextBoxColumn4});
             this.dataGridFieldData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridFieldData.Location = new System.Drawing.Point(3, 28);
@@ -273,26 +285,6 @@
             this.dataGridFieldData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridFieldData.Size = new System.Drawing.Size(303, 117);
             this.dataGridFieldData.TabIndex = 18;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.dataGridViewTextBoxColumn2.DividerWidth = 1;
-            this.dataGridViewTextBoxColumn2.Frozen = true;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.ToolTipText = "The date of the entry.";
-            this.dataGridViewTextBoxColumn2.Width = 5;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DividerWidth = 1;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.ToolTipText = "The note.";
             // 
             // LblUploadFieldData
             // 
@@ -329,7 +321,7 @@
             this.headerEmails.Name = "headerEmails";
             this.headerEmails.Size = new System.Drawing.Size(303, 25);
             this.headerEmails.TabIndex = 18;
-            this.headerEmails.Text = "Related E-Mails";
+            this.headerEmails.Text = "E-Mails";
             // 
             // CmdRemoveEmail
             // 
@@ -369,6 +361,7 @@
             this.dataGridEmails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridEmails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
+            this.Uploader,
             this.dataGridViewTextBoxColumn3});
             this.dataGridEmails.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridEmails.Location = new System.Drawing.Point(3, 28);
@@ -378,26 +371,6 @@
             this.dataGridEmails.Size = new System.Drawing.Size(303, 190);
             this.dataGridEmails.TabIndex = 15;
             this.dataGridEmails.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmailOpen);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.dataGridViewTextBoxColumn1.DividerWidth = 1;
-            this.dataGridViewTextBoxColumn1.Frozen = true;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.ToolTipText = "The date of the entry.";
-            this.dataGridViewTextBoxColumn1.Width = 5;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DividerWidth = 1;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.ToolTipText = "The note.";
             // 
             // LblOpenField
             // 
@@ -429,6 +402,84 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 326);
             this.panel1.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 205);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(162, 21);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Related Job Numbers:";
+            // 
+            // lbOtherNumbers
+            // 
+            this.lbOtherNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbOtherNumbers.FormattingEnabled = true;
+            this.lbOtherNumbers.ItemHeight = 21;
+            this.lbOtherNumbers.Location = new System.Drawing.Point(3, 229);
+            this.lbOtherNumbers.Name = "lbOtherNumbers";
+            this.lbOtherNumbers.Size = new System.Drawing.Size(394, 88);
+            this.lbOtherNumbers.TabIndex = 22;
+            // 
+            // LblCommonName
+            // 
+            this.LblCommonName.AutoSize = true;
+            this.LblCommonName.Location = new System.Drawing.Point(3, 70);
+            this.LblCommonName.Name = "LblCommonName";
+            this.LblCommonName.Size = new System.Drawing.Size(14, 21);
+            this.LblCommonName.TabIndex = 21;
+            this.LblCommonName.Text = " ";
+            // 
+            // LblStatePlane
+            // 
+            this.LblStatePlane.AutoSize = true;
+            this.LblStatePlane.Location = new System.Drawing.Point(3, 184);
+            this.LblStatePlane.Name = "LblStatePlane";
+            this.LblStatePlane.Size = new System.Drawing.Size(14, 21);
+            this.LblStatePlane.TabIndex = 20;
+            this.LblStatePlane.Text = " ";
+            // 
+            // LLblEditJobInfo
+            // 
+            this.LLblEditJobInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LLblEditJobInfo.AutoSize = true;
+            this.LLblEditJobInfo.Location = new System.Drawing.Point(223, 28);
+            this.LLblEditJobInfo.Name = "LLblEditJobInfo";
+            this.LLblEditJobInfo.Size = new System.Drawing.Size(174, 21);
+            this.LLblEditJobInfo.TabIndex = 19;
+            this.LLblEditJobInfo.TabStop = true;
+            this.LLblEditJobInfo.Text = "Edit Project Information";
+            this.LLblEditJobInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CmdEditJobInfo);
+            // 
+            // LblAddress
+            // 
+            this.LblAddress.AutoSize = true;
+            this.LblAddress.Location = new System.Drawing.Point(24, 142);
+            this.LblAddress.Name = "LblAddress";
+            this.LblAddress.Size = new System.Drawing.Size(14, 21);
+            this.LblAddress.TabIndex = 18;
+            this.LblAddress.Text = " ";
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(3, 121);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(69, 21);
+            this.lbl1.TabIndex = 17;
+            this.lbl1.Text = "Address:";
+            // 
+            // LblParcel
+            // 
+            this.LblParcel.AutoSize = true;
+            this.LblParcel.Location = new System.Drawing.Point(3, 100);
+            this.LblParcel.Name = "LblParcel";
+            this.LblParcel.Size = new System.Drawing.Size(14, 21);
+            this.LblParcel.TabIndex = 16;
+            this.LblParcel.Text = " ";
             // 
             // label3
             // 
@@ -475,83 +526,145 @@
             this.label3_header.TabIndex = 12;
             this.label3_header.Text = "Job Notes";
             // 
-            // LblParcel
+            // PnlProjectDocs
             // 
-            this.LblParcel.AutoSize = true;
-            this.LblParcel.Location = new System.Drawing.Point(3, 100);
-            this.LblParcel.Name = "LblParcel";
-            this.LblParcel.Size = new System.Drawing.Size(14, 21);
-            this.LblParcel.TabIndex = 16;
-            this.LblParcel.Text = " ";
+            this.PnlProjectDocs.Controls.Add(this.headerProjectDocs);
+            this.PnlProjectDocs.Controls.Add(this.dataGridDocuments);
+            this.PnlProjectDocs.Controls.Add(this.label5);
+            this.PnlProjectDocs.Location = new System.Drawing.Point(322, 391);
+            this.PnlProjectDocs.Name = "PnlProjectDocs";
+            this.PnlProjectDocs.Size = new System.Drawing.Size(309, 345);
+            this.PnlProjectDocs.TabIndex = 18;
             // 
-            // lbl1
+            // headerProjectDocs
             // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(3, 121);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(69, 21);
-            this.lbl1.TabIndex = 17;
-            this.lbl1.Text = "Address:";
+            this.headerProjectDocs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.headerProjectDocs.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headerProjectDocs.Location = new System.Drawing.Point(3, 0);
+            this.headerProjectDocs.Name = "headerProjectDocs";
+            this.headerProjectDocs.Size = new System.Drawing.Size(303, 25);
+            this.headerProjectDocs.TabIndex = 19;
+            this.headerProjectDocs.Text = "Project Documents";
             // 
-            // LblAddress
+            // dataGridDocuments
             // 
-            this.LblAddress.AutoSize = true;
-            this.LblAddress.Location = new System.Drawing.Point(24, 142);
-            this.LblAddress.Name = "LblAddress";
-            this.LblAddress.Size = new System.Drawing.Size(14, 21);
-            this.LblAddress.TabIndex = 18;
-            this.LblAddress.Text = " ";
-            // 
-            // LLblEditJobInfo
-            // 
-            this.LLblEditJobInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LLblEditJobInfo.AutoSize = true;
-            this.LLblEditJobInfo.Location = new System.Drawing.Point(223, 28);
-            this.LLblEditJobInfo.Name = "LLblEditJobInfo";
-            this.LLblEditJobInfo.Size = new System.Drawing.Size(174, 21);
-            this.LLblEditJobInfo.TabIndex = 19;
-            this.LLblEditJobInfo.TabStop = true;
-            this.LLblEditJobInfo.Text = "Edit Project Information";
-            this.LLblEditJobInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CmdEditJobInfo);
-            // 
-            // LblStatePlane
-            // 
-            this.LblStatePlane.AutoSize = true;
-            this.LblStatePlane.Location = new System.Drawing.Point(3, 184);
-            this.LblStatePlane.Name = "LblStatePlane";
-            this.LblStatePlane.Size = new System.Drawing.Size(14, 21);
-            this.LblStatePlane.TabIndex = 20;
-            this.LblStatePlane.Text = " ";
-            // 
-            // LblCommonName
-            // 
-            this.LblCommonName.AutoSize = true;
-            this.LblCommonName.Location = new System.Drawing.Point(3, 70);
-            this.LblCommonName.Name = "LblCommonName";
-            this.LblCommonName.Size = new System.Drawing.Size(14, 21);
-            this.LblCommonName.TabIndex = 21;
-            this.LblCommonName.Text = " ";
-            // 
-            // lbOtherNumbers
-            // 
-            this.lbOtherNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridDocuments.AllowUserToAddRows = false;
+            this.dataGridDocuments.AllowUserToDeleteRows = false;
+            this.dataGridDocuments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbOtherNumbers.FormattingEnabled = true;
-            this.lbOtherNumbers.ItemHeight = 21;
-            this.lbOtherNumbers.Location = new System.Drawing.Point(3, 229);
-            this.lbOtherNumbers.Name = "lbOtherNumbers";
-            this.lbOtherNumbers.Size = new System.Drawing.Size(394, 88);
-            this.lbOtherNumbers.TabIndex = 22;
+            this.dataGridDocuments.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridDocuments.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridDocuments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDocuments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.Uploaded,
+            this.dataGridViewTextBoxColumn6});
+            this.dataGridDocuments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridDocuments.Location = new System.Drawing.Point(3, 28);
+            this.dataGridDocuments.Name = "dataGridDocuments";
+            this.dataGridDocuments.ReadOnly = true;
+            this.dataGridDocuments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridDocuments.Size = new System.Drawing.Size(303, 224);
+            this.dataGridDocuments.TabIndex = 18;
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 205);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 21);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Related Job Numbers:";
+            this.label5.AllowDrop = true;
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Location = new System.Drawing.Point(3, 255);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(303, 90);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Upload Document(s)";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewTextBoxColumn2.DividerWidth = 1;
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.ToolTipText = "The date of the entry.";
+            this.dataGridViewTextBoxColumn2.Width = 5;
+            // 
+            // Author
+            // 
+            this.Author.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Author.HeaderText = "Uploader";
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
+            this.Author.Width = 5;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DividerWidth = 1;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.ToolTipText = "The note.";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewTextBoxColumn1.DividerWidth = 1;
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.ToolTipText = "The date of the entry.";
+            this.dataGridViewTextBoxColumn1.Width = 5;
+            // 
+            // Uploader
+            // 
+            this.Uploader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Uploader.HeaderText = "Uploaded";
+            this.Uploader.Name = "Uploader";
+            this.Uploader.ReadOnly = true;
+            this.Uploader.Width = 5;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DividerWidth = 1;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.ToolTipText = "The note.";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewTextBoxColumn5.DividerWidth = 1;
+            this.dataGridViewTextBoxColumn5.Frozen = true;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.ToolTipText = "The date of the entry.";
+            this.dataGridViewTextBoxColumn5.Width = 5;
+            // 
+            // Uploaded
+            // 
+            this.Uploaded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Uploaded.HeaderText = "Uploader";
+            this.Uploaded.Name = "Uploaded";
+            this.Uploaded.ReadOnly = true;
+            this.Uploaded.Width = 5;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.DividerWidth = 1;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.ToolTipText = "The note.";
             // 
             // JobViewer
             // 
@@ -559,6 +672,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PnlProjectDocs);
             this.Controls.Add(this.PnlFieldData);
             this.Controls.Add(this.PnlEmails);
             this.Controls.Add(this.pnlNotes);
@@ -569,7 +683,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "JobViewer";
-            this.Size = new System.Drawing.Size(1165, 706);
+            this.Size = new System.Drawing.Size(1114, 706);
             this.Resize += new System.EventHandler(this.ResizeForm);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).EndInit();
             this.PnlFieldData.ResumeLayout(false);
@@ -580,6 +694,8 @@
             this.panel1.PerformLayout();
             this.pnlNotes.ResumeLayout(false);
             this.pnlNotes.PerformLayout();
+            this.PnlProjectDocs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDocuments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -605,12 +721,8 @@
         private System.Windows.Forms.Panel PnlEmails;
         private System.Windows.Forms.Label LblUploadEmail;
         private System.Windows.Forms.DataGridView dataGridEmails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button CmdRemoveEmail;
         private System.Windows.Forms.DataGridView dataGridFieldData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Label LblUploadFieldData;
         private System.Windows.Forms.LinkLabel LblOpenField;
         private System.Windows.Forms.Panel panel1;
@@ -628,5 +740,18 @@
         private System.Windows.Forms.ListBox lbOtherNumbers;
         private System.Windows.Forms.Label LblCommonName;
         private System.Windows.Forms.Label LblStatePlane;
+        private System.Windows.Forms.Panel PnlProjectDocs;
+        private System.Windows.Forms.Label headerProjectDocs;
+        private System.Windows.Forms.DataGridView dataGridDocuments;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Uploader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Uploaded;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

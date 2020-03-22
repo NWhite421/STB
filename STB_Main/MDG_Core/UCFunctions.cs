@@ -329,6 +329,13 @@ namespace MDG_Core
                 {
                     switch (control.GetType().Name.ToLower())
                     {
+                        case "checkbox":
+                            {
+                                var chx = (CheckBox)control;
+                                chx.BackColor = GVars.ActivePallete.Background;
+                                chx.ForeColor = GVars.ActivePallete.Text;
+                                break;
+                            }
                         case "label":
                             {
                                 var lbl = (Label)control;

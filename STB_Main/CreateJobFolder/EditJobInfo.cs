@@ -35,6 +35,10 @@ namespace CreateJobFolder
                 TxtCity.Text = TryElement(info, "City");
                 TxtCounty.Text = TryElement(info, "County");
                 TxtZone.Text = TryElement(info, "SPZ");
+                foreach (XElement element in info.Element("OtherNumbers").Elements("Entry"))
+                {
+                    lbOtherNumbers.Items.Add(element.Element("Number").Value + " (" + element.Element("Company").Value + ")");
+                }
             }
             catch
             {
@@ -122,6 +126,65 @@ namespace CreateJobFolder
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void ChangeInternalNumber(object sender, EventArgs e)
+        {
+            TxtOJobCompany.Enabled = !CbIsHNHNumber.Checked;
+            if (CbIsHNHNumber.Checked)
+            {
+                TxtOJobCompany.Text = "Internal";
+                lblOtherCompany.ForeColor = Color.Gray;
+            }
+            else
+            {
+                TxtOJobCompany.Text = "";
+                lblOtherCompany.ForeColor = GVars.ActivePallete.Text;
+            }
+        }
+
+        private void AddOtherJobNumber(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtOJobCompany.Text) || (string.IsNullOrEmpty(TxtOJobNumber.Text) && !CbIsHNHNumber.Checked))
+            {
+                return;
+            }
+            string formatedNumber;
+            string company;
+            if (CbIsHNHNumber.Checked)
+            {
+                var number = Converter.ToJobNumber(TxtOJobNumber.Text,true);
+                if (string.IsNullOrEmpty(number))
+                {
+                    return;
+                }
+                formatedNumber = number;
+                company = "Internal";
+            }
+            else if (string.IsNullOrEmpty(TxtOJobCompany.Text))
+            {
+                return;
+            }
+            else
+            {
+                formatedNumber = TxtOJobNumber.Text;
+                company = TxtOJobCompany.Text;
+            }
+
+            var elementBase = XMLDocument.Root.Element("Information").Element("OtherNumbers").Elements("Entry");
+            var node = elementBase.Where(X => X.Element("Number").Value.ToLower() == formatedNumber.ToLower()).Any();
+            if (node)
+            {
+                MessageBox.Show("The job number already exists.");
+                return;
+            }
+
+            XElement element = new XElement("Entry",
+                new XElement("Number", formatedNumber),
+                new XElement("Company", company)
+                );
+            XMLDocument.Root.Element("Information").Element("OtherNumbers").Add(element);
+            lbOtherNumbers.Items.Add(formatedNumber + " (" + company + ")");
         }
     }
 }

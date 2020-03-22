@@ -62,6 +62,22 @@ namespace CreateJobFolder
         }
 
         /// <summary>
+        /// Current Job Number
+        /// </summary>
+        internal class JobNumber
+        {
+            /// <summary>
+            /// Long format.
+            /// </summary>
+            public static string Long { get; set; }
+
+            /// <summary>
+            /// Short format.
+            /// </summary>
+            public static string Short { get; set; }
+        }
+
+        /// <summary>
         /// Writes the <paramref name="Message"/> to the current job log.
         /// </summary>
         /// <param name="Message">Message to write.</param>
@@ -134,51 +150,81 @@ namespace CreateJobFolder
         /// </summary>
         private void OpenJob(object s, EventArgs e)
         {
-            string jobNumber = Converter.ToJobNumber(TxtJobNumber.Text);
-            LblCurrentJob.Text = jobNumber.Remove(0, 2);
-            if (string.IsNullOrEmpty(jobNumber))
+            //Assign long job number for checking validity.
+            JobNumber.Long = Converter.ToJobNumber(TxtJobNumber.Text, false);
+            if (string.IsNullOrEmpty(JobNumber.Long))
             {
                 return;
             }
-            string xmlPath = Path.Combine(Converter.JobNumberToPath(jobNumber), "jobXML.xml");
-            string logPath = Path.Combine(Converter.JobNumberToPath(jobNumber), "job.log");
-            Log.ToDebug(xmlPath);
-            if (!File.Exists(xmlPath))
-            {
-                string source = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "JobXML.xml");
-                File.Copy(source, xmlPath);
-                File.SetAttributes(xmlPath, File.GetAttributes(xmlPath) | FileAttributes.Hidden);
-                Log.ToDebug("JobXML.xml file created at " + xmlPath);
-                var stream = File.Create(logPath);
-                stream.Close();
-                File.SetAttributes(logPath, File.GetAttributes(logPath) | FileAttributes.Hidden);
-                Log.ToDebug("job.log file created at " + logPath);
-                XMLPath = xmlPath;
-                LogPath = logPath;
-                AddNoteToLog("Job created on " + DateTime.Now.ToString("MM-dd-yy"));
-                XDocument doc = XDocument.Load(xmlPath);
-                doc.Root.Element("Information").Element("JobNumber").Value = jobNumber.Remove(0, 2);
-                UpdateXML(doc);
 
-                var dialog = new EditJobInfo(xmlPath);
-                var ret = dialog.ShowDialog();
-                if (ret.Equals(DialogResult.OK))
-                {
-                    UpdateXML(dialog.XMLDocument);
-                    TxtJobNumber.Text = LblCurrentJob.Text;
-                    OpenJob(this, new EventArgs());
-                }
+            //Variables
+            JobNumber.Short = Converter.ToJobNumber(TxtJobNumber.Text, true);
+            XMLPath = Path.Combine(Converter.JobNumberToPath(JobNumber.Long), "jobXML.xml");
+            LogPath = Path.Combine(Converter.JobNumberToPath(JobNumber.Long), "job.log");
+
+            LblCurrentJob.Text = JobNumber.Short;
+
+            //Check if Job XML exists. If not, create it.
+            if (!File.Exists(XMLPath))
+            {
+                //Source XML fle.
+                string source = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "JobXML.xml");
+
+                //Copy Source XML to new location.
+                File.Copy(source, XMLPath);
+                File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
+                Log.ToDebug("JobXML.xml file created at " + XMLPath);
+
+                //Create log file for job.
+                var stream = File.Create(LogPath);
+                stream.Close();
+                File.SetAttributes(LogPath, File.GetAttributes(LogPath) | FileAttributes.Hidden);
+                Log.ToDebug("job.log file created at " + LogPath);
+                
+                AddNoteToLog("Job created on " + DateTime.Now.ToString("MM-dd-yy"));
+
+                //Assign job number to XML document.
+                XDocument doc = XDocument.Load(XMLPath);
+                doc.Root.Element("Information").Element("JobNumber").Value = JobNumber.Short;
+                UpdateXML(doc);
             }
-            else { 
+            else 
+            { 
                 Log.ToDebug("File was found.");
-                XMLPath = xmlPath;
-                LogPath = logPath;
-                XDocument doc = XDocument.Load(xmlPath);
+                XDocument doc = XDocument.Load(XMLPath);
                 var element = doc.Root.Element("Information");
-                LblCommonName.Text = "A.K.A. " + TryElement(element, "CommonName");
-                LblParcel.Text = "Parcel: " + TryElement(element, "Parcel");
-                LblAddress.Text = TryElement(element, "Address") + Environment.NewLine + TryElement(element, "City") + ", " + TryElement(element, "County") + ", FL";
-                LblStatePlane.Text = "Zone: " + TryElement(element, "SPZ");
+                LblCommonName.Text = "A.K.A.: " + XML.GetElementValue(element,"CommonName","N/A");
+                LblParcel.Text = "Parcel: " + XML.GetElementValue(element, "Parcel", "N/A");
+                string address = "";
+                if (string.IsNullOrEmpty(XML.GetElementValue(element, "Address")))
+                {
+                    address = "No address provided." + Environment.NewLine;
+                }
+                else
+                {
+                    address = XML.GetElementValue(element, "Address") + Environment.NewLine;
+                }
+                if (string.IsNullOrEmpty(XML.GetElementValue(element, "City")))
+                {
+                    address += "No City provided.";
+                }
+                else
+                {
+                    address += XML.GetElementValue(element, "City") + ", " + XML.GetElementValue(element, "County") + " Co., FL";
+                }
+                LblAddress.Text = address;
+                LblStatePlane.Text = "Zone: " + XML.GetElementValue(element, "SPZ", "N/A");
+
+                if (lbOtherNumbers.Items.Count > 0)
+                {
+                    lbOtherNumbers.Items.Clear();
+                }
+
+                foreach (XElement ele in element.Element("OtherNumbers").Elements("Entry"))
+                {
+                    string text = string.Format("{0} ({1})", XML.GetElementValue(ele, "Number"), XML.GetElementValue(ele, "Company"));
+                    lbOtherNumbers.Items.Add(text);
+                }
             }
             PopulateLists();
         }
@@ -302,10 +348,10 @@ namespace CreateJobFolder
 
             foreach (XElement e in elements.Elements("Entry"))
             {
-                string date = e.Element("Date").Value;
-                string author = e.Element("Author").Value;
-                string note = e.Element("Note").Value;
-                table.Rows.Add(date, author, note);
+                string date = XML.GetElementValue(e, "Date", "N/A");
+                string uploader = XML.GetElementValue(e, "Author", "N/A");
+                string name = XML.GetElementValue(e, "Name", "What?");
+                table.Rows.Add(date, uploader, name);
             }
 
             //Email list
@@ -318,12 +364,13 @@ namespace CreateJobFolder
 
             foreach (XElement e in elements.Elements("Entry"))
             {
-                string date = DateTime.Parse(e.Element("Date").Value).ToString("MM-dd-yy hh:mm tt");
-                string name = e.Element("Name").Value;
-                table.Rows.Add(date, name);
+                string date = XML.GetElementValue(e, "Date", "N/A");
+                string uploader = XML.GetElementValue(e, "Author", "N/A");
+                string name = XML.GetElementValue(e, "Name", "What?");
+                table.Rows.Add(date, uploader, name);
             }
 
-            //Files list
+            //Field Data list
             elements = doc.Root.Element("FieldData");
             table = dataGridFieldData;
             if (table.Rows.Count > 0)
@@ -333,9 +380,26 @@ namespace CreateJobFolder
 
             foreach (XElement e in elements.Elements("Entry"))
             {
-                string date = DateTime.Parse(e.Element("Date").Value).ToString("MM-dd-yy hh:mm tt");
-                string name = e.Element("Name").Value;
-                table.Rows.Add(date, name);
+                string date = XML.GetElementValue(e, "Date", "N/A");
+                string uploader = XML.GetElementValue(e, "Author", "N/A");
+                string name = XML.GetElementValue(e, "Name", "What?");
+                table.Rows.Add(date, uploader, name);
+            }
+
+            //Documents list
+            elements = doc.Root.Element("Documents");
+            table = dataGridDocuments;
+            if (table.Rows.Count > 0)
+            {
+                table.Rows.Clear();
+            }
+
+            foreach (XElement e in elements.Elements("Entry"))
+            {
+                string date = XML.GetElementValue(e, "Date", "N/A");
+                string uploader = XML.GetElementValue(e, "Author", "N/A");
+                string name = XML.GetElementValue(e, "Name", "What?");
+                table.Rows.Add(date, uploader, name);
             }
         }
         
@@ -588,23 +652,7 @@ namespace CreateJobFolder
 
         #endregion
 
-        private void PopulateFieldDataList()
-        {
-            if (dataGridFieldData.Rows.Count > 0)
-            {
-                dataGridFieldData.Rows.Clear();
-            }
-
-            XDocument doc = XDocument.Load(XMLPath);
-            XElement data = doc.Root.Element("FieldData");
-            List<List<string>> entries = new List<List<string>> { };
-            foreach (XElement element in data.Elements("Entry"))
-            {
-                string date = DateTime.Parse(element.Element("Date").Value).ToString("MM-dd-yy hh:mmtt").ToUpper();
-                string name = element.Element("Name").Value;
-                dataGridFieldData.Rows.Add(date, name);
-            }
-        }
+        #region FIELD DATA
 
         private void DragFieldEnter(object sender, DragEventArgs e)
         {
@@ -617,7 +665,7 @@ namespace CreateJobFolder
             {
                 return;
             }
-            string fieldFolder = Path.Combine(Path.GetDirectoryName(XMLPath), "Field Data");
+            string fieldFolder = Path.Combine(JobPath, "Field Data");
             if (!Directory.Exists(fieldFolder))
             {
                 Directory.CreateDirectory(fieldFolder);
@@ -666,7 +714,7 @@ namespace CreateJobFolder
                 File.SetAttributes(XMLPath, File.GetAttributes(XMLPath) | FileAttributes.Hidden);
 
             }
-            PopulateFieldDataList();
+            PopulateLists();
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
@@ -695,5 +743,7 @@ namespace CreateJobFolder
                 OpenJob(this, new EventArgs());
             }
         }
+
+        #endregion
     }
 }

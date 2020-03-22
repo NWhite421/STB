@@ -44,6 +44,15 @@
             this.TxtZone = new System.Windows.Forms.TextBox();
             this.CmdSave = new System.Windows.Forms.Button();
             this.CmdCancel = new System.Windows.Forms.Button();
+            this.lbOtherNumbers = new System.Windows.Forms.ListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.TxtOJobNumber = new System.Windows.Forms.TextBox();
+            this.lblOtherCompany = new System.Windows.Forms.Label();
+            this.TxtOJobCompany = new System.Windows.Forms.TextBox();
+            this.CbIsHNHNumber = new System.Windows.Forms.CheckBox();
+            this.CmdAdd = new System.Windows.Forms.Button();
+            this.CmdRemove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TxtJobNumber
@@ -78,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtCommonName.Location = new System.Drawing.Point(141, 47);
             this.TxtCommonName.Name = "TxtCommonName";
-            this.TxtCommonName.Size = new System.Drawing.Size(374, 29);
+            this.TxtCommonName.Size = new System.Drawing.Size(427, 29);
             this.TxtCommonName.TabIndex = 2;
             this.TxtCommonName.Leave += new System.EventHandler(this.TextboxExit);
             // 
@@ -97,7 +106,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtParcel.Location = new System.Drawing.Point(141, 82);
             this.TxtParcel.Name = "TxtParcel";
-            this.TxtParcel.Size = new System.Drawing.Size(374, 29);
+            this.TxtParcel.Size = new System.Drawing.Size(427, 29);
             this.TxtParcel.TabIndex = 4;
             this.TxtParcel.Leave += new System.EventHandler(this.TextboxExit);
             // 
@@ -116,7 +125,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtAddress.Location = new System.Drawing.Point(141, 117);
             this.TxtAddress.Name = "TxtAddress";
-            this.TxtAddress.Size = new System.Drawing.Size(374, 29);
+            this.TxtAddress.Size = new System.Drawing.Size(427, 29);
             this.TxtAddress.TabIndex = 6;
             this.TxtAddress.Leave += new System.EventHandler(this.TextboxExit);
             // 
@@ -135,7 +144,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtCity.Location = new System.Drawing.Point(141, 152);
             this.TxtCity.Name = "TxtCity";
-            this.TxtCity.Size = new System.Drawing.Size(374, 29);
+            this.TxtCity.Size = new System.Drawing.Size(427, 29);
             this.TxtCity.TabIndex = 8;
             this.TxtCity.Leave += new System.EventHandler(this.TextboxExit);
             // 
@@ -155,13 +164,14 @@
             this.TxtCounty.Enabled = false;
             this.TxtCounty.Location = new System.Drawing.Point(141, 187);
             this.TxtCounty.Name = "TxtCounty";
-            this.TxtCounty.Size = new System.Drawing.Size(177, 29);
+            this.TxtCounty.Size = new System.Drawing.Size(230, 29);
             this.TxtCounty.TabIndex = 10;
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(324, 187);
+            this.label7.Location = new System.Drawing.Point(377, 187);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 21);
             this.label7.TabIndex = 13;
@@ -169,19 +179,19 @@
             // 
             // TxtZone
             // 
-            this.TxtZone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtZone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtZone.Enabled = false;
-            this.TxtZone.Location = new System.Drawing.Point(378, 187);
+            this.TxtZone.Location = new System.Drawing.Point(431, 187);
             this.TxtZone.Name = "TxtZone";
             this.TxtZone.Size = new System.Drawing.Size(137, 29);
             this.TxtZone.TabIndex = 12;
             // 
             // CmdSave
             // 
-            this.CmdSave.Location = new System.Drawing.Point(440, 360);
+            this.CmdSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdSave.Location = new System.Drawing.Point(483, 387);
             this.CmdSave.Name = "CmdSave";
-            this.CmdSave.Size = new System.Drawing.Size(75, 28);
+            this.CmdSave.Size = new System.Drawing.Size(85, 28);
             this.CmdSave.TabIndex = 14;
             this.CmdSave.Text = "Save";
             this.CmdSave.UseVisualStyleBackColor = true;
@@ -189,14 +199,105 @@
             // 
             // CmdCancel
             // 
+            this.CmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CmdCancel.Location = new System.Drawing.Point(12, 360);
+            this.CmdCancel.Location = new System.Drawing.Point(12, 387);
             this.CmdCancel.Name = "CmdCancel";
-            this.CmdCancel.Size = new System.Drawing.Size(75, 28);
+            this.CmdCancel.Size = new System.Drawing.Size(85, 28);
             this.CmdCancel.TabIndex = 15;
             this.CmdCancel.Text = "Discard";
             this.CmdCancel.UseVisualStyleBackColor = true;
             this.CmdCancel.Click += new System.EventHandler(this.CancelJob);
+            // 
+            // lbOtherNumbers
+            // 
+            this.lbOtherNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbOtherNumbers.FormattingEnabled = true;
+            this.lbOtherNumbers.ItemHeight = 21;
+            this.lbOtherNumbers.Location = new System.Drawing.Point(12, 222);
+            this.lbOtherNumbers.Name = "lbOtherNumbers";
+            this.lbOtherNumbers.Size = new System.Drawing.Size(265, 151);
+            this.lbOtherNumbers.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(283, 222);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(143, 21);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Other Job Number:";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(292, 246);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 21);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Number:";
+            // 
+            // TxtOJobNumber
+            // 
+            this.TxtOJobNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtOJobNumber.Location = new System.Drawing.Point(369, 246);
+            this.TxtOJobNumber.Name = "TxtOJobNumber";
+            this.TxtOJobNumber.Size = new System.Drawing.Size(199, 29);
+            this.TxtOJobNumber.TabIndex = 18;
+            // 
+            // lblOtherCompany
+            // 
+            this.lblOtherCompany.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOtherCompany.AutoSize = true;
+            this.lblOtherCompany.Location = new System.Drawing.Point(283, 281);
+            this.lblOtherCompany.Name = "lblOtherCompany";
+            this.lblOtherCompany.Size = new System.Drawing.Size(80, 21);
+            this.lblOtherCompany.TabIndex = 21;
+            this.lblOtherCompany.Text = "Company:";
+            // 
+            // TxtOJobCompany
+            // 
+            this.TxtOJobCompany.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtOJobCompany.Location = new System.Drawing.Point(369, 281);
+            this.TxtOJobCompany.Name = "TxtOJobCompany";
+            this.TxtOJobCompany.Size = new System.Drawing.Size(199, 29);
+            this.TxtOJobCompany.TabIndex = 20;
+            // 
+            // CbIsHNHNumber
+            // 
+            this.CbIsHNHNumber.AutoSize = true;
+            this.CbIsHNHNumber.Location = new System.Drawing.Point(391, 316);
+            this.CbIsHNHNumber.Name = "CbIsHNHNumber";
+            this.CbIsHNHNumber.Size = new System.Drawing.Size(177, 25);
+            this.CbIsHNHNumber.TabIndex = 22;
+            this.CbIsHNHNumber.Text = "Is an internal number";
+            this.CbIsHNHNumber.UseVisualStyleBackColor = true;
+            this.CbIsHNHNumber.CheckedChanged += new System.EventHandler(this.ChangeInternalNumber);
+            // 
+            // CmdAdd
+            // 
+            this.CmdAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdAdd.Location = new System.Drawing.Point(483, 345);
+            this.CmdAdd.Name = "CmdAdd";
+            this.CmdAdd.Size = new System.Drawing.Size(85, 28);
+            this.CmdAdd.TabIndex = 23;
+            this.CmdAdd.Text = "Add";
+            this.CmdAdd.UseVisualStyleBackColor = true;
+            this.CmdAdd.Click += new System.EventHandler(this.AddOtherJobNumber);
+            // 
+            // CmdRemove
+            // 
+            this.CmdRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmdRemove.Location = new System.Drawing.Point(283, 345);
+            this.CmdRemove.Name = "CmdRemove";
+            this.CmdRemove.Size = new System.Drawing.Size(85, 28);
+            this.CmdRemove.TabIndex = 24;
+            this.CmdRemove.Text = "Remove";
+            this.CmdRemove.UseVisualStyleBackColor = true;
             // 
             // EditJobInfo
             // 
@@ -204,7 +305,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CmdCancel;
-            this.ClientSize = new System.Drawing.Size(527, 400);
+            this.ClientSize = new System.Drawing.Size(580, 427);
+            this.Controls.Add(this.CmdRemove);
+            this.Controls.Add(this.CmdAdd);
+            this.Controls.Add(this.CbIsHNHNumber);
+            this.Controls.Add(this.lblOtherCompany);
+            this.Controls.Add(this.TxtOJobCompany);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.TxtOJobNumber);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lbOtherNumbers);
             this.Controls.Add(this.CmdCancel);
             this.Controls.Add(this.CmdSave);
             this.Controls.Add(this.label7);
@@ -252,5 +362,14 @@
         private System.Windows.Forms.TextBox TxtZone;
         private System.Windows.Forms.Button CmdSave;
         private System.Windows.Forms.Button CmdCancel;
+        private System.Windows.Forms.ListBox lbOtherNumbers;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox TxtOJobNumber;
+        private System.Windows.Forms.Label lblOtherCompany;
+        private System.Windows.Forms.TextBox TxtOJobCompany;
+        private System.Windows.Forms.CheckBox CbIsHNHNumber;
+        private System.Windows.Forms.Button CmdAdd;
+        private System.Windows.Forms.Button CmdRemove;
     }
 }

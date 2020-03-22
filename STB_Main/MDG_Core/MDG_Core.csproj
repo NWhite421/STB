@@ -95,6 +95,7 @@
       <DependentUpon>StringInput.cs</DependentUpon>
     </Compile>
     <Compile Include="UCFunctions.cs" />
+    <Compile Include="XML.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="StringInput.resx">
